@@ -76,4 +76,128 @@ img {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+.goblet-icon-logo,
+.pint-icon-logo,
+.tulip-icon-logo,
+.pilsner-icon-logo,
+.landing-page-name{
+  display: inline-block;
+  text-align: center;
+  margin-top: 150px;
+  margin-left: 33px;
+}
+.landing-page-name{
+  display: block;
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 55px;
+  letter-spacing: 10px;
+  color: rgba(102, 94, 86, 1);
+  margin-top: 25px;
+}
+.goblet-icon,
+.pilsner-icon,
+.pint-icon,
+.snifter-icon,
+.stange-icon,
+.tulip-icon,
+.weizen-icon{
+  text-align: center;
+  margin-top: 100px;
+}
+.goblet-title,
+.pilsner-title,
+.pint-title,
+.snifter-title,
+.stange-title,
+.tulip-title,
+.weizen-title{
+  margin-top: 200px;
+  font-family: "Montserrat";
+  color: rgba(102, 94, 86, 1);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 45px;
+  letter-spacing: 7px;
+}
+.goblet-detail,
+.pilsner-detail,
+.pint-detail,
+.snifter-detail,
+.stange-detail,
+.tulip-detail,
+.weizen-detail{
+  margin-top: 25px;
+  font-family: "Montserrat";
+  font-size: 10px;
+  letter-spacing: .5px;
+  width: 384px;
+  line-height: 30px;
+}
+.goblet-page,
+.pint-page,
+.stange-page,
+.weizen-page{
+  height: 700px;
+  background-color: rgba(204, 200, 196, 1);
+}
+.pilsner-page{
+  height: 700px;
+  background-color: rgba(198, 219, 139, 1);
+}
+.snifter-page{
+  height: 700px;
+  background-color: rgba(255, 170, 98, 1);
+}
+.tulip-page{
+  height: 700px;
+  background-color: rgba(255, 239, 182, 1);
+}
+.beer-info{
+  text-align: center;
+  margin-top: 100px;
+}
+.yeast-photo,
+.hops-photo,
+.barley-photo{
+  border: 1px solid rgba(102, 94, 87, 1);
+  border-radius: 50%;
+  width: 110px;
+  margin-top: 30px;
+}
+.yeast-title,
+.hops-title,
+.barley-title{
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  color: rgba(102, 94, 87, 1);
+  font-size: 15px;
+  letter-spacing: 7px;
+  margin-top: 40px;
+  text-align: center;
+}
+.yeast-info,
+.hops-info,
+.barley-info{
+  line-height: 33px;
+  margin-top: 40px;
+  margin-bottom: 75px;
+  font-size: 10px;
+  font-family: "Montserrat";
+  letter-spacing: .25px;
+}
 // end of list of work
+
+
+// about section
+.about-profile-pic{
+  height: 300px;
+}
+// end of about
+
+// drink up detail page
+.drinkUp-pic{
+  margin-top: 30px;
+}
+// end of drink up detail page

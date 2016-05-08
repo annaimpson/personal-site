@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var Home = React.createClass({
@@ -31,18 +32,31 @@ var Home = React.createClass({
           <div className="row">
             <div className="projects">
               <div className="col-xs-12 col-md-6">
-                <a onClick={this.drinkToggle}><h1 className="drinkup">Drink Up</h1></a>
+                <a onClick={this.drinkToggle}>
+                  <h1 className="drinkup">Drink Up</h1>
+                </a>
               </div>
               <div className="col-xs-12 col-md-6">
-                <a onClick={this.gitHubToggle}><h1 className="github">GitHub</h1></a>
+                <a onClick={this.gitHubToggle}>
+                  <h1 className="github">GitHub</h1>
+                </a>
               </div>
               <div className="col-xs-12 col-md-6">
-                <a onClick={this.surfToggle}><h1 className="surfandpaddle">Surf &amp; Paddle Co.</h1></a>
+                <a onClick={this.surfToggle}>
+                  <img src="images/surfsmall.png" alt=""  className="surfandpaddle"/>
+                </a>
               </div>
               <div className="col-xs-12 col-md-6">
-                <a onClick={this.swampRabbitToggle}><h1 className="swamprabbit">Swamp Rabbit Cycling</h1></a>
+                <a onClick={this.swampRabbitToggle}>
+                  <img src="images/bike.png" alt=""/>
+                </a>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="container-fluid footer">
+          <div className="row">
+            <Footer/>
           </div>
         </div>
       </div>

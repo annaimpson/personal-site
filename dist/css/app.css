@@ -5839,7 +5839,7 @@ img {
   margin-top: 100px; }
 
 .header-background {
-  background-color: #d8d8d8;
+  background-color: #D8D7D3;
   height: 75px; }
 
 .header-logo {
@@ -5859,131 +5859,71 @@ img {
   margin-top: 25px;
   margin-left: 10px; }
 
+.footer-background {
+  background-color: #D8D7D3; }
+
+.footer-logo {
+  width: 50px;
+  height: 50px; }
+
 .drinkup,
 .github,
 .surfandpaddle,
 .swamprabbit {
   text-align: center;
+  font-family: 'Fira Sans';
   margin-top: 100px;
-  border: 2px solid #ee2c90;
   padding-top: 50px;
   padding-bottom: 50px; }
 
-.goblet-icon-logo,
-.pint-icon-logo,
-.tulip-icon-logo,
-.pilsner-icon-logo,
-.landing-page-name {
-  display: inline-block;
-  text-align: center;
-  margin-top: 150px;
-  margin-left: 33px; }
+.drinkup:hover,
+.github:hover,
+.surfandpaddle:hover,
+.swamprabbit:hover {
+  color: rgba(238, 44, 144, 0.5); }
 
-.landing-page-name {
-  display: block;
-  font-family: "Montserrat";
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 55px;
-  letter-spacing: 10px;
-  color: #665e56;
-  margin-top: 25px; }
-
-.goblet-icon,
-.pilsner-icon,
-.pint-icon,
-.snifter-icon,
-.stange-icon,
-.tulip-icon,
-.weizen-icon {
-  text-align: center;
-  margin-top: 100px; }
-
-.goblet-title,
-.pilsner-title,
-.pint-title,
-.snifter-title,
-.stange-title,
-.tulip-title,
-.weizen-title {
-  margin-top: 200px;
-  font-family: "Montserrat";
-  color: #665e56;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 45px;
-  letter-spacing: 7px; }
-
-.goblet-detail,
-.pilsner-detail,
-.pint-detail,
-.snifter-detail,
-.stange-detail,
-.tulip-detail,
-.weizen-detail {
-  margin-top: 25px;
-  font-family: "Montserrat";
-  font-size: 10px;
-  letter-spacing: .5px;
-  width: 384px;
-  line-height: 30px; }
-
-.goblet-page,
-.pint-page,
-.stange-page,
-.weizen-page {
-  height: 700px;
-  background-color: #ccc8c4; }
-
-.pilsner-page {
-  height: 700px;
-  background-color: #c6db8b; }
-
-.snifter-page {
-  height: 700px;
-  background-color: #ffaa62; }
-
-.tulip-page {
-  height: 700px;
-  background-color: #ffefb6; }
-
-.beer-info {
-  text-align: center;
-  margin-top: 100px; }
-
-.yeast-photo,
-.hops-photo,
-.barley-photo {
-  border: 1px solid #665e57;
-  border-radius: 50%;
-  width: 110px;
-  margin-top: 30px; }
-
-.yeast-title,
-.hops-title,
-.barley-title {
-  font-family: "Montserrat";
-  text-transform: uppercase;
-  color: #665e57;
-  font-size: 15px;
-  letter-spacing: 7px;
-  margin-top: 40px;
-  text-align: center; }
-
-.yeast-info,
-.hops-info,
-.barley-info {
-  line-height: 33px;
-  margin-top: 40px;
-  margin-bottom: 75px;
-  font-size: 10px;
-  font-family: "Montserrat";
-  letter-spacing: .25px; }
+.projects a:hover {
+  color: #dedede; }
 
 .about-profile-pic {
   height: 300px; }
 
 .drinkUp-pic {
   margin-top: 30px; }
+
+.drinkup-info h1 {
+  font-family: 'Fira Sans';
+  font-size: 50px;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px; }
+.drinkup-info p, .drinkup-info div {
+  font-family: 'Old Standard'; }
+
+.github-info h1 {
+  font-family: 'Fira Sans';
+  font-size: 50px;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px; }
+
+.surfandpaddle-info h1 {
+  font-family: 'Fira Sans';
+  font-size: 50px;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px; }
+
+.mockup-pic {
+  float: right;
+  width: 700px;
+  height: 700px; }
+
+.responsive-info h1 {
+  font-family: 'Fira Sans';
+  font-size: 50px;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px; }
 
 /*# sourceMappingURL=app.css.map */

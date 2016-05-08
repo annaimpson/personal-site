@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var Contact = React.createClass({
@@ -23,10 +24,12 @@ var Contact = React.createClass({
             <div className="col-xs-12 col-md-6">
               <h6>864 351 9864</h6>
               <h6>annaimpson@gmail.com</h6>
-              <h6>My professional social site: </h6><a href="https://www.linkedin.com/in/anna-impson-620058b0">LinkedIn</a>
-              <h6>See things how I see them: </h6><a href="https://www.instagram.com/anna.impson/">Instagram</a>
-              <h6>Essentially my stream of consciousness: </h6><a href="https://twitter.com/annaimpson1">Twitter</a>
             </div>
+          </div>
+        </div>
+        <div className="container-fluid footer">
+          <div className="row">
+            <Footer/>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ var About = React.createClass({displayName: "About",
                 React.createElement("h1", {className: "about-career"}, "front-end developer"), 
                 React.createElement("h1", {className: "what-i-do"}, "What I Do"), 
                 React.createElement("p", null, "These days, I've been writing in code. What kind, you may ask? Not django and not Morse. I have been doing that front-end developing business. It has only been a measly three months, but I'm getting in a groove and really enjoying it." + ' ' +
-                "I have going from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! "), 
+                "I went from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! "), 
                 React.createElement("div", {className: "col-xs-12 col-md-12 my-skills"}, 
                   React.createElement("h1", null, "My Mad Skills")
                 ), 
@@ -119,7 +119,7 @@ var Contact = React.createClass({displayName: "Contact",
               React.createElement("h6", {className: "word-email"}, "email")
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-offset-3 col-md-4"}, 
-              React.createElement("a", {href: ""}, React.createElement("h3", {className: "resume"}, "Resume"))
+              React.createElement("a", {href: "images/Impson_resume-1 copy.pdf"}, React.createElement("h3", {className: "resume"}, "Resume"))
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-pull-2 col-md-5"}, 
               React.createElement("a", {href: "https://github.com/annaimpson"}, React.createElement("h3", {className: "github"}, "GitHub"))

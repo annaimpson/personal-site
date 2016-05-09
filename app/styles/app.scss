@@ -427,5 +427,72 @@ img {
   margin-top: 40px;
   padding-bottom: 100px;
 }
-
 //end of about section
+
+//contact section
+.chat{
+  font-family: 'Montseratt';
+  font-size: 50px;
+  color: #9A9995;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px;
+  text-align: center;
+  margin-top: 40px;
+}
+.talk-to-me{
+  margin-top: 30px;
+  font-family: 'Open Sans';
+  font-size: 13px;
+  color: #61605B;
+  line-height: 23px;
+  margin-left: 30px;
+}
+.final-statement{
+  margin-top: 30px;
+  font-size: 14px;
+  font-family: 'Montseratt';
+  font-style: italic;
+  margin-left: 60px;
+}
+.phone,
+.email{
+  margin-top: 30px;
+  font-family: 'Open Sans';
+  font-size: 14px;
+}
+.word-phone{
+  margin-left: 25px;
+}
+.word-email{
+  margin-left: 60px;
+}
+.word-phone,
+.word-email{
+  font-family: 'Montseratt';
+  font-style: italic;
+  margin-top: 10px;
+}
+.resume,
+.github{
+  margin-top: 150px;
+  background-color: rgba(237, 152, 111, 1);
+  border-radius: 5%;
+  width: 150px;
+  height: 50px;
+  padding-top: 17px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-family: 'Montseratt';
+  font-size: 14px;
+  text-align: center;
+}
+.resume{
+  margin-left: 33px;
+}
+.github{
+  margin-left: 210px;
+}
+//end contact section

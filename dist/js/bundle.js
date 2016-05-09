@@ -102,13 +102,27 @@ var Contact = React.createClass({displayName: "Contact",
         ), 
         React.createElement("div", {className: "container"}, 
           React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-              React.createElement("h1", {className: "chat"}, "Let's Chat"), 
-              React.createElement("p", {className: "talk-to-me"}, "If you're looking for a hard worker that's eager to learn, let's talk! Hit me up and creep until you're heart is content. ")
+            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
+              React.createElement("h1", {className: "chat"}, "Let's Chat")
             ), 
-            React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-              React.createElement("h6", null, "864 351 9864"), 
-              React.createElement("h6", null, "annaimpson@gmail.com")
+            React.createElement("div", {className: "col-xs-12 col-md-offset-3 col-md-6"}, 
+              React.createElement("p", {className: "talk-to-me"}, "I am a front-end web developer seeking to contribute and grow in a junior web development role. I work well in" + ' ' +
+                "a team environment, consistently meet deadlines, and have an eye for detail. If those qualities fit into your team enviroment, let's talk!"), 
+              React.createElement("p", {className: "final-statement"}, "I am a quick learner who is eager to gain knowledge and acquire new skills")
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-offset-4 col-md-4"}, 
+              React.createElement("h6", {className: "phone"}, "864 351 9864"), 
+              React.createElement("h6", {className: "word-phone"}, "phone")
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-pull-2 col-md-4"}, 
+              React.createElement("h6", {className: "email"}, "annaimpson@gmail.com"), 
+              React.createElement("h6", {className: "word-email"}, "email")
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-offset-3 col-md-4"}, 
+              React.createElement("a", {href: ""}, React.createElement("h3", {className: "resume"}, "Resume"))
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-pull-2 col-md-5"}, 
+              React.createElement("a", {href: "https://github.com/annaimpson"}, React.createElement("h3", {className: "github"}, "GitHub"))
             )
           )
         )

@@ -6,7 +6,7 @@ require('backbone-react-component');
 
 var Header = React. createClass({
   portfolioToggle: function(){
-    Backbone.history.navigate('homepage', {trigger: true});
+    Backbone.history.navigate('', {trigger: true});
   },
   aboutToggle: function(){
     Backbone.history.navigate('about', {trigger: true});

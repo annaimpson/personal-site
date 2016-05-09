@@ -5859,13 +5859,8 @@ img {
   text-transform: uppercase;
   font-family: "Open Sans"; }
   .nav-list a {
-    color: #333333; }
-  .nav-list .portfolio-nav {
-    margin-left: 87px; }
-  .nav-list .about-nav {
-    margin-left: 98px; }
-  .nav-list .contact-nav {
-    margin-left: 92px; }
+    color: #333333;
+    margin-left: 22px; }
 
 .social-icons img {
   height: 50px;
@@ -5926,14 +5921,11 @@ img {
 .github-title:hover {
   visibility: visible; }
 
-.about-profile-pic {
-  height: 300px; }
-
 .drinkup-pic {
-  margin-top: 100px; }
+  margin-top: 320px; }
 
 .drinkup-info h1 {
-  font-family: 'Open Sans';
+  font-family: 'Montseratt';
   font-size: 32px;
   color: #9A9995;
   font-weight: bolder;
@@ -5945,46 +5937,234 @@ img {
   margin-top: 40px;
   margin-left: 30px; }
 .drinkup-info p {
-  font-family: 'Libre Baskerville';
-  font-size: 12px;
+  font-family: 'Open Sans';
+  font-size: 13px;
   color: #61605B;
-  margin-left: 30px; }
+  margin-left: 30px;
+  line-height: 23px;
+  padding-right: 13px; }
+
+.purpose {
+  margin-top: 75px; }
+
+.the-code,
+.the-server,
+.the-backend {
+  margin-bottom: 100px; }
+  .the-code h1,
+  .the-server h1,
+  .the-backend h1 {
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px; }
+  .the-code div,
+  .the-server div,
+  .the-backend div {
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px; }
+
+.github-pic {
+  margin-top: 225px; }
 
 .github-info h1 {
-  font-family: 'Open Sans';
+  font-family: 'Montseratt';
+  font-size: 32px;
   color: #9A9995;
-  font-size: 50px;
   font-weight: bolder;
   letter-spacing: -1px;
-  line-height: 47px; }
-.github-info p, .github-info div {
-  font-family: 'Libre Baskerville';
-  color: #61605B; }
+  line-height: 47px;
+  margin-left: 30px; }
+.github-info h1.github-heading {
+  font-size: 57px;
+  margin-top: 40px;
+  margin-left: 30px;
+  padding-right: 50px; }
+.github-info p {
+  font-family: 'Open Sans';
+  font-size: 13px;
+  color: #61605B;
+  margin-left: 30px;
+  line-height: 23px;
+  padding-right: 13px; }
+
+.github-purpose {
+  margin-top: 75px; }
+
+.the-code {
+  margin-bottom: 100px; }
+  .the-code h1 {
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px; }
+  .the-code div {
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px; }
+
+.surfandpaddle-pic {
+  margin-top: 260px; }
 
 .surfandpaddle-info h1 {
-  font-family: 'Open Sans';
+  font-family: 'Montseratt';
+  font-size: 32px;
   color: #9A9995;
-  font-size: 50px;
   font-weight: bolder;
   letter-spacing: -1px;
-  line-height: 47px; }
-.surfandpaddle-info p, .surfandpaddle-info div {
-  font-family: 'Libre Baskerville';
-  color: #61605B; }
+  line-height: 47px;
+  margin-left: 30px; }
+.surfandpaddle-info h1.surfandpaddle-heading {
+  font-size: 57px;
+  margin-top: 40px;
+  margin-left: 30px; }
+.surfandpaddle-info p {
+  font-family: 'Open Sans';
+  font-size: 13px;
+  color: #61605B;
+  margin-left: 30px;
+  line-height: 23px;
+  padding-right: 13px; }
+
+.surfandpaddle-purpose {
+  margin-top: 75px; }
+
+.the-code {
+  margin-bottom: 100px; }
+  .the-code h1 {
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px; }
+  .the-code div {
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px; }
 
 .mockup-pic {
-  float: right;
-  width: 700px;
-  height: 700px; }
+  margin-top: -5px; }
 
-.responsive-info h1 {
+.swamprabbit-info h1 {
+  font-family: 'Montseratt';
+  font-size: 32px;
+  color: #9A9995;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px;
+  margin-left: 30px; }
+.swamprabbit-info h1.swamprabbit-heading {
+  font-size: 57px;
+  margin-top: 40px;
+  margin-left: 30px;
+  padding-right: 105px; }
+.swamprabbit-info p {
   font-family: 'Open Sans';
-  font-size: 50px;
+  font-size: 13px;
+  color: #61605B;
+  margin-left: 30px;
+  line-height: 23px;
+  padding-right: 13px; }
+
+.swamprabbit-purpose {
+  margin-top: 75px; }
+
+.the-code {
+  margin-bottom: 100px; }
+  .the-code h1 {
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px; }
+  .the-code div {
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px; }
+
+.about-profile-pic {
+  margin-top: 215px;
+  height: 400px;
+  padding-left: 160px; }
+
+.about-info h1 {
+  font-family: 'Montseratt';
+  color: #9A9995;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px;
+  margin-left: 30px; }
+.about-info h1.about-heading {
+  font-size: 57px;
+  margin-top: 40px;
+  margin-left: 30px;
+  padding-right: 105px; }
+.about-info h1.about-career {
+  font-style: italic;
+  font-size: 20px; }
+.about-info h1.what-i-do {
+  margin-top: 60px; }
+.about-info p {
+  font-family: 'Open Sans';
+  font-size: 13px;
+  color: #61605B;
+  margin-left: 30px;
+  line-height: 23px;
+  padding-right: 13px; }
+
+.my-skills h1 {
+  font-family: 'Montseratt';
+  font-size: 32px;
+  color: #9A9995;
+  font-weight: bolder;
+  letter-spacing: -1px;
+  line-height: 47px;
+  margin-left: 30px; }
+
+.skills-list {
+  margin-bottom: 100px; }
+  .skills-list div {
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px; }
+
+.my-location h1 {
+  font-family: 'Montseratt';
+  font-size: 40px;
+  color: #9A9995;
   font-weight: bolder;
   letter-spacing: -1px;
   line-height: 47px; }
-.responsive-info p, .responsive-info div {
-  font-family: 'Libre Baskerville';
-  color: #61605B; }
+.my-location h1.wsnc {
+  font-family: 'Montseratt';
+  font-style: italic;
+  color: #e59161;
+  font-size: 35px;
+  margin-top: 92px; }
+
+.map-photo {
+  margin-top: 40px;
+  padding-bottom: 100px; }
 
 /*# sourceMappingURL=app.css.map */

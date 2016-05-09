@@ -35,7 +35,7 @@ var DrinkUp = React.createClass({
               </div>
             </div>
             <div className="col-xs-12 col-md-12">
-              <div className="col-xs-12 col-md-4">
+              <div className="col-xs-12 col-md-4 the-code">
                 <h1>The Code:</h1>
                 <div>HTML5</div>
                 <div>SCSS</div>
@@ -47,11 +47,11 @@ var DrinkUp = React.createClass({
                 <div>Backbone.js</div>
                 <div>React.js</div>
               </div>
-              <div className="col-xs-12 col-md-4">
+              <div className="col-xs-12 col-md-4 the-server">
                 <h1>The Server:</h1>
                 <div>Parse</div>
               </div>
-              <div className="col-xs-12 col-md-4">
+              <div className="col-xs-12 col-md-4 the-backend">
                 <h1>The Backend:</h1>
                 <div>Heroku</div>
               </div>

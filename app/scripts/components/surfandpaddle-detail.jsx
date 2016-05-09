@@ -14,26 +14,28 @@ var SurfAndPaddle = React.createClass({
             <Header/>
           </div>
         </div>
-
         <div className="container">
           <div className="row">
-            <div className="surfandpaddle-info">
+            <div className="col-md-12 surfandpaddle-info">
               <div className="col-xs-12 col-md-6">
-                <h1>That Time I Made a Pixel Perfect Rendition</h1>
-                <h1>Purpose: </h1>
-                <p>Refine newly established skills</p>
+                <h1 className="surfandpaddle-heading">That time I made a pixel perfect rendition</h1>
+                <h1 className="surfandpaddle-purpose">Purpose: </h1>
+                <p>Refine newly established skills in HTML and CSS.</p>
                 <h1>Description: </h1>
                 <p>Surf and Paddle is a detailed application which we made pixel perfect.</p>
                 <p>View the code <a href="https://github.com/annaimpson/surfandpaddle">here</a></p>
                 <p>View the live site <a href="http://annaimpson.github.io/surfandpaddle/dist/index.html">here</a></p>
+              </div>
+              <div className="col-xs-12 col-md-6">
+                <img src="images/surfandpaddleheader.png" alt="" className="surfandpaddle-pic"/>
+              </div>
+            </div>
+            <div className="col-xs-12 col-md-12">
+              <div className="col-xs-12 col-md-4 the-code">
                 <h1>The Code:</h1>
                 <div>HTML5</div>
                 <div>CSS</div>
-              </div>
-            </div>
-            <div className="surfandpaddle-picture">
-              <div className="col-xs-12 col-md-6">
-                <img src="images/surfandpaddleheader.png" alt="" className="surfandpaddle-pic"/>
+                <div>Bootstrap</div>
               </div>
             </div>
           </div>

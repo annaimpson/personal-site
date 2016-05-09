@@ -63,15 +63,7 @@ img {
   font-family: "Open Sans";
     a {
       color: #333333;
-    }
-    .portfolio-nav{
-      margin-left: 87px;
-    }
-    .about-nav{
-      margin-left:98px;
-    }
-    .contact-nav{
-      margin-left: 92px;
+      margin-left: 22px;
     }
 }
 .social-icons{
@@ -144,20 +136,13 @@ img {
 }
 // end of list of work
 
-
-// about section
-.about-profile-pic{
-  height: 300px;
-}
-// end of about
-
 // drink up detail page
 .drinkup-pic{
-  margin-top: 100px;
+  margin-top: 320px;
 }
 .drinkup-info{
   h1{
-    font-family: 'Open Sans';
+    font-family: 'Montseratt';
     font-size: 32px;
     color: #9A9995;
     font-weight: bolder;
@@ -171,68 +156,276 @@ img {
     margin-left: 30px;
   }
   p{
-    font-family: 'Libre Baskerville';
-    font-size: 12px;
+    font-family: 'Open Sans';
+    font-size: 13px;
     color: #61605B;
     margin-left: 30px;
+    line-height: 23px;
+    padding-right: 13px;
   }
 }
 .purpose{
   margin-top: 75px;
 }
-// end of drink up detail page
-
-//github detail page
-.github-info{
+.the-code,
+.the-server,
+.the-backend{
+  margin-bottom: 100px;
   h1{
-    font-family: 'Open Sans';
+    font-family: 'Montseratt';
+    font-size: 32px;
     color: #9A9995;
-    font-size: 50px;
     font-weight: bolder;
     letter-spacing: -1px;
     line-height: 47px;
+    margin-left: 30px;
   }
-  p, div{
-    font-family:'Libre Baskerville';
+  div{
+    font-family: 'Open Sans';
+    font-size: 13px;
     color: #61605B;
+    margin-left: 35px;
+    line-height: 23px;
+  }
+}
+// end of drink up detail page
+
+//github detail page
+.github-pic{
+  margin-top: 225px;
+}
+.github-info{
+  h1{
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px;
+  }
+  h1.github-heading{
+    font-size: 57px;
+    margin-top: 40px;
+    margin-left: 30px;
+    padding-right: 50px;
+  }
+  p{
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 30px;
+    line-height: 23px;
+    padding-right: 13px;
+  }
+}
+.github-purpose{
+  margin-top: 75px;
+}
+.the-code{
+  margin-bottom: 100px;
+  h1{
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px;
+  }
+  div{
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px;
   }
 }
 //end of github detail page
 
 //surf and paddle detail page
+.surfandpaddle-pic{
+  margin-top: 260px;
+}
 .surfandpaddle-info{
   h1{
-    font-family: 'Open Sans';
+    font-family: 'Montseratt';
+    font-size: 32px;
     color: #9A9995;
-    font-size: 50px;
     font-weight: bolder;
     letter-spacing: -1px;
     line-height: 47px;
+    margin-left: 30px;
   }
-  p, div{
-    font-family: 'Libre Baskerville';
+  h1.surfandpaddle-heading{
+    font-size: 57px;
+    margin-top: 40px;
+    margin-left: 30px;
+  }
+  p{
+    font-family: 'Open Sans';
+    font-size: 13px;
     color: #61605B;
+    margin-left: 30px;
+    line-height: 23px;
+    padding-right: 13px;
+  }
+}
+.surfandpaddle-purpose{
+  margin-top: 75px;
+}
+.the-code{
+  margin-bottom: 100px;
+  h1{
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px;
+  }
+  div{
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px;
   }
 }
 // end of surf and paddle detail page
 
 //swamprabbit detail page
 .mockup-pic{
-  float: right;
-  width: 700px;
-  height: 700px;
+  margin-top: -5px;
 }
-.responsive-info{
+.swamprabbit-info{
   h1{
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px;
+  }
+  h1.swamprabbit-heading{
+    font-size: 57px;
+    margin-top: 40px;
+    margin-left: 30px;
+    padding-right: 105px;
+  }
+  p{
     font-family: 'Open Sans';
-    font-size: 50px;
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 30px;
+    line-height: 23px;
+    padding-right: 13px;
+  }
+}
+.swamprabbit-purpose{
+  margin-top: 75px;
+}
+.the-code{
+  margin-bottom: 100px;
+  h1{
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px;
+  }
+  div{
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px;
+  }
+}
+// end of swamprabbit detail page
+
+//about section
+.about-profile-pic{
+  margin-top: 215px;
+  height: 400px;
+  padding-left: 160px;
+}
+.about-info{
+  h1{
+    font-family: 'Montseratt';
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px;
+  }
+  h1.about-heading{
+    font-size: 57px;
+    margin-top: 40px;
+    margin-left: 30px;
+    padding-right: 105px;
+  }
+  h1.about-career{
+    font-style: italic;
+    font-size: 20px;
+  }
+  h1.what-i-do{
+    margin-top: 60px;
+  }
+  p{
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 30px;
+    line-height: 23px;
+    padding-right: 13px;
+  }
+}
+.my-skills{
+  h1{
+    font-family: 'Montseratt';
+    font-size: 32px;
+    color: #9A9995;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    line-height: 47px;
+    margin-left: 30px;
+  }
+}
+.skills-list{
+  margin-bottom: 100px;
+  div{
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #61605B;
+    margin-left: 35px;
+    line-height: 23px;
+  }
+}
+.my-location{
+  h1{
+    font-family: 'Montseratt';
+    font-size: 40px;
+    color: #9A9995;
     font-weight: bolder;
     letter-spacing: -1px;
     line-height: 47px;
   }
-  p, div{
-    font-family: 'Libre Baskerville';
-    color: #61605B;
+  h1.wsnc{
+    font-family: 'Montseratt';
+    font-style: italic;
+    color: rgba(229, 145, 97, 1);
+    font-size: 35px;
+    margin-top: 92px;
   }
 }
-// end of swamprabbit detail page
+.map-photo{
+  margin-top: 40px;
+  padding-bottom: 100px;
+}
+
+//end of about section

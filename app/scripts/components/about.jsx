@@ -25,7 +25,7 @@ var About = React.createClass({
                 <h1 className="about-career">front-end developer</h1>
                 <h1 className="what-i-do">What I Do</h1>
                 <p>These days, I've been writing in code. What kind, you may ask? Not django and not Morse. I have been doing that front-end developing business. It has only been a measly three months, but I'm getting in a groove and really enjoying it.
-                I have going from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! </p>
+                I went from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! </p>
                 <div className="col-xs-12 col-md-12 my-skills">
                   <h1>My Mad Skills</h1>
                 </div>

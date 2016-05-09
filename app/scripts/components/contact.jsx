@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
-var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var Contact = React.createClass({
@@ -25,11 +24,6 @@ var Contact = React.createClass({
               <h6>864 351 9864</h6>
               <h6>annaimpson@gmail.com</h6>
             </div>
-          </div>
-        </div>
-        <div className="container-fluid footer">
-          <div className="row">
-            <Footer/>
           </div>
         </div>
       </div>

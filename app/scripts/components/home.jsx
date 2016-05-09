@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
-var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var Home = React.createClass({
@@ -30,33 +29,42 @@ var Home = React.createClass({
 
         <div className="container">
           <div className="row">
+
+
             <div className="projects">
-              <div className="col-xs-12 col-md-6">
-                <a onClick={this.drinkToggle}>
-                  <h1 className="drinkup">Drink Up</h1>
-                </a>
+              <div className="row">
+                <div className="col-xs-12 col-md-6">
+                  <div className="overlay">
+                    <a onClick={this.drinkToggle}>
+                      <h1 className="drinkup-title">Drink Up</h1>
+                      <img src="images/drinkup.png" alt=""  className="drinkup-icon"/>
+                    </a>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-md-6">
+                  <a onClick={this.gitHubToggle}>
+                    <h1 className="github-title">GitHub</h1>
+                    <img src="images/github.png" alt=""  className="github-icon"/>
+                  </a>
+                </div>
               </div>
-              <div className="col-xs-12 col-md-6">
-                <a onClick={this.gitHubToggle}>
-                  <h1 className="github">GitHub</h1>
-                </a>
-              </div>
-              <div className="col-xs-12 col-md-6">
-                <a onClick={this.surfToggle}>
-                  <img src="images/surfsmall.png" alt=""  className="surfandpaddle"/>
-                </a>
-              </div>
-              <div className="col-xs-12 col-md-6">
-                <a onClick={this.swampRabbitToggle}>
-                  <img src="images/bike.png" alt=""/>
-                </a>
+              <div className="row">
+                <div className="col-xs-12 col-md-6">
+                  <a onClick={this.surfToggle}>
+                    <h1 className="surfandpaddle-title">Surf Paddle</h1>
+                    <img src="images/surfpaddle.png" alt=""  className="surfandpaddle-icon"/>
+                  </a>
+                </div>
+                <div className="col-xs-12 col-md-6">
+                  <a onClick={this.swampRabbitToggle}>
+                    <h1 className="swamprabbit-title">Swamp Rabbit Cycling</h1>
+                    <img src="images/bike.png" alt="" className="swamprabbit-icon"/>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="container-fluid footer">
-          <div className="row">
-            <Footer/>
+
+
           </div>
         </div>
       </div>

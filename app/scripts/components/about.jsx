@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
-var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 
@@ -75,11 +74,6 @@ var About = React.createClass({
           </div>
           <div className="row">
 
-          </div>
-        </div>
-        <div className="container-fluid footer">
-          <div className="row">
-            <Footer/>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
-var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var GitHub = React.createClass({
@@ -43,11 +42,6 @@ var GitHub = React.createClass({
                 <img src="images/github-snap.png" alt="" className="github-pic"/>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="container-fluid footer">
-          <div className="row">
-            <Footer/>
           </div>
         </div>
       </div>

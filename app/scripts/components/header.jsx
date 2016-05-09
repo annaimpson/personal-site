@@ -17,15 +17,11 @@ var Header = React. createClass({
   render: function(){
     return (
       <div className="header-background">
-        <div className="container">
-          <div className="nav-list">
-            <a onClick={this.portfolioToggle} className="portfolio-nav">Portfolio</a>
-            <a onClick={this.aboutToggle} className="about-nav">About</a>
-            <a onClick={this.contactToggle} className="contact-nav">Contact</a>
-          </div>
-          <div className="header-logo">
-            <img src="images/Impson_logo.png" alt="" className="header-logo"/>
-          </div>
+        <div className="col-xs-8 col-md-offset-1 col-md-12 nav-list">
+          <img src="images/Impson_web logo-02.png" alt="" className="header-logo"/>
+          <a onClick={this.portfolioToggle} className="portfolio-nav">Portfolio</a>
+          <a onClick={this.aboutToggle} className="about-nav">About</a>
+          <a onClick={this.contactToggle} className="contact-nav">Contact</a>
         </div>
       </div>
     );

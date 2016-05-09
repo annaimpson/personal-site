@@ -15,7 +15,9 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 img {
   max-width: 100%;
 }
-
+.container{
+  margin-right: 0px;
+}
 // Landing page
 .landing-page-background{
   background-color: rgba(216, 216, 216, 1);
@@ -43,17 +45,22 @@ img {
 // header
 .header-background{
   background-color:  #D8D7D3;
-  height: 75px;
+  height: 3000px;
+  width: 300px;
+  position: fixed;
 }
 .header-logo{
-  width: 50px;
-  height: 50px;
-  float: right;
+  height: 190px;
   display: inline-block;
-  margin-top: 7px;
+  margin-top: 40px;
 }
 .nav-list{
   display: inline-block;
+  text-transform: uppercase;
+  font-family: "Fira Sans";
+    a {
+      color: #333333;
+    }
 }
 .portfolio-nav,
 .about-nav,
@@ -74,27 +81,42 @@ img {
 }
 //end of footer
 
-// home page list of work
-.drinkup,
-.github,
-.surfandpaddle,
-.swamprabbit{
-  text-align: center;
-  font-family: 'Fira Sans';
-  margin-top: 100px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+//home page list of work
+.surfandpaddle-icon,
+.drinkup-icon,
+.swamprabbit-icon,
+.github-icon{
+  opacity: 1.0;
+  display: inline-block;
+  position: relative;
 }
-.drinkup:hover,
-.github:hover,
-.surfandpaddle:hover,
-.swamprabbit:hover{
-  color: rgba(238, 44, 144, .5);
+.drinkup-icon,
+.surfandpaddle-icon{
+  margin-left: 30px;
 }
-.projects a:hover{
-  color: #dedede;
+.surfandpaddle-icon:hover,
+.drinkup-icon:hover,
+.swamprabbit-icon:hover,
+.github-icon:hover{
+  opacity: 0.4;
 }
-
+.surfandpaddle-title,
+.drinkup-title,
+.swamprabbit-title,
+.github-title{
+  display: inline-block;
+  position: absolute;
+}
+.surfandpaddle-title,
+.drinkup-title{
+  margin-left: 30px;
+}
+.surfandpaddle-title:hover,
+.drinkup-title:hover,
+.swamprabbit-title:hover,
+.github-title:hover{
+  visibility: visible;
+}
 // end of list of work
 
 
@@ -111,13 +133,15 @@ img {
 .drinkup-info{
   h1{
     font-family: 'Fira Sans';
+    color: #9A9995;
     font-size: 50px;
     font-weight: bolder;
     letter-spacing: -1px;
     line-height: 47px;
   }
   p, div{
-    font-family: 'Old Standard';
+    font-family: 'Libre Baskerville';
+    color: #61605B;
   }
 }
 // end of drink up detail page
@@ -126,10 +150,15 @@ img {
 .github-info{
   h1{
     font-family: 'Fira Sans';
+    color: #9A9995;
     font-size: 50px;
     font-weight: bolder;
     letter-spacing: -1px;
     line-height: 47px;
+  }
+  p, div{
+    font-family:'Libre Baskerville';
+    color: #61605B;
   }
 }
 //end of github detail page
@@ -138,10 +167,15 @@ img {
 .surfandpaddle-info{
   h1{
     font-family: 'Fira Sans';
+    color: #9A9995;
     font-size: 50px;
     font-weight: bolder;
     letter-spacing: -1px;
     line-height: 47px;
+  }
+  p, div{
+    font-family: 'Libre Baskerville';
+    color: #61605B;
   }
 }
 // end of surf and paddle detail page
@@ -159,6 +193,10 @@ img {
     font-weight: bolder;
     letter-spacing: -1px;
     line-height: 47px;
+  }
+  p, div{
+    font-family: 'Libre Baskerville';
+    color: #61605B;
   }
 }
 // end of swamprabbit detail page

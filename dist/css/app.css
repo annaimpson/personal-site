@@ -5817,6 +5817,9 @@ button.close {
 img {
   max-width: 100%; }
 
+.container {
+  margin-right: 0px; }
+
 .landing-page-background {
   background-color: #d8d8d8;
   width: 100%;
@@ -5840,17 +5843,21 @@ img {
 
 .header-background {
   background-color: #D8D7D3;
-  height: 75px; }
+  height: 3000px;
+  width: 300px;
+  position: fixed; }
 
 .header-logo {
-  width: 50px;
-  height: 50px;
-  float: right;
+  height: 190px;
   display: inline-block;
-  margin-top: 7px; }
+  margin-top: 40px; }
 
 .nav-list {
-  display: inline-block; }
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Fira Sans"; }
+  .nav-list a {
+    color: #333333; }
 
 .portfolio-nav,
 .about-nav,
@@ -5866,24 +5873,40 @@ img {
   width: 50px;
   height: 50px; }
 
-.drinkup,
-.github,
-.surfandpaddle,
-.swamprabbit {
-  text-align: center;
-  font-family: 'Fira Sans';
-  margin-top: 100px;
-  padding-top: 50px;
-  padding-bottom: 50px; }
+.surfandpaddle-icon,
+.drinkup-icon,
+.swamprabbit-icon,
+.github-icon {
+  opacity: 1.0;
+  display: inline-block;
+  position: relative; }
 
-.drinkup:hover,
-.github:hover,
-.surfandpaddle:hover,
-.swamprabbit:hover {
-  color: rgba(238, 44, 144, 0.5); }
+.drinkup-icon,
+.surfandpaddle-icon {
+  margin-left: 30px; }
 
-.projects a:hover {
-  color: #dedede; }
+.surfandpaddle-icon:hover,
+.drinkup-icon:hover,
+.swamprabbit-icon:hover,
+.github-icon:hover {
+  opacity: 0.4; }
+
+.surfandpaddle-title,
+.drinkup-title,
+.swamprabbit-title,
+.github-title {
+  display: inline-block;
+  position: absolute; }
+
+.surfandpaddle-title,
+.drinkup-title {
+  margin-left: 30px; }
+
+.surfandpaddle-title:hover,
+.drinkup-title:hover,
+.swamprabbit-title:hover,
+.github-title:hover {
+  visibility: visible; }
 
 .about-profile-pic {
   height: 300px; }
@@ -5893,26 +5916,36 @@ img {
 
 .drinkup-info h1 {
   font-family: 'Fira Sans';
+  color: #9A9995;
   font-size: 50px;
   font-weight: bolder;
   letter-spacing: -1px;
   line-height: 47px; }
 .drinkup-info p, .drinkup-info div {
-  font-family: 'Old Standard'; }
+  font-family: 'Libre Baskerville';
+  color: #61605B; }
 
 .github-info h1 {
   font-family: 'Fira Sans';
+  color: #9A9995;
   font-size: 50px;
   font-weight: bolder;
   letter-spacing: -1px;
   line-height: 47px; }
+.github-info p, .github-info div {
+  font-family: 'Libre Baskerville';
+  color: #61605B; }
 
 .surfandpaddle-info h1 {
   font-family: 'Fira Sans';
+  color: #9A9995;
   font-size: 50px;
   font-weight: bolder;
   letter-spacing: -1px;
   line-height: 47px; }
+.surfandpaddle-info p, .surfandpaddle-info div {
+  font-family: 'Libre Baskerville';
+  color: #61605B; }
 
 .mockup-pic {
   float: right;
@@ -5925,5 +5958,8 @@ img {
   font-weight: bolder;
   letter-spacing: -1px;
   line-height: 47px; }
+.responsive-info p, .responsive-info div {
+  font-family: 'Libre Baskerville';
+  color: #61605B; }
 
 /*# sourceMappingURL=app.css.map */

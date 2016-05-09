@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
-var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var SwampRabbit = React.createClass({
@@ -37,11 +36,6 @@ var SwampRabbit = React.createClass({
                 <img src="images/responsive.png" alt="" className="mockup-pic"/>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="container-fluid footer">
-          <div className="row">
-            <Footer/>
           </div>
         </div>
       </div>

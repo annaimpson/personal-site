@@ -144,17 +144,24 @@ var DrinkUp = React.createClass({displayName: "DrinkUp",
 
         React.createElement("div", {className: "container"}, 
           React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "drinkup-info"}, 
+            React.createElement("div", {className: "col-md-12 drinkup-info"}, 
               React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("h1", null, "That Time I Made Something That Combined All My Skills"), 
-                React.createElement("h1", null, "Purpose: "), 
+                React.createElement("h1", {className: "drinkup-heading"}, "That time I made something that combined all my skills"), 
+                React.createElement("h1", {className: "purpose"}, "Purpose: "), 
                 React.createElement("p", null, "Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos."), 
                 React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something the worked well and looked great." + ' ' +
+                React.createElement("p", null, "I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something that worked well and looked great." + ' ' +
                   "I had many grandiose ideas, but three weeks only allotted me so much. Therefore, this site was created for those who also like beer. It allows the user to create a profile," + ' ' +
                   "search for beer types, flavor profiles, and breweries. In addition, they user can save specific beer to their profile to refer to later. "), 
                 React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/beer-final-project"}, "here")), 
-                React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, "here")), 
+                React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, "here"))
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("img", {src: "images/drinkUp-snap.png", alt: "", className: "drinkup-pic"})
+              )
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-4"}, 
                 React.createElement("h1", null, "The Code:"), 
                 React.createElement("div", null, "HTML5"), 
                 React.createElement("div", null, "SCSS"), 
@@ -164,16 +171,15 @@ var DrinkUp = React.createClass({displayName: "DrinkUp",
                 React.createElement("div", null, "Underscore.js"), 
                 React.createElement("div", null, "Node.js"), 
                 React.createElement("div", null, "Backbone.js"), 
-                React.createElement("div", null, "React.js"), 
+                React.createElement("div", null, "React.js")
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-4"}, 
                 React.createElement("h1", null, "The Server:"), 
-                React.createElement("div", null, "Parse"), 
+                React.createElement("div", null, "Parse")
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-4"}, 
                 React.createElement("h1", null, "The Backend:"), 
                 React.createElement("div", null, "Heroku")
-              )
-            ), 
-            React.createElement("div", {className: "drinkup-picture"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("img", {src: "images/drinkUp-snap.png", alt: "", className: "drinkup-pic"})
               )
             )
           )
@@ -263,9 +269,20 @@ var Header = React. createClass({displayName: "Header",
       React.createElement("div", {className: "header-background"}, 
         React.createElement("div", {className: "col-xs-8 col-md-offset-1 col-md-12 nav-list"}, 
           React.createElement("img", {src: "images/Impson_web logo-02.png", alt: "", className: "header-logo"}), 
-          React.createElement("a", {onClick: this.portfolioToggle, className: "portfolio-nav"}, "Portfolio"), 
-          React.createElement("a", {onClick: this.aboutToggle, className: "about-nav"}, "About"), 
-          React.createElement("a", {onClick: this.contactToggle, className: "contact-nav"}, "Contact")
+          React.createElement("div", {className: "row"}, 
+            React.createElement("a", {onClick: this.portfolioToggle, className: "portfolio-nav"}, "Portfolio")
+          ), 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("a", {onClick: this.aboutToggle, className: "about-nav"}, "About")
+          ), 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("a", {onClick: this.contactToggle, className: "contact-nav"}, "Contact")
+          )
+        ), 
+        React.createElement("div", {className: "col-xs-12 col-md-offset-1 col-md-12 social-icons"}, 
+          React.createElement("a", {href: "https://www.linkedin.com/in/anna-impson-620058b0"}, React.createElement("img", {src: "images/linkedin.png", alt: "", className: "linkedin-logo"})), 
+          React.createElement("a", {href: "https://www.instagram.com/anna.impson/"}, React.createElement("img", {src: "images/instagram.png", alt: "", className: "instagram-logo"})), 
+          React.createElement("a", {href: "https://twitter.com/annaimpson1"}, React.createElement("img", {src: "images/twitter.png", alt: "", className: "twitter-logo"}))
         )
       )
     );
@@ -329,13 +346,13 @@ var Home = React.createClass({displayName: "Home",
               React.createElement("div", {className: "row"}, 
                 React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                   React.createElement("a", {onClick: this.surfToggle}, 
-                    React.createElement("h1", {className: "surfandpaddle-title"}, "Surf Paddle"), 
+                    React.createElement("h1", {className: "surfandpaddle-title"}, "Surf & Paddle"), 
                     React.createElement("img", {src: "images/surfpaddle.png", alt: "", className: "surfandpaddle-icon"})
                   )
                 ), 
                 React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                   React.createElement("a", {onClick: this.swampRabbitToggle}, 
-                    React.createElement("h1", {className: "swamprabbit-title"}, "Swamp Rabbit Cycling"), 
+                    React.createElement("h1", {className: "swamprabbit-title"}, "Swamp Rabbit ", React.createElement("br", null), "Cycling"), 
                     React.createElement("img", {src: "images/bike.png", alt: "", className: "swamprabbit-icon"})
                   )
                 )
@@ -465,7 +482,7 @@ var SwampRabbit = React.createClass({displayName: "SwampRabbit",
                 React.createElement("p", null, "Create a site that was responsive on all devices"), 
                 React.createElement("h1", null, "Description: "), 
                 React.createElement("p", null, "We were provided with a wireframe which we were to make responsive using the Bootstrap grid system"), 
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site"}, "here")), 
+                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, "here")), 
                 React.createElement("h1", null, "The Code:"), 
                 React.createElement("div", null, "HTML5"), 
@@ -520,8 +537,7 @@ var appContainer = document.getElementById('app');
 
 var Router = Backbone.Router.extend({
   routes: {
-    '': 'landingpage',
-    'homepage': 'homepage',
+    '': 'homepage',
     'about': 'about',
     'contact': 'contact',
     'drinkUp': 'drinkUp',

@@ -23,7 +23,7 @@ var SwampRabbit = React.createClass({
                 <p>Create a site that was responsive on all devices</p>
                 <h1>Description: </h1>
                 <p>We were provided with a wireframe which we were to make responsive using the Bootstrap grid system</p>
-                <p>View the code <a href="https://github.com/annaimpson/responsive-site">here</a></p>
+                <p>View the code <a href="https://github.com/annaimpson/responsive-site/tree/master">here</a></p>
                 <p>View the live site <a href="http://annaimpson.github.io/responsive-site/dist/index.html">here</a></p>
                 <h1>The Code:</h1>
                 <div>HTML5</div>

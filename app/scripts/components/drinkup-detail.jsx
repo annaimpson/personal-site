@@ -18,17 +18,24 @@ var DrinkUp = React.createClass({
 
         <div className="container">
           <div className="row">
-            <div className="drinkup-info">
+            <div className="col-md-12 drinkup-info">
               <div className="col-xs-12 col-md-6">
-                <h1>That Time I Made Something That Combined All My Skills</h1>
-                <h1>Purpose: </h1>
+                <h1 className="drinkup-heading">That time I made something that combined all my skills</h1>
+                <h1 className="purpose">Purpose: </h1>
                 <p>Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos.</p>
                 <h1>Description: </h1>
-                <p>I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something the worked well and looked great.
+                <p>I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something that worked well and looked great.
                   I had many grandiose ideas, but three weeks only allotted me so much. Therefore, this site was created for those who also like beer. It allows the user to create a profile,
                   search for beer types, flavor profiles, and breweries. In addition, they user can save specific beer to their profile to refer to later. </p>
                 <p>View the code <a href="https://github.com/annaimpson/beer-final-project">here</a></p>
                 <p>View the live site <a href="http://annaimpson.github.io/beer-final-project/dist/index.html">here</a></p>
+              </div>
+              <div className="col-xs-12 col-md-6">
+                <img src="images/drinkUp-snap.png" alt="" className="drinkup-pic"/>
+              </div>
+            </div>
+            <div className="col-xs-12 col-md-12">
+              <div className="col-xs-12 col-md-4">
                 <h1>The Code:</h1>
                 <div>HTML5</div>
                 <div>SCSS</div>
@@ -39,15 +46,14 @@ var DrinkUp = React.createClass({
                 <div>Node.js</div>
                 <div>Backbone.js</div>
                 <div>React.js</div>
+              </div>
+              <div className="col-xs-12 col-md-4">
                 <h1>The Server:</h1>
                 <div>Parse</div>
+              </div>
+              <div className="col-xs-12 col-md-4">
                 <h1>The Backend:</h1>
                 <div>Heroku</div>
-              </div>
-            </div>
-            <div className="drinkup-picture">
-              <div className="col-xs-12 col-md-6">
-                <img src="images/drinkUp-snap.png" alt="" className="drinkup-pic"/>
               </div>
             </div>
           </div>

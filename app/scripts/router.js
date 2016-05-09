@@ -17,8 +17,7 @@ var appContainer = document.getElementById('app');
 
 var Router = Backbone.Router.extend({
   routes: {
-    '': 'landingpage',
-    'homepage': 'homepage',
+    '': 'homepage',
     'about': 'about',
     'contact': 'contact',
     'drinkUp': 'drinkUp',

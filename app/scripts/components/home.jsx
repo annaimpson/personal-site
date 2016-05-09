@@ -51,13 +51,13 @@ var Home = React.createClass({
               <div className="row">
                 <div className="col-xs-12 col-md-6">
                   <a onClick={this.surfToggle}>
-                    <h1 className="surfandpaddle-title">Surf Paddle</h1>
+                    <h1 className="surfandpaddle-title">Surf &amp; Paddle</h1>
                     <img src="images/surfpaddle.png" alt=""  className="surfandpaddle-icon"/>
                   </a>
                 </div>
                 <div className="col-xs-12 col-md-6">
                   <a onClick={this.swampRabbitToggle}>
-                    <h1 className="swamprabbit-title">Swamp Rabbit Cycling</h1>
+                    <h1 className="swamprabbit-title">Swamp Rabbit <br/>Cycling</h1>
                     <img src="images/bike.png" alt="" className="swamprabbit-icon"/>
                   </a>
                 </div>

@@ -5846,6 +5846,8 @@ img {
   height: 3000px;
   width: 300px;
   position: fixed; }
+  .header-background .row {
+    margin-top: 40px; }
 
 .header-logo {
   height: 190px;
@@ -5855,16 +5857,20 @@ img {
 .nav-list {
   display: inline-block;
   text-transform: uppercase;
-  font-family: "Fira Sans"; }
+  font-family: "Open Sans"; }
   .nav-list a {
     color: #333333; }
+  .nav-list .portfolio-nav {
+    margin-left: 87px; }
+  .nav-list .about-nav {
+    margin-left: 98px; }
+  .nav-list .contact-nav {
+    margin-left: 92px; }
 
-.portfolio-nav,
-.about-nav,
-.contact-nav {
-  display: inline-block;
-  margin-top: 25px;
-  margin-left: 10px; }
+.social-icons img {
+  height: 50px;
+  margin-top: 300px;
+  margin-left: 20px; }
 
 .footer-background {
   background-color: #D8D7D3; }
@@ -5895,12 +5901,24 @@ img {
 .drinkup-title,
 .swamprabbit-title,
 .github-title {
-  display: inline-block;
+  font-family: 'Libre Baskerville';
+  font-size: 50px;
+  color: #333333;
   position: absolute; }
 
-.surfandpaddle-title,
-.drinkup-title {
-  margin-left: 30px; }
+.drinkup-title,
+.github-title {
+  margin-top: 250px;
+  margin-left: 203px; }
+
+.surfandpaddle-title {
+  margin-top: 230px;
+  margin-left: 130px; }
+
+.swamprabbit-title {
+  margin-top: 220px;
+  text-align: center;
+  margin-left: 120px; }
 
 .surfandpaddle-title:hover,
 .drinkup-title:hover,
@@ -5911,22 +5929,29 @@ img {
 .about-profile-pic {
   height: 300px; }
 
-.drinkUp-pic {
-  margin-top: 30px; }
+.drinkup-pic {
+  margin-top: 100px; }
 
 .drinkup-info h1 {
-  font-family: 'Fira Sans';
+  font-family: 'Open Sans';
+  font-size: 32px;
   color: #9A9995;
-  font-size: 50px;
   font-weight: bolder;
   letter-spacing: -1px;
-  line-height: 47px; }
-.drinkup-info p, .drinkup-info div {
+  line-height: 47px;
+  margin-left: 30px; }
+.drinkup-info h1.drinkup-heading {
+  font-size: 57px;
+  margin-top: 40px;
+  margin-left: 30px; }
+.drinkup-info p {
   font-family: 'Libre Baskerville';
-  color: #61605B; }
+  font-size: 12px;
+  color: #61605B;
+  margin-left: 30px; }
 
 .github-info h1 {
-  font-family: 'Fira Sans';
+  font-family: 'Open Sans';
   color: #9A9995;
   font-size: 50px;
   font-weight: bolder;
@@ -5937,7 +5962,7 @@ img {
   color: #61605B; }
 
 .surfandpaddle-info h1 {
-  font-family: 'Fira Sans';
+  font-family: 'Open Sans';
   color: #9A9995;
   font-size: 50px;
   font-weight: bolder;
@@ -5953,7 +5978,7 @@ img {
   height: 700px; }
 
 .responsive-info h1 {
-  font-family: 'Fira Sans';
+  font-family: 'Open Sans';
   font-size: 50px;
   font-weight: bolder;
   letter-spacing: -1px;

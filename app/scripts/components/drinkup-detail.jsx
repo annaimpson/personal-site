@@ -25,13 +25,13 @@ var DrinkUp = React.createClass({
                 <p>Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos.</p>
                 <h1>Description: </h1>
                 <p>I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something that worked well and looked great.
-                  I had many grandiose ideas, but three weeks only allotted me so much. Therefore, this site was created for those who also like beer. It allows the user to create a profile,
-                  search for beer types, flavor profiles, and breweries. In addition, they user can save specific beer to their profile to refer to later. </p>
+                  Drink Up was created for those who also like beer. It allows the user to create a profile,
+                  search for beer types, flavor profiles, and breweries. In addition, the user can save specific beer to their profile to refer to later. </p>
                 <p>View the code <a href="https://github.com/annaimpson/beer-final-project">here</a></p>
                 <p>View the live site <a href="http://annaimpson.github.io/beer-final-project/dist/index.html">here</a></p>
               </div>
               <div className="col-xs-12 col-md-6">
-                <img src="images/drinkUp-snap.png" alt="" className="drinkup-pic"/>
+                <a href="http://annaimpson.github.io/beer-final-project/dist/index.html"><img src="images/drinkUp-snap.png" alt="" className="drinkup-pic"/></a>
               </div>
             </div>
             <div className="col-xs-12 col-md-12">

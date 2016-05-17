@@ -29,11 +29,11 @@ var Contact = React.createClass({
               <h6 className="word-phone">phone</h6>
             </div>
             <div className="col-xs-12 col-md-pull-2 col-md-4">
-              <h6 className="email">annaimpson@gmail.com</h6>
+              <h6 className="email"><a href="mailto:annaimpson@gmail.com">annaimpson@gmail.com</a></h6>
               <h6 className="word-email">email</h6>
             </div>
             <div className="col-xs-12 col-md-offset-3 col-md-4">
-              <a href="images/Impson_resume-1 copy.pdf"><h3 className="resume">Resume</h3></a>
+              <a href="images/Impson_resume.pdf"><h3 className="resume">Resume</h3></a>
             </div>
             <div className="col-xs-12 col-md-pull-2 col-md-5">
               <a href="https://github.com/annaimpson"><h3 className="github">GitHub</h3></a>

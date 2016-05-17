@@ -6196,7 +6196,12 @@ img {
 .email {
   margin-top: 30px;
   font-family: 'Open Sans';
-  font-size: 14px; }
+  font-size: 14px;
+  text-decoration: none;
+  color: #61605B; }
+
+.email a {
+  color: #61605B; }
 
 .word-phone {
   margin-left: 25px; }

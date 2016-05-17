@@ -115,11 +115,11 @@ var Contact = React.createClass({displayName: "Contact",
               React.createElement("h6", {className: "word-phone"}, "phone")
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-pull-2 col-md-4"}, 
-              React.createElement("h6", {className: "email"}, "annaimpson@gmail.com"), 
+              React.createElement("h6", {className: "email"}, React.createElement("a", {href: "mailto:annaimpson@gmail.com"}, "annaimpson@gmail.com")), 
               React.createElement("h6", {className: "word-email"}, "email")
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-offset-3 col-md-4"}, 
-              React.createElement("a", {href: "images/Impson_resume-1 copy.pdf"}, React.createElement("h3", {className: "resume"}, "Resume"))
+              React.createElement("a", {href: "images/Impson_resume.pdf"}, React.createElement("h3", {className: "resume"}, "Resume"))
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-pull-2 col-md-5"}, 
               React.createElement("a", {href: "https://github.com/annaimpson"}, React.createElement("h3", {className: "github"}, "GitHub"))
@@ -162,13 +162,13 @@ var DrinkUp = React.createClass({displayName: "DrinkUp",
                 React.createElement("p", null, "Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos."), 
                 React.createElement("h1", null, "Description: "), 
                 React.createElement("p", null, "I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something that worked well and looked great." + ' ' +
-                  "I had many grandiose ideas, but three weeks only allotted me so much. Therefore, this site was created for those who also like beer. It allows the user to create a profile," + ' ' +
-                  "search for beer types, flavor profiles, and breweries. In addition, they user can save specific beer to their profile to refer to later. "), 
+                  "Drink Up was created for those who also like beer. It allows the user to create a profile," + ' ' +
+                  "search for beer types, flavor profiles, and breweries. In addition, the user can save specific beer to their profile to refer to later. "), 
                 React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/beer-final-project"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, "here"))
               ), 
               React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("img", {src: "images/drinkUp-snap.png", alt: "", className: "drinkup-pic"})
+                React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, React.createElement("img", {src: "images/drinkUp-snap.png", alt: "", className: "drinkup-pic"}))
               )
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-12"}, 
@@ -227,21 +227,21 @@ var GitHub = React.createClass({displayName: "GitHub",
               React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("h1", {className: "github-heading"}, "That time I made and AJAX request"), 
                 React.createElement("h1", {className: "github-purpose"}, "Purpose: "), 
-                React.createElement("p", null, "Make an AJAX request and display the information"), 
+                React.createElement("p", null, "Make an AJAX request and recreate your GitHub profile"), 
                 React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "For this project, we worked with the GitHub API and recreated the repository portion of our profile page. "), 
+                React.createElement("p", null, "For this project, I worked with the GitHub API and recreated the repository portion of my profile page. "), 
                 React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/github-profile"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, "here"))
               ), 
               React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("img", {src: "images/github-snap.png", alt: "", className: "github-pic"})
+                React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, React.createElement("img", {src: "images/github-snap.png", alt: "", className: "github-pic"}))
               )
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-12"}, 
               React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
                 React.createElement("h1", null, "The Code:"), 
                 React.createElement("div", null, "HTML5"), 
-                React.createElement("div", null, "CSS"), 
+                React.createElement("div", null, "SCSS"), 
                 React.createElement("div", null, "Bootstrap"), 
                 React.createElement("div", null, "JavaScript"), 
                 React.createElement("div", null, "jQuery"), 
@@ -445,12 +445,13 @@ var SurfAndPaddle = React.createClass({displayName: "SurfAndPaddle",
                 React.createElement("h1", {className: "surfandpaddle-purpose"}, "Purpose: "), 
                 React.createElement("p", null, "Refine newly established skills in HTML and CSS."), 
                 React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "Surf and Paddle is a detailed application which we made pixel perfect."), 
+                React.createElement("p", null, "Surf and Paddle is a static but detailed application which I made pixel perfect."), 
+                React.createElement("p", null, "View the original ", React.createElement("a", {href: "images/surf-and-paddle-1 copy.png"}, "here")), 
                 React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/surfandpaddle"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, "here"))
               ), 
               React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("img", {src: "images/surfandpaddleheader.png", alt: "", className: "surfandpaddle-pic"})
+                React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, React.createElement("img", {src: "images/surfandpaddleheader.png", alt: "", className: "surfandpaddle-pic"}))
               )
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-12"}, 
@@ -497,12 +498,12 @@ var SwampRabbit = React.createClass({displayName: "SwampRabbit",
                 React.createElement("h1", {className: "swamprabbit-purpose"}, "Purpose: "), 
                 React.createElement("p", null, "Create a site that was responsive on all devices"), 
                 React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "We were provided with a wireframe which we were to make responsive using the Bootstrap grid system"), 
+                React.createElement("p", null, "I was provided with a wireframe which I made responsive using the Bootstrap grid system"), 
                 React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, "here"))
               ), 
               React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("img", {src: "images/responsive.png", alt: "", className: "mockup-pic"})
+                React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, React.createElement("img", {src: "images/responsive.png", alt: "", className: "mockup-pic"}))
               )
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-12"}, 

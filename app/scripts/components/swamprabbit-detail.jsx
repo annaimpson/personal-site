@@ -23,12 +23,12 @@ var SwampRabbit = React.createClass({
                 <h1 className="swamprabbit-purpose">Purpose: </h1>
                 <p>Create a site that was responsive on all devices</p>
                 <h1>Description: </h1>
-                <p>We were provided with a wireframe which we were to make responsive using the Bootstrap grid system</p>
+                <p>I was provided with a wireframe which I made responsive using the Bootstrap grid system</p>
                 <p>View the code <a href="https://github.com/annaimpson/responsive-site/tree/master">here</a></p>
                 <p>View the live site <a href="http://annaimpson.github.io/responsive-site/dist/index.html">here</a></p>
               </div>
               <div className="col-xs-12 col-md-6">
-                <img src="images/responsive.png" alt="" className="mockup-pic"/>
+                <a href="http://annaimpson.github.io/responsive-site/dist/index.html"><img src="images/responsive.png" alt="" className="mockup-pic"/></a>
               </div>
             </div>
             <div className="col-xs-12 col-md-12">

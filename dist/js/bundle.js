@@ -5247,7 +5247,7 @@ module.exports = invariant;
 }).call(this,require('_process'))
 },{"_process":176}],105:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.2.3
+ * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -5257,7 +5257,7 @@ module.exports = invariant;
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2016-04-05T19:26Z
+ * Date: 2016-05-20T17:23Z
  */
 
 (function( global, factory ) {
@@ -5313,7 +5313,7 @@ var support = {};
 
 
 var
-	version = "2.2.3",
+	version = "2.2.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -10254,13 +10254,14 @@ jQuery.Event.prototype = {
 	isDefaultPrevented: returnFalse,
 	isPropagationStopped: returnFalse,
 	isImmediatePropagationStopped: returnFalse,
+	isSimulated: false,
 
 	preventDefault: function() {
 		var e = this.originalEvent;
 
 		this.isDefaultPrevented = returnTrue;
 
-		if ( e ) {
+		if ( e && !this.isSimulated ) {
 			e.preventDefault();
 		}
 	},
@@ -10269,7 +10270,7 @@ jQuery.Event.prototype = {
 
 		this.isPropagationStopped = returnTrue;
 
-		if ( e ) {
+		if ( e && !this.isSimulated ) {
 			e.stopPropagation();
 		}
 	},
@@ -10278,7 +10279,7 @@ jQuery.Event.prototype = {
 
 		this.isImmediatePropagationStopped = returnTrue;
 
-		if ( e ) {
+		if ( e && !this.isSimulated ) {
 			e.stopImmediatePropagation();
 		}
 
@@ -11208,19 +11209,6 @@ function getWidthOrHeight( elem, name, extra ) {
 		val = name === "width" ? elem.offsetWidth : elem.offsetHeight,
 		styles = getStyles( elem ),
 		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
-
-	// Support: IE11 only
-	// In IE 11 fullscreen elements inside of an iframe have
-	// 100x too small dimensions (gh-1764).
-	if ( document.msFullscreenElement && window.top !== window ) {
-
-		// Support: IE11 only
-		// Running getBoundingClientRect on a disconnected node
-		// in IE throws an error.
-		if ( elem.getClientRects().length ) {
-			val = Math.round( elem.getBoundingClientRect()[ name ] * 100 );
-		}
-	}
 
 	// Some non-html elements return undefined for offsetWidth, so check for null/undefined
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
@@ -13112,6 +13100,7 @@ jQuery.extend( jQuery.event, {
 	},
 
 	// Piggyback on a donor event to simulate a different one
+	// Used only for `focus(in | out)` events
 	simulate: function( type, elem, event ) {
 		var e = jQuery.extend(
 			new jQuery.Event(),
@@ -13119,27 +13108,10 @@ jQuery.extend( jQuery.event, {
 			{
 				type: type,
 				isSimulated: true
-
-				// Previously, `originalEvent: {}` was set here, so stopPropagation call
-				// would not be triggered on donor event, since in our own
-				// jQuery.event.stopPropagation function we had a check for existence of
-				// originalEvent.stopPropagation method, so, consequently it would be a noop.
-				//
-				// But now, this "simulate" function is used only for events
-				// for which stopPropagation() is noop, so there is no need for that anymore.
-				//
-				// For the 1.x branch though, guard for "click" and "submit"
-				// events is still used, but was moved to jQuery.event.stopPropagation function
-				// because `originalEvent` should point to the original event for the constancy
-				// with other events and for more focused logic
 			}
 		);
 
 		jQuery.event.trigger( e, null, elem );
-
-		if ( e.isDefaultPrevented() ) {
-			event.preventDefault();
-		}
 	}
 
 } );
@@ -15156,7 +15128,8 @@ var codes = exports.code = exports.codes = {
   'insert': 45,
   'delete': 46,
   'command': 91,
-  'right click': 93,
+  'left command': 91,
+  'right command': 93,
   'numpad *': 106,
   'numpad +': 107,
   'numpad -': 109,
@@ -15197,7 +15170,7 @@ var aliases = exports.aliases = {
   'escape': 27,
   'spc': 32,
   'pgup': 33,
-  'pgdn': 33,
+  'pgdn': 34,
   'ins': 45,
   'del': 46,
   'cmd': 91
@@ -17722,14 +17695,103 @@ module.exports = property;
 
 },{"../internal/baseProperty":131,"../internal/basePropertyDeep":132,"../internal/isKey":152}],176:[function(require,module,exports){
 // shim for using process in browser
-
 var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
 var queue = [];
 var draining = false;
 var currentQueue;
 var queueIndex = -1;
 
 function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
     draining = false;
     if (currentQueue.length) {
         queue = currentQueue.concat(queue);
@@ -17745,7 +17807,7 @@ function drainQueue() {
     if (draining) {
         return;
     }
-    var timeout = setTimeout(cleanUpNextTick);
+    var timeout = runTimeout(cleanUpNextTick);
     draining = true;
 
     var len = queue.length;
@@ -17762,7 +17824,7 @@ function drainQueue() {
     }
     currentQueue = null;
     draining = false;
-    clearTimeout(timeout);
+    runClearTimeout(timeout);
 }
 
 process.nextTick = function (fun) {
@@ -17774,7 +17836,7 @@ process.nextTick = function (fun) {
     }
     queue.push(new Item(fun, args));
     if (queue.length === 1 && !draining) {
-        setTimeout(drainQueue, 0);
+        runTimeout(drainQueue);
     }
 };
 
@@ -28265,16 +28327,14 @@ module.exports = exports['default'];
 module.exports = require('react/lib/ReactDOM');
 
 },{"react/lib/ReactDOM":327}],269:[function(require,module,exports){
-/*eslint-disable react/prop-types */
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*eslint-disable react/prop-types */
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var _react = require('react');
 
@@ -28284,13 +28344,13 @@ var _warning = require('warning');
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _reactPropTypesLibMountable = require('react-prop-types/lib/mountable');
+var _componentOrElement = require('react-prop-types/lib/componentOrElement');
 
-var _reactPropTypesLibMountable2 = _interopRequireDefault(_reactPropTypesLibMountable);
+var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
 
-var _reactPropTypesLibElementType = require('react-prop-types/lib/elementType');
+var _elementType = require('react-prop-types/lib/elementType');
 
-var _reactPropTypesLibElementType2 = _interopRequireDefault(_reactPropTypesLibElementType);
+var _elementType2 = _interopRequireDefault(_elementType);
 
 var _Portal = require('./Portal');
 
@@ -28300,35 +28360,37 @@ var _ModalManager = require('./ModalManager');
 
 var _ModalManager2 = _interopRequireDefault(_ModalManager);
 
-var _utilsOwnerDocument = require('./utils/ownerDocument');
+var _ownerDocument = require('./utils/ownerDocument');
 
-var _utilsOwnerDocument2 = _interopRequireDefault(_utilsOwnerDocument);
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-var _utilsAddEventListener = require('./utils/addEventListener');
+var _addEventListener = require('./utils/addEventListener');
 
-var _utilsAddEventListener2 = _interopRequireDefault(_utilsAddEventListener);
+var _addEventListener2 = _interopRequireDefault(_addEventListener);
 
-var _utilsAddFocusListener = require('./utils/addFocusListener');
+var _addFocusListener = require('./utils/addFocusListener');
 
-var _utilsAddFocusListener2 = _interopRequireDefault(_utilsAddFocusListener);
+var _addFocusListener2 = _interopRequireDefault(_addFocusListener);
 
-var _domHelpersUtilInDOM = require('dom-helpers/util/inDOM');
+var _inDOM = require('dom-helpers/util/inDOM');
 
-var _domHelpersUtilInDOM2 = _interopRequireDefault(_domHelpersUtilInDOM);
+var _inDOM2 = _interopRequireDefault(_inDOM);
 
-var _domHelpersActiveElement = require('dom-helpers/activeElement');
+var _activeElement = require('dom-helpers/activeElement');
 
-var _domHelpersActiveElement2 = _interopRequireDefault(_domHelpersActiveElement);
+var _activeElement2 = _interopRequireDefault(_activeElement);
 
-var _domHelpersQueryContains = require('dom-helpers/query/contains');
+var _contains = require('dom-helpers/query/contains');
 
-var _domHelpersQueryContains2 = _interopRequireDefault(_domHelpersQueryContains);
+var _contains2 = _interopRequireDefault(_contains);
 
-var _utilsGetContainer = require('./utils/getContainer');
+var _getContainer = require('./utils/getContainer');
 
-var _utilsGetContainer2 = _interopRequireDefault(_utilsGetContainer);
+var _getContainer2 = _interopRequireDefault(_getContainer);
 
-var modalManager = new _ModalManager2['default']();
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var modalManager = new _ModalManager2.default();
 
 /**
  * Love them or hate them, `<Modal/>` provides a solid foundation for creating dialogs, lightboxes, or whatever else.
@@ -28350,15 +28412,16 @@ var modalManager = new _ModalManager2['default']();
  * a Modal to be truly modal, it should have a `container` that is _outside_ your app's
  * React hierarchy (such as the default: document.body).
  */
-var Modal = _react2['default'].createClass({
+var Modal = _react2.default.createClass({
   displayName: 'Modal',
 
-  propTypes: _extends({}, _Portal2['default'].propTypes, {
+
+  propTypes: _extends({}, _Portal2.default.propTypes, {
 
     /**
      * Set the visibility of the Modal
      */
-    show: _react2['default'].PropTypes.bool,
+    show: _react2.default.PropTypes.bool,
 
     /**
      * A Node, Component instance, or function that returns either. The Modal is appended to it's container element.
@@ -28366,12 +28429,12 @@ var Modal = _react2['default'].createClass({
      * For the sake of assistive technologies, the container should usually be the document body, so that the rest of the
      * page content can be placed behind a virtual backdrop as well as a visual one.
      */
-    container: _react2['default'].PropTypes.oneOfType([_reactPropTypesLibMountable2['default'], _react2['default'].PropTypes.func]),
+    container: _react2.default.PropTypes.oneOfType([_componentOrElement2.default, _react2.default.PropTypes.func]),
 
     /**
      * A callback fired when the Modal is opening.
      */
-    onShow: _react2['default'].PropTypes.func,
+    onShow: _react2.default.PropTypes.func,
 
     /**
      * A callback fired when either the backdrop is clicked, or the escape key is pressed.
@@ -28379,48 +28442,58 @@ var Modal = _react2['default'].createClass({
      * The `onHide` callback only signals intent from the Modal,
      * you must actually set the `show` prop to `false` for the Modal to close.
      */
-    onHide: _react2['default'].PropTypes.func,
+    onHide: _react2.default.PropTypes.func,
 
     /**
      * Include a backdrop component.
      */
-    backdrop: _react2['default'].PropTypes.oneOfType([_react2['default'].PropTypes.bool, _react2['default'].PropTypes.oneOf(['static'])]),
+    backdrop: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool, _react2.default.PropTypes.oneOf(['static'])]),
+
+    /**
+     * A function that returns a backdrop component. Useful for custom
+     * backdrop rendering.
+     *
+     * ```js
+     *  renderBackdrop={props => <MyBackdrop {...props} />}
+     * ```
+     */
+    renderBackdrop: _react2.default.PropTypes.func,
 
     /**
      * A callback fired when the escape key, if specified in `keyboard`, is pressed.
      */
-    onEscapeKeyUp: _react2['default'].PropTypes.func,
+    onEscapeKeyUp: _react2.default.PropTypes.func,
 
     /**
      * A callback fired when the backdrop, if specified, is clicked.
      */
-    onBackdropClick: _react2['default'].PropTypes.func,
+    onBackdropClick: _react2.default.PropTypes.func,
 
     /**
      * A style object for the backdrop component.
      */
-    backdropStyle: _react2['default'].PropTypes.object,
+    backdropStyle: _react2.default.PropTypes.object,
 
     /**
      * A css class or classes for the backdrop component.
      */
-    backdropClassName: _react2['default'].PropTypes.string,
+    backdropClassName: _react2.default.PropTypes.string,
 
     /**
      * A css class or set of classes applied to the modal container when the modal is open,
      * and removed when it is closed.
      */
-    containerClassName: _react2['default'].PropTypes.string,
+    containerClassName: _react2.default.PropTypes.string,
 
     /**
      * Close the modal when escape key is pressed
      */
-    keyboard: _react2['default'].PropTypes.bool,
+    keyboard: _react2.default.PropTypes.bool,
 
     /**
      * A `<Transition/>` component to use for the dialog and backdrop components.
      */
-    transition: _reactPropTypesLibElementType2['default'],
+    transition: _elementType2.default,
 
     /**
      * The `timeout` of the dialog transition if specified. This number is used to ensure that
@@ -28428,7 +28501,7 @@ var Modal = _react2['default'].createClass({
      *
      * See the Transition `timeout` prop for more infomation.
      */
-    dialogTransitionTimeout: _react2['default'].PropTypes.number,
+    dialogTransitionTimeout: _react2.default.PropTypes.number,
 
     /**
      * The `timeout` of the backdrop transition if specified. This number is used to
@@ -28436,7 +28509,7 @@ var Modal = _react2['default'].createClass({
      *
      * See the Transition `timeout` prop for more infomation.
      */
-    backdropTransitionTimeout: _react2['default'].PropTypes.number,
+    backdropTransitionTimeout: _react2.default.PropTypes.number,
 
     /**
      * When `true` The modal will automatically shift focus to itself when it opens, and
@@ -28446,7 +28519,7 @@ var Modal = _react2['default'].createClass({
      * Generally this should never be set to `false` as it makes the Modal less
      * accessible to assistive technologies, like screen readers.
      */
-    autoFocus: _react2['default'].PropTypes.bool,
+    autoFocus: _react2.default.PropTypes.bool,
 
     /**
      * When `true` The modal will prevent focus from leaving the Modal while open.
@@ -28454,38 +28527,43 @@ var Modal = _react2['default'].createClass({
      * Generally this should never be set to `false` as it makes the Modal less
      * accessible to assistive technologies, like screen readers.
      */
-    enforceFocus: _react2['default'].PropTypes.bool,
+    enforceFocus: _react2.default.PropTypes.bool,
 
     /**
      * Callback fired before the Modal transitions in
      */
-    onEnter: _react2['default'].PropTypes.func,
+    onEnter: _react2.default.PropTypes.func,
 
     /**
      * Callback fired as the Modal begins to transition in
      */
-    onEntering: _react2['default'].PropTypes.func,
+    onEntering: _react2.default.PropTypes.func,
 
     /**
      * Callback fired after the Modal finishes transitioning in
      */
-    onEntered: _react2['default'].PropTypes.func,
+    onEntered: _react2.default.PropTypes.func,
 
     /**
      * Callback fired right before the Modal transitions out
      */
-    onExit: _react2['default'].PropTypes.func,
+    onExit: _react2.default.PropTypes.func,
 
     /**
      * Callback fired as the Modal begins to transition out
      */
-    onExiting: _react2['default'].PropTypes.func,
+    onExiting: _react2.default.PropTypes.func,
 
     /**
      * Callback fired after the Modal finishes transitioning out
      */
-    onExited: _react2['default'].PropTypes.func
+    onExited: _react2.default.PropTypes.func,
 
+    /**
+     * A ModalManager instance used to track and manage the state of open
+     * Modals. Useful when customizing how modals interact within a container
+     */
+    manager: _react2.default.PropTypes.object.isRequired
   }),
 
   getDefaultProps: function getDefaultProps() {
@@ -28497,34 +28575,36 @@ var Modal = _react2['default'].createClass({
       keyboard: true,
       autoFocus: true,
       enforceFocus: true,
-      onHide: noop
+      onHide: noop,
+      manager: modalManager,
+      renderBackdrop: function renderBackdrop(props) {
+        return _react2.default.createElement('div', props);
+      }
     };
   },
-
   getInitialState: function getInitialState() {
     return { exited: !this.props.show };
   },
-
   render: function render() {
     var _props = this.props;
+    var show = _props.show;
+    var container = _props.container;
     var children = _props.children;
     var Transition = _props.transition;
     var backdrop = _props.backdrop;
     var dialogTransitionTimeout = _props.dialogTransitionTimeout;
+    var className = _props.className;
+    var style = _props.style;
+    var onExit = _props.onExit;
+    var onExiting = _props.onExiting;
+    var onEnter = _props.onEnter;
+    var onEntering = _props.onEntering;
+    var onEntered = _props.onEntered;
 
-    var props = _objectWithoutProperties(_props, ['children', 'transition', 'backdrop', 'dialogTransitionTimeout']);
 
-    var onExit = props.onExit;
-    var onExiting = props.onExiting;
-    var onEnter = props.onEnter;
-    var onEntering = props.onEntering;
-    var onEntered = props.onEntered;
-
-    var show = !!props.show;
-    var dialog = _react2['default'].Children.only(this.props.children);
+    var dialog = _react2.default.Children.only(children);
 
     var mountModal = show || Transition && !this.state.exited;
-
     if (!mountModal) {
       return null;
     }
@@ -28533,15 +28613,16 @@ var Modal = _react2['default'].createClass({
     var role = _dialog$props.role;
     var tabIndex = _dialog$props.tabIndex;
 
+
     if (role === undefined || tabIndex === undefined) {
-      dialog = _react.cloneElement(dialog, {
+      dialog = (0, _react.cloneElement)(dialog, {
         role: role === undefined ? 'document' : role,
         tabIndex: tabIndex == null ? '-1' : tabIndex
       });
     }
 
     if (Transition) {
-      dialog = _react2['default'].createElement(
+      dialog = _react2.default.createElement(
         Transition,
         {
           transitionAppear: true,
@@ -28559,51 +28640,65 @@ var Modal = _react2['default'].createClass({
       );
     }
 
-    return _react2['default'].createElement(
-      _Portal2['default'],
+    return _react2.default.createElement(
+      _Portal2.default,
       {
         ref: this.setMountNode,
-        container: props.container
+        container: container
       },
-      _react2['default'].createElement(
+      _react2.default.createElement(
         'div',
         {
           ref: 'modal',
-          role: props.role || 'dialog',
-          style: props.style,
-          className: props.className
+          role: role || 'dialog',
+          style: style,
+          className: className
         },
         backdrop && this.renderBackdrop(),
         dialog
       )
     );
   },
-
   renderBackdrop: function renderBackdrop() {
+    var _this = this;
+
     var _props2 = this.props;
+    var backdropStyle = _props2.backdropStyle;
+    var backdropClassName = _props2.backdropClassName;
+    var renderBackdrop = _props2.renderBackdrop;
     var Transition = _props2.transition;
     var backdropTransitionTimeout = _props2.backdropTransitionTimeout;
 
-    var backdrop = _react2['default'].createElement('div', { ref: 'backdrop',
+
+    var backdropRef = function backdropRef(ref) {
+      return _this.backdrop = ref;
+    };
+
+    var backdrop = _react2.default.createElement('div', {
+      ref: backdropRef,
       style: this.props.backdropStyle,
       className: this.props.backdropClassName,
       onClick: this.handleBackdropClick
     });
 
     if (Transition) {
-      backdrop = _react2['default'].createElement(
+      backdrop = _react2.default.createElement(
         Transition,
         { transitionAppear: true,
           'in': this.props.show,
           timeout: backdropTransitionTimeout
         },
-        backdrop
+        renderBackdrop({
+          ref: backdropRef,
+          style: backdropStyle,
+          className: backdropClassName,
+          onClick: this.handleBackdropClick
+        })
       );
     }
 
     return backdrop;
   },
-
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
     if (nextProps.show) {
       this.setState({ exited: false });
@@ -28612,21 +28707,19 @@ var Modal = _react2['default'].createClass({
       this.setState({ exited: true });
     }
   },
-
   componentWillUpdate: function componentWillUpdate(nextProps) {
-    if (nextProps.show) {
+    if (!this.props.show && nextProps.show) {
       this.checkForFocus();
     }
   },
-
   componentDidMount: function componentDidMount() {
     if (this.props.show) {
       this.onShow();
     }
   },
-
   componentDidUpdate: function componentDidUpdate(prevProps) {
     var transition = this.props.transition;
+
 
     if (prevProps.show && !this.props.show && !transition) {
       // Otherwise handleHidden will call this.
@@ -28635,26 +28728,25 @@ var Modal = _react2['default'].createClass({
       this.onShow();
     }
   },
-
   componentWillUnmount: function componentWillUnmount() {
     var _props3 = this.props;
     var show = _props3.show;
     var transition = _props3.transition;
 
+
     if (show || transition && !this.state.exited) {
       this.onHide();
     }
   },
-
   onShow: function onShow() {
-    var doc = _utilsOwnerDocument2['default'](this);
-    var container = _utilsGetContainer2['default'](this.props.container, doc.body);
+    var doc = (0, _ownerDocument2.default)(this);
+    var container = (0, _getContainer2.default)(this.props.container, doc.body);
 
-    modalManager.add(this, container, this.props.containerClassName);
+    this.props.manager.add(this, container, this.props.containerClassName);
 
-    this._onDocumentKeyupListener = _utilsAddEventListener2['default'](doc, 'keyup', this.handleDocumentKeyUp);
+    this._onDocumentKeyupListener = (0, _addEventListener2.default)(doc, 'keyup', this.handleDocumentKeyUp);
 
-    this._onFocusinListener = _utilsAddFocusListener2['default'](this.enforceFocus);
+    this._onFocusinListener = (0, _addFocusListener2.default)(this.enforceFocus);
 
     this.focus();
 
@@ -28662,9 +28754,8 @@ var Modal = _react2['default'].createClass({
       this.props.onShow();
     }
   },
-
   onHide: function onHide() {
-    modalManager.remove(this);
+    this.props.manager.remove(this);
 
     this._onDocumentKeyupListener.remove();
 
@@ -28672,11 +28763,9 @@ var Modal = _react2['default'].createClass({
 
     this.restoreLastFocus();
   },
-
   setMountNode: function setMountNode(ref) {
     this.mountNode = ref ? ref.getMountNode() : ref;
   },
-
   handleHidden: function handleHidden() {
     this.setState({ exited: true });
     this.onHide();
@@ -28687,7 +28776,6 @@ var Modal = _react2['default'].createClass({
       (_props4 = this.props).onExited.apply(_props4, arguments);
     }
   },
-
   handleBackdropClick: function handleBackdropClick(e) {
     if (e.target !== e.currentTarget) {
       return;
@@ -28701,7 +28789,6 @@ var Modal = _react2['default'].createClass({
       this.props.onHide();
     }
   },
-
   handleDocumentKeyUp: function handleDocumentKeyUp(e) {
     if (this.props.keyboard && e.keyCode === 27 && this.isTopModal()) {
       if (this.props.onEscapeKeyUp) {
@@ -28710,31 +28797,28 @@ var Modal = _react2['default'].createClass({
       this.props.onHide();
     }
   },
-
   checkForFocus: function checkForFocus() {
-    if (_domHelpersUtilInDOM2['default']) {
-      this.lastFocus = _domHelpersActiveElement2['default']();
+    if (_inDOM2.default) {
+      this.lastFocus = (0, _activeElement2.default)();
     }
   },
-
   focus: function focus() {
     var autoFocus = this.props.autoFocus;
     var modalContent = this.getDialogElement();
-    var current = _domHelpersActiveElement2['default'](_utilsOwnerDocument2['default'](this));
-    var focusInModal = current && _domHelpersQueryContains2['default'](modalContent, current);
+    var current = (0, _activeElement2.default)((0, _ownerDocument2.default)(this));
+    var focusInModal = current && (0, _contains2.default)(modalContent, current);
 
     if (modalContent && autoFocus && !focusInModal) {
       this.lastFocus = current;
 
       if (!modalContent.hasAttribute('tabIndex')) {
         modalContent.setAttribute('tabIndex', -1);
-        _warning2['default'](false, 'The modal content node does not accept focus. ' + 'For the benefit of assistive technologies, the tabIndex of the node is being set to "-1".');
+        (0, _warning2.default)(false, 'The modal content node does not accept focus. ' + 'For the benefit of assistive technologies, the tabIndex of the node is being set to "-1".');
       }
 
       modalContent.focus();
     }
   },
-
   restoreLastFocus: function restoreLastFocus() {
     // Support: <=IE11 doesn't support `focus()` on svg elements (RB: #917)
     if (this.lastFocus && this.lastFocus.focus) {
@@ -28742,64 +28826,67 @@ var Modal = _react2['default'].createClass({
       this.lastFocus = null;
     }
   },
-
   enforceFocus: function enforceFocus() {
     var enforceFocus = this.props.enforceFocus;
+
 
     if (!enforceFocus || !this.isMounted() || !this.isTopModal()) {
       return;
     }
 
-    var active = _domHelpersActiveElement2['default'](_utilsOwnerDocument2['default'](this));
+    var active = (0, _activeElement2.default)((0, _ownerDocument2.default)(this));
     var modal = this.getDialogElement();
 
-    if (modal && modal !== active && !_domHelpersQueryContains2['default'](modal, active)) {
+    if (modal && modal !== active && !(0, _contains2.default)(modal, active)) {
       modal.focus();
     }
   },
+
 
   //instead of a ref, which might conflict with one the parent applied.
   getDialogElement: function getDialogElement() {
     var node = this.refs.modal;
     return node && node.lastChild;
   },
-
   isTopModal: function isTopModal() {
-    return modalManager.isTopModal(this);
+    return this.props.manager.isTopModal(this);
   }
-
 });
 
-Modal.manager = modalManager;
+Modal.Manager = _ModalManager2.default;
 
-exports['default'] = Modal;
+exports.default = Modal;
 module.exports = exports['default'];
-},{"./ModalManager":270,"./Portal":272,"./utils/addEventListener":276,"./utils/addFocusListener":277,"./utils/getContainer":279,"./utils/ownerDocument":283,"dom-helpers/activeElement":48,"dom-helpers/query/contains":58,"dom-helpers/util/inDOM":75,"react":421,"react-prop-types/lib/elementType":285,"react-prop-types/lib/mountable":286,"warning":426}],270:[function(require,module,exports){
+},{"./ModalManager":270,"./Portal":272,"./utils/addEventListener":276,"./utils/addFocusListener":277,"./utils/getContainer":279,"./utils/ownerDocument":282,"dom-helpers/activeElement":48,"dom-helpers/query/contains":58,"dom-helpers/util/inDOM":75,"react":421,"react-prop-types/lib/componentOrElement":283,"react-prop-types/lib/elementType":284,"warning":286}],270:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+var _style = require('dom-helpers/style');
 
-var _domHelpersStyle = require('dom-helpers/style');
+var _style2 = _interopRequireDefault(_style);
 
-var _domHelpersStyle2 = _interopRequireDefault(_domHelpersStyle);
+var _class = require('dom-helpers/class');
 
-var _domHelpersClass = require('dom-helpers/class');
+var _class2 = _interopRequireDefault(_class);
 
-var _domHelpersClass2 = _interopRequireDefault(_domHelpersClass);
+var _scrollbarSize = require('dom-helpers/util/scrollbarSize');
 
-var _domHelpersUtilScrollbarSize = require('dom-helpers/util/scrollbarSize');
+var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 
-var _domHelpersUtilScrollbarSize2 = _interopRequireDefault(_domHelpersUtilScrollbarSize);
+var _isOverflowing = require('./utils/isOverflowing');
 
-var _utilsIsOverflowing = require('./utils/isOverflowing');
+var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 
-var _utilsIsOverflowing2 = _interopRequireDefault(_utilsIsOverflowing);
+var _manageAriaHidden = require('./utils/manageAriaHidden');
 
-var _utilsManageAriaHidden = require('./utils/manageAriaHidden');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function findIndexOf(arr, cb) {
   var idx = -1;
@@ -28818,133 +28905,156 @@ function findContainer(data, modal) {
   });
 }
 
+function setContainerStyle(state, container) {
+  var style = { overflow: 'hidden' };
+
+  // we are only interested in the actual `style` here
+  // becasue we will override it
+  state.style = {
+    overflow: container.style.overflow,
+    paddingRight: container.style.paddingRight
+  };
+
+  if (state.overflowing) {
+    // use computed style, here to get the real padding
+    // to add our scrollbar width
+    style.paddingRight = parseInt((0, _style2.default)(container, 'paddingRight') || 0, 10) + (0, _scrollbarSize2.default)() + 'px';
+  }
+
+  (0, _style2.default)(container, style);
+}
+
+function removeContainerStyle(_ref, container) {
+  var style = _ref.style;
+
+
+  Object.keys(style).forEach(function (key) {
+    return container.style[key] = style[key];
+  });
+}
 /**
  * Proper state managment for containers and the modals in those containers.
  *
  * @internal Used by the Modal to ensure proper styling of containers.
  */
 
-var ModalManager = (function () {
+var ModalManager = function () {
   function ModalManager() {
-    var hideSiblingNodes = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var _ref2$hideSiblingNode = _ref2.hideSiblingNodes;
+    var hideSiblingNodes = _ref2$hideSiblingNode === undefined ? true : _ref2$hideSiblingNode;
+    var _ref2$handleContainer = _ref2.handleContainerOverflow;
+    var handleContainerOverflow = _ref2$handleContainer === undefined ? true : _ref2$handleContainer;
 
     _classCallCheck(this, ModalManager);
 
     this.hideSiblingNodes = hideSiblingNodes;
+    this.handleContainerOverflow = handleContainerOverflow;
     this.modals = [];
     this.containers = [];
     this.data = [];
   }
 
-  ModalManager.prototype.add = function add(modal, container, className) {
-    var modalIdx = this.modals.indexOf(modal);
-    var containerIdx = this.containers.indexOf(container);
+  _createClass(ModalManager, [{
+    key: 'add',
+    value: function add(modal, container, className) {
+      var modalIdx = this.modals.indexOf(modal);
+      var containerIdx = this.containers.indexOf(container);
 
-    if (modalIdx !== -1) {
-      return modalIdx;
-    }
-
-    modalIdx = this.modals.length;
-    this.modals.push(modal);
-
-    if (this.hideSiblingNodes) {
-      _utilsManageAriaHidden.hideSiblings(container, modal.mountNode);
-    }
-
-    if (containerIdx !== -1) {
-      this.data[containerIdx].modals.push(modal);
-      return modalIdx;
-    }
-
-    var data = {
-      modals: [modal],
-      //right now only the first modal of a container will have its classes applied
-      classes: className ? className.split(/\s+/) : [],
-      //we are only interested in the actual `style` here becasue we will override it
-      style: {
-        overflow: container.style.overflow,
-        paddingRight: container.style.paddingRight
+      if (modalIdx !== -1) {
+        return modalIdx;
       }
-    };
 
-    var style = { overflow: 'hidden' };
-
-    data.overflowing = _utilsIsOverflowing2['default'](container);
-
-    if (data.overflowing) {
-      // use computed style, here to get the real padding
-      // to add our scrollbar width
-      style.paddingRight = parseInt(_domHelpersStyle2['default'](container, 'paddingRight') || 0, 10) + _domHelpersUtilScrollbarSize2['default']() + 'px';
-    }
-
-    _domHelpersStyle2['default'](container, style);
-
-    data.classes.forEach(_domHelpersClass2['default'].addClass.bind(null, container));
-
-    this.containers.push(container);
-    this.data.push(data);
-
-    return modalIdx;
-  };
-
-  ModalManager.prototype.remove = function remove(modal) {
-    var modalIdx = this.modals.indexOf(modal);
-
-    if (modalIdx === -1) {
-      return;
-    }
-
-    var containerIdx = findContainer(this.data, modal);
-    var data = this.data[containerIdx];
-    var container = this.containers[containerIdx];
-
-    data.modals.splice(data.modals.indexOf(modal), 1);
-
-    this.modals.splice(modalIdx, 1);
-
-    // if that was the last modal in a container,
-    // clean up the container stylinhg.
-    if (data.modals.length === 0) {
-      Object.keys(data.style).forEach(function (key) {
-        return container.style[key] = data.style[key];
-      });
-
-      data.classes.forEach(_domHelpersClass2['default'].removeClass.bind(null, container));
+      modalIdx = this.modals.length;
+      this.modals.push(modal);
 
       if (this.hideSiblingNodes) {
-        _utilsManageAriaHidden.showSiblings(container, modal.mountNode);
+        (0, _manageAriaHidden.hideSiblings)(container, modal.mountNode);
       }
-      this.containers.splice(containerIdx, 1);
-      this.data.splice(containerIdx, 1);
-    } else if (this.hideSiblingNodes) {
-      //otherwise make sure the next top modal is visible to a SR
-      _utilsManageAriaHidden.ariaHidden(false, data.modals[data.modals.length - 1].mountNode);
-    }
-  };
 
-  ModalManager.prototype.isTopModal = function isTopModal(modal) {
-    return !!this.modals.length && this.modals[this.modals.length - 1] === modal;
-  };
+      if (containerIdx !== -1) {
+        this.data[containerIdx].modals.push(modal);
+        return modalIdx;
+      }
+
+      var data = {
+        modals: [modal],
+        //right now only the first modal of a container will have its classes applied
+        classes: className ? className.split(/\s+/) : [],
+
+        overflowing: (0, _isOverflowing2.default)(container)
+      };
+
+      if (this.handleContainerOverflow) {
+        setContainerStyle(data, container);
+      }
+
+      data.classes.forEach(_class2.default.addClass.bind(null, container));
+
+      this.containers.push(container);
+      this.data.push(data);
+
+      return modalIdx;
+    }
+  }, {
+    key: 'remove',
+    value: function remove(modal) {
+      var modalIdx = this.modals.indexOf(modal);
+
+      if (modalIdx === -1) {
+        return;
+      }
+
+      var containerIdx = findContainer(this.data, modal);
+      var data = this.data[containerIdx];
+      var container = this.containers[containerIdx];
+
+      data.modals.splice(data.modals.indexOf(modal), 1);
+
+      this.modals.splice(modalIdx, 1);
+
+      // if that was the last modal in a container,
+      // clean up the container
+      if (data.modals.length === 0) {
+        data.classes.forEach(_class2.default.removeClass.bind(null, container));
+
+        if (this.handleContainerOverflow) {
+          removeContainerStyle(data, container);
+        }
+
+        if (this.hideSiblingNodes) {
+          (0, _manageAriaHidden.showSiblings)(container, modal.mountNode);
+        }
+        this.containers.splice(containerIdx, 1);
+        this.data.splice(containerIdx, 1);
+      } else if (this.hideSiblingNodes) {
+        //otherwise make sure the next top modal is visible to a SR
+        (0, _manageAriaHidden.ariaHidden)(false, data.modals[data.modals.length - 1].mountNode);
+      }
+    }
+  }, {
+    key: 'isTopModal',
+    value: function isTopModal(modal) {
+      return !!this.modals.length && this.modals[this.modals.length - 1] === modal;
+    }
+  }]);
 
   return ModalManager;
-})();
+}();
 
-exports['default'] = ModalManager;
+exports.default = ModalManager;
 module.exports = exports['default'];
 },{"./utils/isOverflowing":280,"./utils/manageAriaHidden":281,"dom-helpers/class":51,"dom-helpers/style":67,"dom-helpers/util/scrollbarSize":76}],271:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
@@ -28962,130 +29072,148 @@ var _RootCloseWrapper = require('./RootCloseWrapper');
 
 var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 
-var _reactPropTypesLibElementType = require('react-prop-types/lib/elementType');
+var _elementType = require('react-prop-types/lib/elementType');
 
-var _reactPropTypesLibElementType2 = _interopRequireDefault(_reactPropTypesLibElementType);
+var _elementType2 = _interopRequireDefault(_elementType);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * Built on top of `<Position/>` and `<Portal/>`, the overlay component is great for custom tooltip overlays.
  */
-
-var Overlay = (function (_React$Component) {
+var Overlay = function (_React$Component) {
   _inherits(Overlay, _React$Component);
 
   function Overlay(props, context) {
     _classCallCheck(this, Overlay);
 
-    _React$Component.call(this, props, context);
+    var _this = _possibleConstructorReturn(this, (Overlay.__proto__ || Object.getPrototypeOf(Overlay)).call(this, props, context));
 
-    this.state = { exited: !props.show };
-    this.onHiddenListener = this.handleHidden.bind(this);
+    _this.state = { exited: !props.show };
+    _this.onHiddenListener = _this.handleHidden.bind(_this);
+    return _this;
   }
 
-  Overlay.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    if (nextProps.show) {
-      this.setState({ exited: false });
-    } else if (!nextProps.transition) {
-      // Otherwise let handleHidden take care of marking exited.
+  _createClass(Overlay, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.show) {
+        this.setState({ exited: false });
+      } else if (!nextProps.transition) {
+        // Otherwise let handleHidden take care of marking exited.
+        this.setState({ exited: true });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var container = _props.container;
+      var containerPadding = _props.containerPadding;
+      var target = _props.target;
+      var placement = _props.placement;
+      var shouldUpdatePosition = _props.shouldUpdatePosition;
+      var rootClose = _props.rootClose;
+      var children = _props.children;
+      var Transition = _props.transition;
+
+      var props = _objectWithoutProperties(_props, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
+
+      // Don't un-render the overlay while it's transitioning out.
+
+
+      var mountOverlay = props.show || Transition && !this.state.exited;
+      if (!mountOverlay) {
+        // Don't bother showing anything if we don't have to.
+        return null;
+      }
+
+      var child = children;
+
+      // Position is be inner-most because it adds inline styles into the child,
+      // which the other wrappers don't forward correctly.
+      child = _react2.default.createElement(
+        _Position2.default,
+        { container: container, containerPadding: containerPadding, target: target, placement: placement, shouldUpdatePosition: shouldUpdatePosition },
+        child
+      );
+
+      if (Transition) {
+        var onExit = props.onExit;
+        var onExiting = props.onExiting;
+        var onEnter = props.onEnter;
+        var onEntering = props.onEntering;
+        var onEntered = props.onEntered;
+
+        // This animates the child node by injecting props, so it must precede
+        // anything that adds a wrapping div.
+
+        child = _react2.default.createElement(
+          Transition,
+          {
+            'in': props.show,
+            transitionAppear: true,
+            onExit: onExit,
+            onExiting: onExiting,
+            onExited: this.onHiddenListener,
+            onEnter: onEnter,
+            onEntering: onEntering,
+            onEntered: onEntered
+          },
+          child
+        );
+      }
+
+      // This goes after everything else because it adds a wrapping div.
+      if (rootClose) {
+        child = _react2.default.createElement(
+          _RootCloseWrapper2.default,
+          { onRootClose: props.onHide },
+          child
+        );
+      }
+
+      return _react2.default.createElement(
+        _Portal2.default,
+        { container: container },
+        child
+      );
+    }
+  }, {
+    key: 'handleHidden',
+    value: function handleHidden() {
       this.setState({ exited: true });
+
+      if (this.props.onExited) {
+        var _props2;
+
+        (_props2 = this.props).onExited.apply(_props2, arguments);
+      }
     }
-  };
-
-  Overlay.prototype.render = function render() {
-    var _props = this.props;
-    var container = _props.container;
-    var containerPadding = _props.containerPadding;
-    var target = _props.target;
-    var placement = _props.placement;
-    var shouldUpdatePosition = _props.shouldUpdatePosition;
-    var rootClose = _props.rootClose;
-    var children = _props.children;
-    var Transition = _props.transition;
-
-    var props = _objectWithoutProperties(_props, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
-
-    // Don't un-render the overlay while it's transitioning out.
-    var mountOverlay = props.show || Transition && !this.state.exited;
-    if (!mountOverlay) {
-      // Don't bother showing anything if we don't have to.
-      return null;
-    }
-
-    var child = children;
-
-    // Position is be inner-most because it adds inline styles into the child,
-    // which the other wrappers don't forward correctly.
-    child = _react2['default'].createElement(
-      _Position2['default'],
-      { container: container, containerPadding: containerPadding, target: target, placement: placement, shouldUpdatePosition: shouldUpdatePosition },
-      child
-    );
-
-    if (Transition) {
-      var onExit = props.onExit;
-      var onExiting = props.onExiting;
-      var onEnter = props.onEnter;
-      var onEntering = props.onEntering;
-      var onEntered = props.onEntered;
-
-      // This animates the child node by injecting props, so it must precede
-      // anything that adds a wrapping div.
-      child = _react2['default'].createElement(
-        Transition,
-        {
-          'in': props.show,
-          transitionAppear: true,
-          onExit: onExit,
-          onExiting: onExiting,
-          onExited: this.onHiddenListener,
-          onEnter: onEnter,
-          onEntering: onEntering,
-          onEntered: onEntered
-        },
-        child
-      );
-    }
-
-    // This goes after everything else because it adds a wrapping div.
-    if (rootClose) {
-      child = _react2['default'].createElement(
-        _RootCloseWrapper2['default'],
-        { onRootClose: props.onHide },
-        child
-      );
-    }
-
-    return _react2['default'].createElement(
-      _Portal2['default'],
-      { container: container },
-      child
-    );
-  };
-
-  Overlay.prototype.handleHidden = function handleHidden() {
-    this.setState({ exited: true });
-
-    if (this.props.onExited) {
-      var _props2;
-
-      (_props2 = this.props).onExited.apply(_props2, arguments);
-    }
-  };
+  }]);
 
   return Overlay;
-})(_react2['default'].Component);
+}(_react2.default.Component);
 
-Overlay.propTypes = _extends({}, _Portal2['default'].propTypes, _Position2['default'].propTypes, {
+Overlay.propTypes = _extends({}, _Portal2.default.propTypes, _Position2.default.propTypes, {
 
   /**
    * Set the visibility of the Overlay
    */
-  show: _react2['default'].PropTypes.bool,
+  show: _react2.default.PropTypes.bool,
 
   /**
    * Specify whether the overlay should trigger `onHide` when the user clicks outside the overlay
    */
-  rootClose: _react2['default'].PropTypes.bool,
+  rootClose: _react2.default.PropTypes.bool,
 
   /**
    * A Callback fired by the Overlay when it wishes to be hidden.
@@ -29094,57 +29222,64 @@ Overlay.propTypes = _extends({}, _Portal2['default'].propTypes, _Position2['defa
    *
    * @type func
    */
-  onHide: function onHide(props, name, cname) {
-    var pt = _react2['default'].PropTypes.func;
+  onHide: function onHide(props) {
+    var propType = _react2.default.PropTypes.func;
+    if (props.rootClose) {
+      propType = propType.isRequired;
+    }
 
-    if (props.rootClose) pt = pt.isRequired;
-    return pt(props, name, cname);
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return propType.apply(undefined, [props].concat(args));
   },
+
 
   /**
    * A `<Transition/>` component used to animate the overlay changes visibility.
    */
-  transition: _reactPropTypesLibElementType2['default'],
+  transition: _elementType2.default,
 
   /**
    * Callback fired before the Overlay transitions in
    */
-  onEnter: _react2['default'].PropTypes.func,
+  onEnter: _react2.default.PropTypes.func,
 
   /**
    * Callback fired as the Overlay begins to transition in
    */
-  onEntering: _react2['default'].PropTypes.func,
+  onEntering: _react2.default.PropTypes.func,
 
   /**
    * Callback fired after the Overlay finishes transitioning in
    */
-  onEntered: _react2['default'].PropTypes.func,
+  onEntered: _react2.default.PropTypes.func,
 
   /**
    * Callback fired right before the Overlay transitions out
    */
-  onExit: _react2['default'].PropTypes.func,
+  onExit: _react2.default.PropTypes.func,
 
   /**
    * Callback fired as the Overlay begins to transition out
    */
-  onExiting: _react2['default'].PropTypes.func,
+  onExiting: _react2.default.PropTypes.func,
 
   /**
    * Callback fired after the Overlay finishes transitioning out
    */
-  onExited: _react2['default'].PropTypes.func
+  onExited: _react2.default.PropTypes.func
 });
 
-exports['default'] = Overlay;
+exports.default = Overlay;
 module.exports = exports['default'];
-},{"./Portal":272,"./Position":273,"./RootCloseWrapper":274,"react":421,"react-prop-types/lib/elementType":285}],272:[function(require,module,exports){
+},{"./Portal":272,"./Position":273,"./RootCloseWrapper":274,"react":421,"react-prop-types/lib/elementType":284}],272:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _react = require('react');
 
@@ -29154,24 +29289,26 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactPropTypesLibMountable = require('react-prop-types/lib/mountable');
+var _componentOrElement = require('react-prop-types/lib/componentOrElement');
 
-var _reactPropTypesLibMountable2 = _interopRequireDefault(_reactPropTypesLibMountable);
+var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
 
-var _utilsOwnerDocument = require('./utils/ownerDocument');
+var _ownerDocument = require('./utils/ownerDocument');
 
-var _utilsOwnerDocument2 = _interopRequireDefault(_utilsOwnerDocument);
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-var _utilsGetContainer = require('./utils/getContainer');
+var _getContainer = require('./utils/getContainer');
 
-var _utilsGetContainer2 = _interopRequireDefault(_utilsGetContainer);
+var _getContainer2 = _interopRequireDefault(_getContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * The `<Portal/>` component renders its children into a new "subtree" outside of current component hierarchy.
  * You can think of it as a declarative `appendChild()`, or jQuery's `$.fn.appendTo()`.
  * The children of `<Portal/>` component will be appended to the `container` specified.
  */
-var Portal = _react2['default'].createClass({
+var Portal = _react2.default.createClass({
 
   displayName: 'Portal',
 
@@ -29180,38 +29317,33 @@ var Portal = _react2['default'].createClass({
      * A Node, Component instance, or function that returns either. The `container` will have the Portal children
      * appended to it.
      */
-    container: _react2['default'].PropTypes.oneOfType([_reactPropTypesLibMountable2['default'], _react2['default'].PropTypes.func])
+    container: _react2.default.PropTypes.oneOfType([_componentOrElement2.default, _react2.default.PropTypes.func])
   },
 
   componentDidMount: function componentDidMount() {
     this._renderOverlay();
   },
-
   componentDidUpdate: function componentDidUpdate() {
     this._renderOverlay();
   },
-
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
     if (this._overlayTarget && nextProps.container !== this.props.container) {
       this._portalContainerNode.removeChild(this._overlayTarget);
-      this._portalContainerNode = _utilsGetContainer2['default'](nextProps.container, _utilsOwnerDocument2['default'](this).body);
+      this._portalContainerNode = (0, _getContainer2.default)(nextProps.container, (0, _ownerDocument2.default)(this).body);
       this._portalContainerNode.appendChild(this._overlayTarget);
     }
   },
-
   componentWillUnmount: function componentWillUnmount() {
     this._unrenderOverlay();
     this._unmountOverlayTarget();
   },
-
   _mountOverlayTarget: function _mountOverlayTarget() {
     if (!this._overlayTarget) {
       this._overlayTarget = document.createElement('div');
-      this._portalContainerNode = _utilsGetContainer2['default'](this.props.container, _utilsOwnerDocument2['default'](this).body);
+      this._portalContainerNode = (0, _getContainer2.default)(this.props.container, (0, _ownerDocument2.default)(this).body);
       this._portalContainerNode.appendChild(this._overlayTarget);
     }
   },
-
   _unmountOverlayTarget: function _unmountOverlayTarget() {
     if (this._overlayTarget) {
       this._portalContainerNode.removeChild(this._overlayTarget);
@@ -29219,71 +29351,61 @@ var Portal = _react2['default'].createClass({
     }
     this._portalContainerNode = null;
   },
-
   _renderOverlay: function _renderOverlay() {
 
-    var overlay = !this.props.children ? null : _react2['default'].Children.only(this.props.children);
+    var overlay = !this.props.children ? null : _react2.default.Children.only(this.props.children);
 
     // Save reference for future access.
     if (overlay !== null) {
       this._mountOverlayTarget();
-      this._overlayInstance = _reactDom2['default'].unstable_renderSubtreeIntoContainer(this, overlay, this._overlayTarget);
+      this._overlayInstance = _reactDom2.default.unstable_renderSubtreeIntoContainer(this, overlay, this._overlayTarget);
     } else {
       // Unrender if the component is null for transitions to null
       this._unrenderOverlay();
       this._unmountOverlayTarget();
     }
   },
-
   _unrenderOverlay: function _unrenderOverlay() {
     if (this._overlayTarget) {
-      _reactDom2['default'].unmountComponentAtNode(this._overlayTarget);
+      _reactDom2.default.unmountComponentAtNode(this._overlayTarget);
       this._overlayInstance = null;
     }
   },
-
   render: function render() {
     return null;
   },
-
   getMountNode: function getMountNode() {
     return this._overlayTarget;
   },
-
   getOverlayDOMNode: function getOverlayDOMNode() {
     if (!this.isMounted()) {
       throw new Error('getOverlayDOMNode(): A component must be mounted to have a DOM node.');
     }
 
     if (this._overlayInstance) {
-      if (this._overlayInstance.getWrappedDOMNode) {
-        return this._overlayInstance.getWrappedDOMNode();
-      } else {
-        return _reactDom2['default'].findDOMNode(this._overlayInstance);
-      }
+      return _reactDom2.default.findDOMNode(this._overlayInstance);
     }
 
     return null;
   }
-
 });
 
-exports['default'] = Portal;
+exports.default = Portal;
 module.exports = exports['default'];
-},{"./utils/getContainer":279,"./utils/ownerDocument":283,"react":421,"react-dom":268,"react-prop-types/lib/mountable":286}],273:[function(require,module,exports){
+},{"./utils/getContainer":279,"./utils/ownerDocument":282,"react":421,"react-dom":268,"react-prop-types/lib/componentOrElement":283}],273:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+var _classnames = require('classnames');
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _classnames2 = _interopRequireDefault(_classnames);
 
 var _react = require('react');
 
@@ -29293,170 +29415,183 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _classnames = require('classnames');
+var _componentOrElement = require('react-prop-types/lib/componentOrElement');
 
-var _classnames2 = _interopRequireDefault(_classnames);
+var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
 
-var _utilsOwnerDocument = require('./utils/ownerDocument');
+var _calculatePosition = require('./utils/calculatePosition');
 
-var _utilsOwnerDocument2 = _interopRequireDefault(_utilsOwnerDocument);
+var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
 
-var _utilsGetContainer = require('./utils/getContainer');
+var _getContainer = require('./utils/getContainer');
 
-var _utilsGetContainer2 = _interopRequireDefault(_utilsGetContainer);
+var _getContainer2 = _interopRequireDefault(_getContainer);
 
-var _utilsOverlayPositionUtils = require('./utils/overlayPositionUtils');
+var _ownerDocument = require('./utils/ownerDocument');
 
-var _reactPropTypesLibMountable = require('react-prop-types/lib/mountable');
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-var _reactPropTypesLibMountable2 = _interopRequireDefault(_reactPropTypesLibMountable);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * The Position component calculates the coordinates for its child, to
- * position it relative to a `target` component or node. Useful for creating callouts and tooltips,
- * the Position component injects a `style` props with `left` and `top` values for positioning your component.
+ * The Position component calculates the coordinates for its child, to position
+ * it relative to a `target` component or node. Useful for creating callouts
+ * and tooltips, the Position component injects a `style` props with `left` and
+ * `top` values for positioning your component.
  *
- * It also injects "arrow" `left`, and `top` values for styling callout arrows for giving your components
- * a sense of directionality.
+ * It also injects "arrow" `left`, and `top` values for styling callout arrows
+ * for giving your components a sense of directionality.
  */
-
-var Position = (function (_React$Component) {
+var Position = function (_React$Component) {
   _inherits(Position, _React$Component);
 
   function Position(props, context) {
     _classCallCheck(this, Position);
 
-    _React$Component.call(this, props, context);
+    var _this = _possibleConstructorReturn(this, (Position.__proto__ || Object.getPrototypeOf(Position)).call(this, props, context));
 
-    this.state = {
+    _this.state = {
       positionLeft: 0,
       positionTop: 0,
       arrowOffsetLeft: null,
       arrowOffsetTop: null
     };
 
-    this._needsFlush = false;
-    this._lastTarget = null;
+    _this._needsFlush = false;
+    _this._lastTarget = null;
+    return _this;
   }
 
-  Position.prototype.componentDidMount = function componentDidMount() {
-    this.updatePosition();
-  };
-
-  Position.prototype.componentWillReceiveProps = function componentWillReceiveProps() {
-    this._needsFlush = true;
-  };
-
-  Position.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-    if (this._needsFlush) {
-      this._needsFlush = false;
-      this.updatePosition(prevProps.placement !== this.props.placement);
+  _createClass(Position, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updatePosition(this.getTarget());
     }
-  };
-
-  Position.prototype.componentWillUnmount = function componentWillUnmount() {
-    // Probably not necessary, but just in case holding a reference to the
-    // target causes problems somewhere.
-    this._lastTarget = null;
-  };
-
-  Position.prototype.render = function render() {
-    var _props = this.props;
-    var children = _props.children;
-    var className = _props.className;
-
-    var props = _objectWithoutProperties(_props, ['children', 'className']);
-
-    var _state = this.state;
-    var positionLeft = _state.positionLeft;
-    var positionTop = _state.positionTop;
-
-    var arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
-
-    // These should not be forwarded to the child.
-    delete props.target;
-    delete props.container;
-    delete props.containerPadding;
-
-    var child = _react2['default'].Children.only(children);
-    return _react.cloneElement(child, _extends({}, props, arrowPosition, {
-      //do we need to also forward positionLeft and positionTop if they are set to style?
-      positionLeft: positionLeft,
-      positionTop: positionTop,
-      className: _classnames2['default'](className, child.props.className),
-      style: _extends({}, child.props.style, {
-        left: positionLeft,
-        top: positionTop
-      })
-    }));
-  };
-
-  Position.prototype.getTargetSafe = function getTargetSafe() {
-    if (!this.props.target) {
-      return null;
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps() {
+      this._needsFlush = true;
     }
-
-    var target = this.props.target(this.props);
-    if (!target) {
-      // This is so we can just use === check below on all falsy targets.
-      return null;
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (this._needsFlush) {
+        this._needsFlush = false;
+        this.maybeUpdatePosition(this.props.placement !== prevProps.placement);
+      }
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var children = _props.children;
+      var className = _props.className;
 
-    return target;
-  };
+      var props = _objectWithoutProperties(_props, ['children', 'className']);
 
-  Position.prototype.updatePosition = function updatePosition(placementChanged) {
-    var target = this.getTargetSafe();
+      var _state = this.state;
+      var positionLeft = _state.positionLeft;
+      var positionTop = _state.positionTop;
 
-    if (!this.props.shouldUpdatePosition && target === this._lastTarget && !placementChanged) {
-      return;
+      var arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
+
+      // These should not be forwarded to the child.
+
+
+      delete props.target;
+      delete props.container;
+      delete props.containerPadding;
+      delete props.shouldUpdatePosition;
+
+      var child = _react2.default.Children.only(children);
+      return (0, _react.cloneElement)(child, _extends({}, props, arrowPosition, {
+        // FIXME: Don't forward `positionLeft` and `positionTop` via both props
+        // and `props.style`.
+        positionLeft: positionLeft,
+        positionTop: positionTop,
+        className: (0, _classnames2.default)(className, child.props.className),
+        style: _extends({}, child.props.style, {
+          left: positionLeft,
+          top: positionTop
+        })
+      }));
     }
+  }, {
+    key: 'getTarget',
+    value: function getTarget() {
+      var target = this.props.target;
 
-    this._lastTarget = target;
-
-    if (!target) {
-      this.setState({
-        positionLeft: 0,
-        positionTop: 0,
-        arrowOffsetLeft: null,
-        arrowOffsetTop: null
-      });
-
-      return;
+      var targetElement = typeof target === 'function' ? target() : target;
+      return targetElement && _reactDom2.default.findDOMNode(targetElement) || null;
     }
+  }, {
+    key: 'maybeUpdatePosition',
+    value: function maybeUpdatePosition(placementChanged) {
+      var target = this.getTarget();
 
-    var overlay = _reactDom2['default'].findDOMNode(this);
-    var container = _utilsGetContainer2['default'](this.props.container, _utilsOwnerDocument2['default'](this).body);
+      if (!this.props.shouldUpdatePosition && target === this._lastTarget && !placementChanged) {
+        return;
+      }
 
-    this.setState(_utilsOverlayPositionUtils.calcOverlayPosition(this.props.placement, overlay, target, container, this.props.containerPadding));
-  };
+      this.updatePosition(target);
+    }
+  }, {
+    key: 'updatePosition',
+    value: function updatePosition(target) {
+      this._lastTarget = target;
+
+      if (!target) {
+        this.setState({
+          positionLeft: 0,
+          positionTop: 0,
+          arrowOffsetLeft: null,
+          arrowOffsetTop: null
+        });
+
+        return;
+      }
+
+      var overlay = _reactDom2.default.findDOMNode(this);
+      var container = (0, _getContainer2.default)(this.props.container, (0, _ownerDocument2.default)(this).body);
+
+      this.setState((0, _calculatePosition2.default)(this.props.placement, overlay, target, container, this.props.containerPadding));
+    }
+  }]);
 
   return Position;
-})(_react2['default'].Component);
+}(_react2.default.Component);
 
 Position.propTypes = {
   /**
-   * Function mapping props to a DOM node the component is positioned next to
-   *
+   * A node, element, or function that returns either. The child will be
+   * be positioned next to the `target` specified.
    */
-  target: _react2['default'].PropTypes.func,
+  target: _react2.default.PropTypes.oneOfType([_componentOrElement2.default, _react2.default.PropTypes.func]),
 
   /**
    * "offsetParent" of the component
    */
-  container: _react2['default'].PropTypes.oneOfType([_reactPropTypesLibMountable2['default'], _react2['default'].PropTypes.func]),
+  container: _react2.default.PropTypes.oneOfType([_componentOrElement2.default, _react2.default.PropTypes.func]),
   /**
    * Minimum spacing in pixels between container border and component border
    */
-  containerPadding: _react2['default'].PropTypes.number,
+  containerPadding: _react2.default.PropTypes.number,
   /**
    * How to position the component relative to the target
    */
-  placement: _react2['default'].PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  placement: _react2.default.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   /**
    * Whether the position should be changed on each update
    */
-  shouldUpdatePosition: _react2['default'].PropTypes.bool
+  shouldUpdatePosition: _react2.default.PropTypes.bool
 };
 
 Position.displayName = 'Position';
@@ -29467,18 +29602,20 @@ Position.defaultProps = {
   shouldUpdatePosition: false
 };
 
-exports['default'] = Position;
+exports.default = Position;
 module.exports = exports['default'];
-},{"./utils/getContainer":279,"./utils/overlayPositionUtils":282,"./utils/ownerDocument":283,"classnames":24,"react":421,"react-dom":268,"react-prop-types/lib/mountable":286}],274:[function(require,module,exports){
+},{"./utils/calculatePosition":278,"./utils/getContainer":279,"./utils/ownerDocument":282,"classnames":24,"react":421,"react-dom":268,"react-prop-types/lib/componentOrElement":283}],274:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+var _contains = require('dom-helpers/query/contains');
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _contains2 = _interopRequireDefault(_contains);
 
 var _react = require('react');
 
@@ -29488,22 +29625,21 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _utilsAddEventListener = require('./utils/addEventListener');
+var _addEventListener = require('./utils/addEventListener');
 
-var _utilsAddEventListener2 = _interopRequireDefault(_utilsAddEventListener);
+var _addEventListener2 = _interopRequireDefault(_addEventListener);
 
-var _utilsCreateChainedFunction = require('./utils/createChainedFunction');
+var _ownerDocument = require('./utils/ownerDocument');
 
-var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-var _utilsOwnerDocument = require('./utils/ownerDocument');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _utilsOwnerDocument2 = _interopRequireDefault(_utilsOwnerDocument);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// TODO: Consider using an ES6 symbol here, once we use babel-runtime.
-var CLICK_WAS_INSIDE = '__click_was_inside';
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var counter = 0;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function isLeftClickEvent(event) {
   return event.button === 0;
@@ -29513,148 +29649,133 @@ function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }
 
-function getSuppressRootClose() {
-  var id = CLICK_WAS_INSIDE + '_' + counter++;
-  return {
-    id: id,
-    suppressRootClose: function suppressRootClose(event) {
-      // Tag the native event to prevent the root close logic on document click.
-      // This seems safer than using event.nativeEvent.stopImmediatePropagation(),
-      // which is only supported in IE >= 9.
-      event.nativeEvent[id] = true;
-    }
-  };
-}
-
-var RootCloseWrapper = (function (_React$Component) {
+var RootCloseWrapper = function (_React$Component) {
   _inherits(RootCloseWrapper, _React$Component);
 
-  function RootCloseWrapper(props) {
+  function RootCloseWrapper(props, context) {
     _classCallCheck(this, RootCloseWrapper);
 
-    _React$Component.call(this, props);
+    var _this = _possibleConstructorReturn(this, (RootCloseWrapper.__proto__ || Object.getPrototypeOf(RootCloseWrapper)).call(this, props, context));
 
-    this.handleDocumentClick = this.handleDocumentClick.bind(this);
-    this.handleDocumentKeyUp = this.handleDocumentKeyUp.bind(this);
+    _this.handleMouseCapture = function (e) {
+      _this.preventMouseRootClose = isModifiedEvent(e) || !isLeftClickEvent(e) || (0, _contains2.default)(_reactDom2.default.findDOMNode(_this), e.target);
+    };
 
-    var _getSuppressRootClose = getSuppressRootClose();
+    _this.handleMouse = function () {
+      if (!_this.preventMouseRootClose && _this.props.onRootClose) {
+        _this.props.onRootClose();
+      }
+    };
 
-    var id = _getSuppressRootClose.id;
-    var suppressRootClose = _getSuppressRootClose.suppressRootClose;
+    _this.handleKeyUp = function (e) {
+      if (e.keyCode === 27 && _this.props.onRootClose) {
+        _this.props.onRootClose();
+      }
+    };
 
-    this._suppressRootId = id;
-
-    this._suppressRootCloseHandler = suppressRootClose;
+    _this.preventMouseRootClose = false;
+    return _this;
   }
 
-  RootCloseWrapper.prototype.bindRootCloseHandlers = function bindRootCloseHandlers() {
-    var doc = _utilsOwnerDocument2['default'](this);
-
-    this._onDocumentClickListener = _utilsAddEventListener2['default'](doc, 'click', this.handleDocumentClick);
-
-    this._onDocumentKeyupListener = _utilsAddEventListener2['default'](doc, 'keyup', this.handleDocumentKeyUp);
-  };
-
-  RootCloseWrapper.prototype.handleDocumentClick = function handleDocumentClick(e) {
-    // This is now the native event.
-    if (e[this._suppressRootId]) {
-      return;
+  _createClass(RootCloseWrapper, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (!this.props.disabled) {
+        this.addEventListeners();
+      }
     }
-
-    if (isModifiedEvent(e) || !isLeftClickEvent(e)) {
-      return;
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (!this.props.disabled && prevProps.disabled) {
+        this.addEventListeners();
+      } else if (this.props.disabled && !prevProps.disabled) {
+        this.removeEventListeners();
+      }
     }
-
-    this.props.onRootClose();
-  };
-
-  RootCloseWrapper.prototype.handleDocumentKeyUp = function handleDocumentKeyUp(e) {
-    if (e.keyCode === 27) {
-      this.props.onRootClose();
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (!this.props.disabled) {
+        this.removeEventListeners();
+      }
     }
-  };
+  }, {
+    key: 'addEventListeners',
+    value: function addEventListeners() {
+      var event = this.props.event;
 
-  RootCloseWrapper.prototype.unbindRootCloseHandlers = function unbindRootCloseHandlers() {
-    if (this._onDocumentClickListener) {
-      this._onDocumentClickListener.remove();
+      var doc = (0, _ownerDocument2.default)(this);
+
+      // Use capture for this listener so it fires before React's listener, to
+      // avoid false positives in the contains() check below if the target DOM
+      // element is removed in the React mouse callback.
+      this.documentMouseCaptureListener = (0, _addEventListener2.default)(doc, event, this.handleMouseCapture, true);
+
+      this.documentMouseListener = (0, _addEventListener2.default)(doc, event, this.handleMouse);
+
+      this.documentKeyupListener = (0, _addEventListener2.default)(doc, 'keyup', this.handleKeyUp);
     }
+  }, {
+    key: 'removeEventListeners',
+    value: function removeEventListeners() {
+      if (this.documentMouseCaptureListener) {
+        this.documentMouseCaptureListener.remove();
+      }
 
-    if (this._onDocumentKeyupListener) {
-      this._onDocumentKeyupListener.remove();
+      if (this.documentMouseListener) {
+        this.documentMouseListener.remove();
+      }
+
+      if (this.documentKeyupListener) {
+        this.documentKeyupListener.remove();
+      }
     }
-  };
-
-  RootCloseWrapper.prototype.componentDidMount = function componentDidMount() {
-    this.bindRootCloseHandlers();
-  };
-
-  RootCloseWrapper.prototype.render = function render() {
-    var _props = this.props;
-    var noWrap = _props.noWrap;
-    var children = _props.children;
-
-    var child = _react2['default'].Children.only(children);
-
-    if (noWrap) {
-      return _react2['default'].cloneElement(child, {
-        onClick: _utilsCreateChainedFunction2['default'](this._suppressRootCloseHandler, child.props.onClick)
-      });
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.props.children;
     }
-
-    // Wrap the child in a new element, so the child won't have to handle
-    // potentially combining multiple onClick listeners.
-    return _react2['default'].createElement(
-      'div',
-      { onClick: this._suppressRootCloseHandler },
-      child
-    );
-  };
-
-  RootCloseWrapper.prototype.getWrappedDOMNode = function getWrappedDOMNode() {
-    // We can't use a ref to identify the wrapped child, since we might be
-    // stealing the ref from the owner, but we know exactly the DOM structure
-    // that will be rendered, so we can just do this to get the child's DOM
-    // node for doing size calculations in OverlayMixin.
-    var node = _reactDom2['default'].findDOMNode(this);
-    return this.props.noWrap ? node : node.firstChild;
-  };
-
-  RootCloseWrapper.prototype.componentWillUnmount = function componentWillUnmount() {
-    this.unbindRootCloseHandlers();
-  };
+  }]);
 
   return RootCloseWrapper;
-})(_react2['default'].Component);
+}(_react2.default.Component);
 
-exports['default'] = RootCloseWrapper;
+exports.default = RootCloseWrapper;
+
 
 RootCloseWrapper.displayName = 'RootCloseWrapper';
 
 RootCloseWrapper.propTypes = {
-  onRootClose: _react2['default'].PropTypes.func.isRequired,
+  onRootClose: _react2.default.PropTypes.func,
+  children: _react2.default.PropTypes.element,
 
   /**
-   * Passes the suppress click handler directly to the child component instead
-   * of placing it on a wrapping div. Only use when you can be sure the child
-   * properly handle the click event.
+   * Disable the the RootCloseWrapper, preventing it from triggering
+   * `onRootClose`.
    */
-  noWrap: _react2['default'].PropTypes.bool
+  disabled: _react2.default.PropTypes.bool,
+  /**
+   * Choose which document mouse event to bind to
+   */
+  event: _react2.default.PropTypes.oneOf(['click', 'mousedown'])
+};
+
+RootCloseWrapper.defaultProps = {
+  event: 'click'
 };
 module.exports = exports['default'];
-},{"./utils/addEventListener":276,"./utils/createChainedFunction":278,"./utils/ownerDocument":283,"react":421,"react-dom":268}],275:[function(require,module,exports){
+},{"./utils/addEventListener":276,"./utils/ownerDocument":282,"dom-helpers/query/contains":58,"react":421,"react-dom":268}],275:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
@@ -29664,31 +29785,36 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _domHelpersTransitionProperties = require('dom-helpers/transition/properties');
+var _properties = require('dom-helpers/transition/properties');
 
-var _domHelpersTransitionProperties2 = _interopRequireDefault(_domHelpersTransitionProperties);
+var _properties2 = _interopRequireDefault(_properties);
 
-var _domHelpersEventsOn = require('dom-helpers/events/on');
+var _on = require('dom-helpers/events/on');
 
-var _domHelpersEventsOn2 = _interopRequireDefault(_domHelpersEventsOn);
+var _on2 = _interopRequireDefault(_on);
 
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var transitionEndEvent = _domHelpersTransitionProperties2['default'].end;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var UNMOUNTED = 0;
-exports.UNMOUNTED = UNMOUNTED;
-var EXITED = 1;
-exports.EXITED = EXITED;
-var ENTERING = 2;
-exports.ENTERING = ENTERING;
-var ENTERED = 3;
-exports.ENTERED = ENTERED;
-var EXITING = 4;
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-exports.EXITING = EXITING;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var transitionEndEvent = _properties2.default.end;
+
+var UNMOUNTED = exports.UNMOUNTED = 0;
+var EXITED = exports.EXITED = 1;
+var ENTERING = exports.ENTERING = 2;
+var ENTERED = exports.ENTERED = 3;
+var EXITING = exports.EXITING = 4;
+
 /**
  * The Transition component lets you define and run css transitions with a simple declarative api.
  * It works similar to React's own [CSSTransitionGroup](http://facebook.github.io/react/docs/animation.html#high-level-api-reactcsstransitiongroup)
@@ -29699,220 +29825,234 @@ exports.EXITING = EXITING;
  * the transitioning now at each step of the way.
  */
 
-var Transition = (function (_React$Component) {
+var Transition = function (_React$Component) {
   _inherits(Transition, _React$Component);
 
   function Transition(props, context) {
     _classCallCheck(this, Transition);
 
-    _React$Component.call(this, props, context);
+    var _this = _possibleConstructorReturn(this, (Transition.__proto__ || Object.getPrototypeOf(Transition)).call(this, props, context));
 
-    var initialStatus = undefined;
-    if (props['in']) {
+    var initialStatus = void 0;
+    if (props.in) {
       // Start enter transition in componentDidMount.
       initialStatus = props.transitionAppear ? EXITED : ENTERED;
     } else {
       initialStatus = props.unmountOnExit ? UNMOUNTED : EXITED;
     }
-    this.state = { status: initialStatus };
+    _this.state = { status: initialStatus };
 
-    this.nextCallback = null;
+    _this.nextCallback = null;
+    return _this;
   }
 
-  Transition.prototype.componentDidMount = function componentDidMount() {
-    if (this.props.transitionAppear && this.props['in']) {
-      this.performEnter(this.props);
-    }
-  };
-
-  Transition.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    if (nextProps['in'] && this.props.unmountOnExit) {
-      if (this.state.status === UNMOUNTED) {
-        // Start enter transition in componentDidUpdate.
-        this.setState({ status: EXITED });
-      }
-    } else {
-      this._needsUpdate = true;
-    }
-  };
-
-  Transition.prototype.componentDidUpdate = function componentDidUpdate() {
-    var status = this.state.status;
-
-    if (this.props.unmountOnExit && status === EXITED) {
-      // EXITED is always a transitional state to either ENTERING or UNMOUNTED
-      // when using unmountOnExit.
-      if (this.props['in']) {
+  _createClass(Transition, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.transitionAppear && this.props.in) {
         this.performEnter(this.props);
+      }
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.in && this.props.unmountOnExit) {
+        if (this.state.status === UNMOUNTED) {
+          // Start enter transition in componentDidUpdate.
+          this.setState({ status: EXITED });
+        }
       } else {
-        this.setState({ status: UNMOUNTED });
+        this._needsUpdate = true;
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      var status = this.state.status;
+
+      if (this.props.unmountOnExit && status === EXITED) {
+        // EXITED is always a transitional state to either ENTERING or UNMOUNTED
+        // when using unmountOnExit.
+        if (this.props.in) {
+          this.performEnter(this.props);
+        } else {
+          this.setState({ status: UNMOUNTED });
+        }
+
+        return;
       }
 
-      return;
-    }
+      // guard ensures we are only responding to prop changes
+      if (this._needsUpdate) {
+        this._needsUpdate = false;
 
-    // guard ensures we are only responding to prop changes
-    if (this._needsUpdate) {
-      this._needsUpdate = false;
-
-      if (this.props['in']) {
-        if (status === EXITING) {
-          this.performEnter(this.props);
-        } else if (status === EXITED) {
-          this.performEnter(this.props);
-        }
-        // Otherwise we're already entering or entered.
-      } else {
+        if (this.props.in) {
+          if (status === EXITING) {
+            this.performEnter(this.props);
+          } else if (status === EXITED) {
+            this.performEnter(this.props);
+          }
+          // Otherwise we're already entering or entered.
+        } else {
           if (status === ENTERING || status === ENTERED) {
             this.performExit(this.props);
           }
           // Otherwise we're already exited or exiting.
         }
-    }
-  };
-
-  Transition.prototype.componentWillUnmount = function componentWillUnmount() {
-    this.cancelNextCallback();
-  };
-
-  Transition.prototype.performEnter = function performEnter(props) {
-    var _this = this;
-
-    this.cancelNextCallback();
-    var node = _reactDom2['default'].findDOMNode(this);
-
-    // Not this.props, because we might be about to receive new props.
-    props.onEnter(node);
-
-    this.safeSetState({ status: ENTERING }, function () {
-      _this.props.onEntering(node);
-
-      _this.onTransitionEnd(node, function () {
-        _this.safeSetState({ status: ENTERED }, function () {
-          _this.props.onEntered(node);
-        });
-      });
-    });
-  };
-
-  Transition.prototype.performExit = function performExit(props) {
-    var _this2 = this;
-
-    this.cancelNextCallback();
-    var node = _reactDom2['default'].findDOMNode(this);
-
-    // Not this.props, because we might be about to receive new props.
-    props.onExit(node);
-
-    this.safeSetState({ status: EXITING }, function () {
-      _this2.props.onExiting(node);
-
-      _this2.onTransitionEnd(node, function () {
-        _this2.safeSetState({ status: EXITED }, function () {
-          _this2.props.onExited(node);
-        });
-      });
-    });
-  };
-
-  Transition.prototype.cancelNextCallback = function cancelNextCallback() {
-    if (this.nextCallback !== null) {
-      this.nextCallback.cancel();
-      this.nextCallback = null;
-    }
-  };
-
-  Transition.prototype.safeSetState = function safeSetState(nextState, callback) {
-    // This shouldn't be necessary, but there are weird race conditions with
-    // setState callbacks and unmounting in testing, so always make sure that
-    // we can cancel any pending setState callbacks after we unmount.
-    this.setState(nextState, this.setNextCallback(callback));
-  };
-
-  Transition.prototype.setNextCallback = function setNextCallback(callback) {
-    var _this3 = this;
-
-    var active = true;
-
-    this.nextCallback = function (event) {
-      if (active) {
-        active = false;
-        _this3.nextCallback = null;
-
-        callback(event);
       }
-    };
-
-    this.nextCallback.cancel = function () {
-      active = false;
-    };
-
-    return this.nextCallback;
-  };
-
-  Transition.prototype.onTransitionEnd = function onTransitionEnd(node, handler) {
-    this.setNextCallback(handler);
-
-    if (node) {
-      _domHelpersEventsOn2['default'](node, transitionEndEvent, this.nextCallback);
-      setTimeout(this.nextCallback, this.props.timeout);
-    } else {
-      setTimeout(this.nextCallback, 0);
     }
-  };
-
-  Transition.prototype.render = function render() {
-    var status = this.state.status;
-    if (status === UNMOUNTED) {
-      return null;
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.cancelNextCallback();
     }
+  }, {
+    key: 'performEnter',
+    value: function performEnter(props) {
+      var _this2 = this;
 
-    var _props = this.props;
-    var children = _props.children;
-    var className = _props.className;
+      this.cancelNextCallback();
+      var node = _reactDom2.default.findDOMNode(this);
 
-    var childProps = _objectWithoutProperties(_props, ['children', 'className']);
+      // Not this.props, because we might be about to receive new props.
+      props.onEnter(node);
 
-    Object.keys(Transition.propTypes).forEach(function (key) {
-      return delete childProps[key];
-    });
+      this.safeSetState({ status: ENTERING }, function () {
+        _this2.props.onEntering(node);
 
-    var transitionClassName = undefined;
-    if (status === EXITED) {
-      transitionClassName = this.props.exitedClassName;
-    } else if (status === ENTERING) {
-      transitionClassName = this.props.enteringClassName;
-    } else if (status === ENTERED) {
-      transitionClassName = this.props.enteredClassName;
-    } else if (status === EXITING) {
-      transitionClassName = this.props.exitingClassName;
+        _this2.onTransitionEnd(node, function () {
+          _this2.safeSetState({ status: ENTERED }, function () {
+            _this2.props.onEntered(node);
+          });
+        });
+      });
     }
+  }, {
+    key: 'performExit',
+    value: function performExit(props) {
+      var _this3 = this;
 
-    var child = _react2['default'].Children.only(children);
-    return _react2['default'].cloneElement(child, _extends({}, childProps, {
-      className: _classnames2['default'](child.props.className, className, transitionClassName)
-    }));
-  };
+      this.cancelNextCallback();
+      var node = _reactDom2.default.findDOMNode(this);
+
+      // Not this.props, because we might be about to receive new props.
+      props.onExit(node);
+
+      this.safeSetState({ status: EXITING }, function () {
+        _this3.props.onExiting(node);
+
+        _this3.onTransitionEnd(node, function () {
+          _this3.safeSetState({ status: EXITED }, function () {
+            _this3.props.onExited(node);
+          });
+        });
+      });
+    }
+  }, {
+    key: 'cancelNextCallback',
+    value: function cancelNextCallback() {
+      if (this.nextCallback !== null) {
+        this.nextCallback.cancel();
+        this.nextCallback = null;
+      }
+    }
+  }, {
+    key: 'safeSetState',
+    value: function safeSetState(nextState, callback) {
+      // This shouldn't be necessary, but there are weird race conditions with
+      // setState callbacks and unmounting in testing, so always make sure that
+      // we can cancel any pending setState callbacks after we unmount.
+      this.setState(nextState, this.setNextCallback(callback));
+    }
+  }, {
+    key: 'setNextCallback',
+    value: function setNextCallback(callback) {
+      var _this4 = this;
+
+      var active = true;
+
+      this.nextCallback = function (event) {
+        if (active) {
+          active = false;
+          _this4.nextCallback = null;
+
+          callback(event);
+        }
+      };
+
+      this.nextCallback.cancel = function () {
+        active = false;
+      };
+
+      return this.nextCallback;
+    }
+  }, {
+    key: 'onTransitionEnd',
+    value: function onTransitionEnd(node, handler) {
+      this.setNextCallback(handler);
+
+      if (node) {
+        (0, _on2.default)(node, transitionEndEvent, this.nextCallback);
+        setTimeout(this.nextCallback, this.props.timeout);
+      } else {
+        setTimeout(this.nextCallback, 0);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var status = this.state.status;
+      if (status === UNMOUNTED) {
+        return null;
+      }
+
+      var _props = this.props;
+      var children = _props.children;
+      var className = _props.className;
+
+      var childProps = _objectWithoutProperties(_props, ['children', 'className']);
+
+      Object.keys(Transition.propTypes).forEach(function (key) {
+        return delete childProps[key];
+      });
+
+      var transitionClassName = void 0;
+      if (status === EXITED) {
+        transitionClassName = this.props.exitedClassName;
+      } else if (status === ENTERING) {
+        transitionClassName = this.props.enteringClassName;
+      } else if (status === ENTERED) {
+        transitionClassName = this.props.enteredClassName;
+      } else if (status === EXITING) {
+        transitionClassName = this.props.exitingClassName;
+      }
+
+      var child = _react2.default.Children.only(children);
+      return _react2.default.cloneElement(child, _extends({}, childProps, {
+        className: (0, _classnames2.default)(child.props.className, className, transitionClassName)
+      }));
+    }
+  }]);
 
   return Transition;
-})(_react2['default'].Component);
+}(_react2.default.Component);
 
 Transition.propTypes = {
   /**
    * Show the component; triggers the enter or exit animation
    */
-  'in': _react2['default'].PropTypes.bool,
+  in: _react2.default.PropTypes.bool,
 
   /**
    * Unmount the component (remove it from the DOM) when it is not shown
    */
-  unmountOnExit: _react2['default'].PropTypes.bool,
+  unmountOnExit: _react2.default.PropTypes.bool,
 
   /**
    * Run the enter animation when the component mounts, if it is initially
    * shown
    */
-  transitionAppear: _react2['default'].PropTypes.bool,
+  transitionAppear: _react2.default.PropTypes.bool,
 
   /**
    * A Timeout for the animation, in milliseconds, to ensure that a node doesn't
@@ -29922,49 +30062,49 @@ Transition.propTypes = {
    * By default this is set to a high number (5 seconds) as a failsafe. You should consider
    * setting this to the duration of your animation (or a bit above it).
    */
-  timeout: _react2['default'].PropTypes.number,
+  timeout: _react2.default.PropTypes.number,
 
   /**
    * CSS class or classes applied when the component is exited
    */
-  exitedClassName: _react2['default'].PropTypes.string,
+  exitedClassName: _react2.default.PropTypes.string,
   /**
    * CSS class or classes applied while the component is exiting
    */
-  exitingClassName: _react2['default'].PropTypes.string,
+  exitingClassName: _react2.default.PropTypes.string,
   /**
    * CSS class or classes applied when the component is entered
    */
-  enteredClassName: _react2['default'].PropTypes.string,
+  enteredClassName: _react2.default.PropTypes.string,
   /**
    * CSS class or classes applied while the component is entering
    */
-  enteringClassName: _react2['default'].PropTypes.string,
+  enteringClassName: _react2.default.PropTypes.string,
 
   /**
    * Callback fired before the "entering" classes are applied
    */
-  onEnter: _react2['default'].PropTypes.func,
+  onEnter: _react2.default.PropTypes.func,
   /**
    * Callback fired after the "entering" classes are applied
    */
-  onEntering: _react2['default'].PropTypes.func,
+  onEntering: _react2.default.PropTypes.func,
   /**
    * Callback fired after the "enter" classes are applied
    */
-  onEntered: _react2['default'].PropTypes.func,
+  onEntered: _react2.default.PropTypes.func,
   /**
    * Callback fired before the "exiting" classes are applied
    */
-  onExit: _react2['default'].PropTypes.func,
+  onExit: _react2.default.PropTypes.func,
   /**
    * Callback fired after the "exiting" classes are applied
    */
-  onExiting: _react2['default'].PropTypes.func,
+  onExiting: _react2.default.PropTypes.func,
   /**
    * Callback fired after the "exited" classes are applied
    */
-  onExited: _react2['default'].PropTypes.func
+  onExited: _react2.default.PropTypes.func
 };
 
 // Name the function so it is clearer in the documentation
@@ -29973,7 +30113,7 @@ function noop() {}
 Transition.displayName = 'Transition';
 
 Transition.defaultProps = {
-  'in': false,
+  in: false,
   unmountOnExit: false,
   transitionAppear: false,
 
@@ -29988,107 +30128,241 @@ Transition.defaultProps = {
   onExited: noop
 };
 
-exports['default'] = Transition;
+exports.default = Transition;
 },{"classnames":24,"dom-helpers/events/on":56,"dom-helpers/transition/properties":69,"react":421,"react-dom":268}],276:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+exports.default = function (node, event, handler, capture) {
+  (0, _on2.default)(node, event, handler, capture);
 
-var _domHelpersEventsOn = require('dom-helpers/events/on');
-
-var _domHelpersEventsOn2 = _interopRequireDefault(_domHelpersEventsOn);
-
-var _domHelpersEventsOff = require('dom-helpers/events/off');
-
-var _domHelpersEventsOff2 = _interopRequireDefault(_domHelpersEventsOff);
-
-exports['default'] = function (node, event, handler) {
-  _domHelpersEventsOn2['default'](node, event, handler);
   return {
     remove: function remove() {
-      _domHelpersEventsOff2['default'](node, event, handler);
+      (0, _off2.default)(node, event, handler, capture);
     }
   };
 };
 
+var _on = require('dom-helpers/events/on');
+
+var _on2 = _interopRequireDefault(_on);
+
+var _off = require('dom-helpers/events/off');
+
+var _off2 = _interopRequireDefault(_off);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 module.exports = exports['default'];
 },{"dom-helpers/events/off":55,"dom-helpers/events/on":56}],277:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = addFocusListener;
 /**
  * Firefox doesn't have a focusin event so using capture is easiest way to get bubbling
  * IE8 can't do addEventListener, but does have onfocusin, so we use that in ie8
  *
  * We only allow one Listener at a time to avoid stack overflows
  */
-'use strict';
-
-exports.__esModule = true;
-exports['default'] = addFocusListener;
-
 function addFocusListener(handler) {
   var useFocusin = !document.addEventListener;
-  var remove = undefined;
+  var remove = void 0;
 
   if (useFocusin) {
     document.attachEvent('onfocusin', handler);
-    remove = function () {
+    remove = function remove() {
       return document.detachEvent('onfocusin', handler);
     };
   } else {
     document.addEventListener('focus', handler, true);
-    remove = function () {
+    remove = function remove() {
       return document.removeEventListener('focus', handler, true);
     };
   }
 
   return { remove: remove };
 }
-
 module.exports = exports['default'];
 },{}],278:[function(require,module,exports){
-arguments[4][265][0].apply(exports,arguments)
-},{"dup":265}],279:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
-exports['default'] = getContainer;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = calculatePosition;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _offset = require('dom-helpers/query/offset');
+
+var _offset2 = _interopRequireDefault(_offset);
+
+var _position = require('dom-helpers/query/position');
+
+var _position2 = _interopRequireDefault(_position);
+
+var _scrollTop = require('dom-helpers/query/scrollTop');
+
+var _scrollTop2 = _interopRequireDefault(_scrollTop);
+
+var _ownerDocument = require('./ownerDocument');
+
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getContainerDimensions(containerNode) {
+  var width = void 0,
+      height = void 0,
+      scroll = void 0;
+
+  if (containerNode.tagName === 'BODY') {
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    scroll = (0, _scrollTop2.default)((0, _ownerDocument2.default)(containerNode).documentElement) || (0, _scrollTop2.default)(containerNode);
+  } else {
+    var _getOffset = (0, _offset2.default)(containerNode);
+
+    width = _getOffset.width;
+    height = _getOffset.height;
+
+    scroll = (0, _scrollTop2.default)(containerNode);
+  }
+
+  return { width: width, height: height, scroll: scroll };
+}
+
+function getTopDelta(top, overlayHeight, container, padding) {
+  var containerDimensions = getContainerDimensions(container);
+  var containerScroll = containerDimensions.scroll;
+  var containerHeight = containerDimensions.height;
+
+  var topEdgeOffset = top - padding - containerScroll;
+  var bottomEdgeOffset = top + padding - containerScroll + overlayHeight;
+
+  if (topEdgeOffset < 0) {
+    return -topEdgeOffset;
+  } else if (bottomEdgeOffset > containerHeight) {
+    return containerHeight - bottomEdgeOffset;
+  } else {
+    return 0;
+  }
+}
+
+function getLeftDelta(left, overlayWidth, container, padding) {
+  var containerDimensions = getContainerDimensions(container);
+  var containerWidth = containerDimensions.width;
+
+  var leftEdgeOffset = left - padding;
+  var rightEdgeOffset = left + padding + overlayWidth;
+
+  if (leftEdgeOffset < 0) {
+    return -leftEdgeOffset;
+  } else if (rightEdgeOffset > containerWidth) {
+    return containerWidth - rightEdgeOffset;
+  }
+
+  return 0;
+}
+
+function calculatePosition(placement, overlayNode, target, container, padding) {
+  var childOffset = container.tagName === 'BODY' ? (0, _offset2.default)(target) : (0, _position2.default)(target, container);
+
+  var _getOffset2 = (0, _offset2.default)(overlayNode);
+
+  var overlayHeight = _getOffset2.height;
+  var overlayWidth = _getOffset2.width;
+
+
+  var positionLeft = void 0,
+      positionTop = void 0,
+      arrowOffsetLeft = void 0,
+      arrowOffsetTop = void 0;
+
+  if (placement === 'left' || placement === 'right') {
+    positionTop = childOffset.top + (childOffset.height - overlayHeight) / 2;
+
+    if (placement === 'left') {
+      positionLeft = childOffset.left - overlayWidth;
+    } else {
+      positionLeft = childOffset.left + childOffset.width;
+    }
+
+    var topDelta = getTopDelta(positionTop, overlayHeight, container, padding);
+
+    positionTop += topDelta;
+    arrowOffsetTop = 50 * (1 - 2 * topDelta / overlayHeight) + '%';
+    arrowOffsetLeft = void 0;
+  } else if (placement === 'top' || placement === 'bottom') {
+    positionLeft = childOffset.left + (childOffset.width - overlayWidth) / 2;
+
+    if (placement === 'top') {
+      positionTop = childOffset.top - overlayHeight;
+    } else {
+      positionTop = childOffset.top + childOffset.height;
+    }
+
+    var leftDelta = getLeftDelta(positionLeft, overlayWidth, container, padding);
+
+    positionLeft += leftDelta;
+    arrowOffsetLeft = 50 * (1 - 2 * leftDelta / overlayWidth) + '%';
+    arrowOffsetTop = void 0;
+  } else {
+    throw new Error('calcOverlayPosition(): No such placement of "' + placement + '" found.');
+  }
+
+  return { positionLeft: positionLeft, positionTop: positionTop, arrowOffsetLeft: arrowOffsetLeft, arrowOffsetTop: arrowOffsetTop };
+}
+module.exports = exports['default'];
+},{"./ownerDocument":282,"dom-helpers/query/offset":60,"dom-helpers/query/position":62,"dom-helpers/query/scrollTop":65}],279:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = getContainer;
 
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function getContainer(container, defaultContainer) {
   container = typeof container === 'function' ? container() : container;
-  return _reactDom2['default'].findDOMNode(container) || defaultContainer;
+  return _reactDom2.default.findDOMNode(container) || defaultContainer;
 }
-
 module.exports = exports['default'];
 },{"react-dom":268}],280:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
-exports['default'] = isOverflowing;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = isOverflowing;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _isWindow = require('dom-helpers/query/isWindow');
 
-var _domHelpersQueryIsWindow = require('dom-helpers/query/isWindow');
+var _isWindow2 = _interopRequireDefault(_isWindow);
 
-var _domHelpersQueryIsWindow2 = _interopRequireDefault(_domHelpersQueryIsWindow);
+var _ownerDocument = require('dom-helpers/ownerDocument');
 
-var _domHelpersOwnerDocument = require('dom-helpers/ownerDocument');
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-var _domHelpersOwnerDocument2 = _interopRequireDefault(_domHelpersOwnerDocument);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function isBody(node) {
   return node && node.tagName.toLowerCase() === 'body';
 }
 
 function bodyIsOverflowing(node) {
-  var doc = _domHelpersOwnerDocument2['default'](node);
-  var win = _domHelpersQueryIsWindow2['default'](doc);
+  var doc = (0, _ownerDocument2.default)(node);
+  var win = (0, _isWindow2.default)(doc);
   var fullWidth = win.innerWidth;
 
   // Support: ie8, no innerWidth
@@ -30101,16 +30375,17 @@ function bodyIsOverflowing(node) {
 }
 
 function isOverflowing(container) {
-  var win = _domHelpersQueryIsWindow2['default'](container);
+  var win = (0, _isWindow2.default)(container);
 
   return win || isBody(container) ? bodyIsOverflowing(container) : container.scrollHeight > container.clientHeight;
 }
-
 module.exports = exports['default'];
 },{"dom-helpers/ownerDocument":57,"dom-helpers/query/isWindow":59}],281:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.ariaHidden = ariaHidden;
 exports.hideSiblings = hideSiblings;
 exports.showSiblings = showSiblings;
@@ -30158,159 +30433,238 @@ function showSiblings(container, mountNode) {
 },{}],282:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _ownerDocument = require('./ownerDocument');
-
-var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
-
-var _domHelpersQueryOffset = require('dom-helpers/query/offset');
-
-var _domHelpersQueryOffset2 = _interopRequireDefault(_domHelpersQueryOffset);
-
-var _domHelpersQueryPosition = require('dom-helpers/query/position');
-
-var _domHelpersQueryPosition2 = _interopRequireDefault(_domHelpersQueryPosition);
-
-var _domHelpersQueryScrollTop = require('dom-helpers/query/scrollTop');
-
-var _domHelpersQueryScrollTop2 = _interopRequireDefault(_domHelpersQueryScrollTop);
-
-var utils = {
-
-  getContainerDimensions: function getContainerDimensions(containerNode) {
-    var width = undefined,
-        height = undefined,
-        scroll = undefined;
-
-    if (containerNode.tagName === 'BODY') {
-      width = window.innerWidth;
-      height = window.innerHeight;
-
-      scroll = _domHelpersQueryScrollTop2['default'](_ownerDocument2['default'](containerNode).documentElement) || _domHelpersQueryScrollTop2['default'](containerNode);
-    } else {
-      var _getOffset = _domHelpersQueryOffset2['default'](containerNode);
-
-      width = _getOffset.width;
-      height = _getOffset.height;
-
-      scroll = _domHelpersQueryScrollTop2['default'](containerNode);
-    }
-
-    return { width: width, height: height, scroll: scroll };
-  },
-
-  getPosition: function getPosition(target, container) {
-    var offset = container.tagName === 'BODY' ? _domHelpersQueryOffset2['default'](target) : _domHelpersQueryPosition2['default'](target, container);
-
-    return offset;
-  },
-
-  calcOverlayPosition: function calcOverlayPosition(placement, overlayNode, target, container, padding) {
-    var childOffset = utils.getPosition(target, container);
-
-    var _getOffset2 = _domHelpersQueryOffset2['default'](overlayNode);
-
-    var overlayHeight = _getOffset2.height;
-    var overlayWidth = _getOffset2.width;
-
-    var positionLeft = undefined,
-        positionTop = undefined,
-        arrowOffsetLeft = undefined,
-        arrowOffsetTop = undefined;
-
-    if (placement === 'left' || placement === 'right') {
-      positionTop = childOffset.top + (childOffset.height - overlayHeight) / 2;
-
-      if (placement === 'left') {
-        positionLeft = childOffset.left - overlayWidth;
-      } else {
-        positionLeft = childOffset.left + childOffset.width;
-      }
-
-      var topDelta = getTopDelta(positionTop, overlayHeight, container, padding);
-
-      positionTop += topDelta;
-      arrowOffsetTop = 50 * (1 - 2 * topDelta / overlayHeight) + '%';
-      arrowOffsetLeft = void 0;
-    } else if (placement === 'top' || placement === 'bottom') {
-      positionLeft = childOffset.left + (childOffset.width - overlayWidth) / 2;
-
-      if (placement === 'top') {
-        positionTop = childOffset.top - overlayHeight;
-      } else {
-        positionTop = childOffset.top + childOffset.height;
-      }
-
-      var leftDelta = getLeftDelta(positionLeft, overlayWidth, container, padding);
-      positionLeft += leftDelta;
-      arrowOffsetLeft = 50 * (1 - 2 * leftDelta / overlayWidth) + '%';
-      arrowOffsetTop = void 0;
-    } else {
-      throw new Error('calcOverlayPosition(): No such placement of "' + placement + '" found.');
-    }
-
-    return { positionLeft: positionLeft, positionTop: positionTop, arrowOffsetLeft: arrowOffsetLeft, arrowOffsetTop: arrowOffsetTop };
-  }
+exports.default = function (componentOrElement) {
+  return (0, _ownerDocument2.default)(_reactDom2.default.findDOMNode(componentOrElement));
 };
-
-function getTopDelta(top, overlayHeight, container, padding) {
-  var containerDimensions = utils.getContainerDimensions(container);
-  var containerScroll = containerDimensions.scroll;
-  var containerHeight = containerDimensions.height;
-
-  var topEdgeOffset = top - padding - containerScroll;
-  var bottomEdgeOffset = top + padding - containerScroll + overlayHeight;
-
-  if (topEdgeOffset < 0) {
-    return -topEdgeOffset;
-  } else if (bottomEdgeOffset > containerHeight) {
-    return containerHeight - bottomEdgeOffset;
-  } else {
-    return 0;
-  }
-}
-
-function getLeftDelta(left, overlayWidth, container, padding) {
-  var containerDimensions = utils.getContainerDimensions(container);
-  var containerWidth = containerDimensions.width;
-
-  var leftEdgeOffset = left - padding;
-  var rightEdgeOffset = left + padding + overlayWidth;
-
-  if (leftEdgeOffset < 0) {
-    return -leftEdgeOffset;
-  } else if (rightEdgeOffset > containerWidth) {
-    return containerWidth - rightEdgeOffset;
-  } else {
-    return 0;
-  }
-}
-exports['default'] = utils;
-module.exports = exports['default'];
-},{"./ownerDocument":283,"dom-helpers/query/offset":60,"dom-helpers/query/position":62,"dom-helpers/query/scrollTop":65}],283:[function(require,module,exports){
-'use strict';
-
-exports.__esModule = true;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _domHelpersOwnerDocument = require('dom-helpers/ownerDocument');
+var _ownerDocument = require('dom-helpers/ownerDocument');
 
-var _domHelpersOwnerDocument2 = _interopRequireDefault(_domHelpersOwnerDocument);
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
-exports['default'] = function (componentOrElement) {
-  return _domHelpersOwnerDocument2['default'](_reactDom2['default'].findDOMNode(componentOrElement));
-};
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = exports['default'];
-},{"dom-helpers/ownerDocument":57,"react-dom":268}],284:[function(require,module,exports){
+},{"dom-helpers/ownerDocument":57,"react-dom":268}],283:[function(require,module,exports){
+'use strict';
+
+exports.__esModule = true;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _createChainableTypeChecker = require('./utils/createChainableTypeChecker');
+
+var _createChainableTypeChecker2 = _interopRequireDefault(_createChainableTypeChecker);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function validate(props, propName, componentName, location, propFullName) {
+  var propValue = props[propName];
+  var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue);
+
+  if (_react2.default.isValidElement(propValue)) {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of type ReactElement ' + ('supplied to `' + componentName + '`, expected a ReactComponent or a ') + 'DOMElement. You can usually obtain a ReactComponent or DOMElement ' + 'from a ReactElement by attaching a ref to it.');
+  }
+
+  if ((propType !== 'object' || typeof propValue.render !== 'function') && propValue.nodeType !== 1) {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected a ReactComponent or a ') + 'DOMElement.');
+  }
+
+  return null;
+}
+
+exports.default = (0, _createChainableTypeChecker2.default)(validate);
+},{"./utils/createChainableTypeChecker":285,"react":421}],284:[function(require,module,exports){
+'use strict';
+
+exports.__esModule = true;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _createChainableTypeChecker = require('./utils/createChainableTypeChecker');
+
+var _createChainableTypeChecker2 = _interopRequireDefault(_createChainableTypeChecker);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function elementType(props, propName, componentName, location, propFullName) {
+  var propValue = props[propName];
+  var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue);
+
+  if (_react2.default.isValidElement(propValue)) {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of type ReactElement ' + ('supplied to `' + componentName + '`, expected an element type (a string ') + 'or a ReactClass).');
+  }
+
+  if (propType !== 'function' && propType !== 'string') {
+    return new Error('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected an element type (a string ') + 'or a ReactClass).');
+  }
+
+  return null;
+}
+
+exports.default = (0, _createChainableTypeChecker2.default)(elementType);
+},{"./utils/createChainableTypeChecker":285,"react":421}],285:[function(require,module,exports){
+'use strict';
+
+exports.__esModule = true;
+exports.default = createChainableTypeChecker;
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+// Mostly taken from ReactPropTypes.
+
+function createChainableTypeChecker(validate) {
+  function checkType(isRequired, props, propName, componentName, location, propFullName) {
+    var componentNameSafe = componentName || '<<anonymous>>';
+    var propFullNameSafe = propFullName || propName;
+
+    if (props[propName] == null) {
+      if (isRequired) {
+        return new Error('Required ' + location + ' `' + propFullNameSafe + '` was not specified ' + ('in `' + componentNameSafe + '`.'));
+      }
+
+      return null;
+    }
+
+    for (var _len = arguments.length, args = Array(_len > 6 ? _len - 6 : 0), _key = 6; _key < _len; _key++) {
+      args[_key - 6] = arguments[_key];
+    }
+
+    return validate.apply(undefined, [props, propName, componentNameSafe, location, propFullNameSafe].concat(args));
+  }
+
+  var chainedCheckType = checkType.bind(null, false);
+  chainedCheckType.isRequired = checkType.bind(null, true);
+
+  return chainedCheckType;
+}
+},{}],286:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var warning = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  warning = function(condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+    if (format === undefined) {
+      throw new Error(
+        '`warning(condition, format, ...args)` requires a warning ' +
+        'message argument'
+      );
+    }
+
+    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+      throw new Error(
+        'The warning format should be able to uniquely identify this ' +
+        'warning. Please, use a more descriptive format than: ' + format
+      );
+    }
+
+    if (!condition) {
+      var argIndex = 0;
+      var message = 'Warning: ' +
+        format.replace(/%s/g, function() {
+          return args[argIndex++];
+        });
+      if (typeof console !== 'undefined') {
+        console.error(message);
+      }
+      try {
+        // This error was thrown as a convenience so that you can use this stack
+        // to find the callsite that caused this warning to fire.
+        throw new Error(message);
+      } catch(x) {}
+    }
+  };
+}
+
+module.exports = warning;
+
+}).call(this,require('_process'))
+},{"_process":176}],287:[function(require,module,exports){
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = all;
+
+var _common = require('./common');
+
+function all() {
+  for (var _len = arguments.length, propTypes = Array(_len), _key = 0; _key < _len; _key++) {
+    propTypes[_key] = arguments[_key];
+  }
+
+  if (propTypes === undefined) {
+    throw new Error('No validations provided');
+  }
+
+  if (propTypes.some(function (propType) {
+    return typeof propType !== 'function';
+  })) {
+    throw new Error('Invalid arguments, must be functions');
+  }
+
+  if (propTypes.length === 0) {
+    throw new Error('No validations provided');
+  }
+
+  function validate(props, propName, componentName) {
+    for (var i = 0; i < propTypes.length; i++) {
+      var result = propTypes[i](props, propName, componentName);
+
+      if (result !== undefined && result !== null) {
+        return result;
+      }
+    }
+  }
+
+  return _common.createChainableTypeChecker(validate);
+}
+
+module.exports = exports['default'];
+},{"./common":288}],288:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -30345,7 +30699,41 @@ function createChainableTypeChecker(validate) {
 
   return chainedCheckType;
 }
-},{}],285:[function(require,module,exports){
+},{}],289:[function(require,module,exports){
+'use strict';
+
+exports.__esModule = true;
+exports['default'] = deprecated;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _warning = require('warning');
+
+var _warning2 = _interopRequireDefault(_warning);
+
+var warned = {};
+
+function deprecated(propType, explanation) {
+  return function validate(props, propName, componentName) {
+    if (props[propName] != null) {
+      var message = '"' + propName + '" property of "' + componentName + '" has been deprecated.\n' + explanation;
+      if (!warned[message]) {
+        _warning2['default'](false, message);
+        warned[message] = true;
+      }
+    }
+
+    return propType(props, propName, componentName);
+  };
+}
+
+function _resetWarned() {
+  warned = {};
+}
+
+deprecated._resetWarned = _resetWarned;
+module.exports = exports['default'];
+},{"warning":426}],290:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -30387,99 +30775,7 @@ function validate(props, propName, componentName) {
 
 exports['default'] = _common.createChainableTypeChecker(validate);
 module.exports = exports['default'];
-},{"./common":284,"react":421}],286:[function(require,module,exports){
-'use strict';
-
-exports.__esModule = true;
-
-var _common = require('./common');
-
-/**
- * Checks whether a prop provides a DOM element
- *
- * The element can be provided in two forms:
- * - Directly passed
- * - Or passed an object that has a `render` method
- *
- * @param props
- * @param propName
- * @param componentName
- * @returns {Error|undefined}
- */
-
-function validate(props, propName, componentName) {
-  if (typeof props[propName] !== 'object' || typeof props[propName].render !== 'function' && props[propName].nodeType !== 1) {
-    return new Error(_common.errMsg(props, propName, componentName, ', expected a DOM element or an object that has a `render` method'));
-  }
-}
-
-exports['default'] = _common.createChainableTypeChecker(validate);
-module.exports = exports['default'];
-},{"./common":284}],287:[function(require,module,exports){
-'use strict';
-
-exports.__esModule = true;
-exports['default'] = all;
-
-function all() {
-  for (var _len = arguments.length, propTypes = Array(_len), _key = 0; _key < _len; _key++) {
-    propTypes[_key] = arguments[_key];
-  }
-
-  if (propTypes === undefined) {
-    throw new Error('No validations provided');
-  }
-
-  if (propTypes.some(function (propType) {
-    return typeof propType !== 'function';
-  })) {
-    throw new Error('Invalid arguments, must be functions');
-  }
-
-  if (propTypes.length === 0) {
-    throw new Error('No validations provided');
-  }
-
-  return function validate(props, propName, componentName) {
-    for (var i = 0; i < propTypes.length; i++) {
-      var result = propTypes[i](props, propName, componentName);
-
-      if (result !== undefined && result !== null) {
-        return result;
-      }
-    }
-  };
-}
-
-module.exports = exports['default'];
-},{}],288:[function(require,module,exports){
-arguments[4][284][0].apply(exports,arguments)
-},{"dup":284}],289:[function(require,module,exports){
-'use strict';
-
-exports.__esModule = true;
-exports['default'] = deprecated;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _warning = require('warning');
-
-var _warning2 = _interopRequireDefault(_warning);
-
-function deprecated(propType, explanation) {
-  return function validate(props, propName, componentName) {
-    if (props[propName] != null) {
-      _warning2['default'](false, '"' + propName + '" property of "' + componentName + '" has been deprecated.\n' + explanation);
-    }
-
-    return propType(props, propName, componentName);
-  };
-}
-
-module.exports = exports['default'];
-},{"warning":426}],290:[function(require,module,exports){
-arguments[4][285][0].apply(exports,arguments)
-},{"./common":288,"dup":285,"react":421}],291:[function(require,module,exports){
+},{"./common":288,"react":421}],291:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30516,7 +30812,7 @@ function createSinglePropFromChecker() {
     arrOfProps[_key] = arguments[_key];
   }
 
-  function validate(props, propName, componentName) {
+  function validate(props, propName) {
     var usedPropCount = arrOfProps.map(function (listedProp) {
       return props[listedProp];
     }).reduce(function (acc, curr) {
@@ -50069,67 +50365,5 @@ function has(o, k) {
 }.call(this));
 
 },{}],426:[function(require,module,exports){
-(function (process){
-/**
- * Copyright 2014-2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
-'use strict';
-
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-var warning = function() {};
-
-if (process.env.NODE_ENV !== 'production') {
-  warning = function(condition, format, args) {
-    var len = arguments.length;
-    args = new Array(len > 2 ? len - 2 : 0);
-    for (var key = 2; key < len; key++) {
-      args[key - 2] = arguments[key];
-    }
-    if (format === undefined) {
-      throw new Error(
-        '`warning(condition, format, ...args)` requires a warning ' +
-        'message argument'
-      );
-    }
-
-    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
-      throw new Error(
-        'The warning format should be able to uniquely identify this ' +
-        'warning. Please, use a more descriptive format than: ' + format
-      );
-    }
-
-    if (!condition) {
-      var argIndex = 0;
-      var message = 'Warning: ' +
-        format.replace(/%s/g, function() {
-          return args[argIndex++];
-        });
-      if (typeof console !== 'undefined') {
-        console.error(message);
-      }
-      try {
-        // This error was thrown as a convenience so that you can use this stack
-        // to find the callsite that caused this warning to fire.
-        throw new Error(message);
-      } catch(x) {}
-    }
-  };
-}
-
-module.exports = warning;
-
-}).call(this,require('_process'))
-},{"_process":176}]},{},[10]);
+arguments[4][286][0].apply(exports,arguments)
+},{"_process":176,"dup":286}]},{},[10]);

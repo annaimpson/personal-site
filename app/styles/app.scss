@@ -17,11 +17,13 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 @import 'base/media-queries';
 @import 'sections/header';
 @import 'sections/footer';
+@import 'layout';
 @import 'sections/home';
 @import 'sections/portfolio';
 @import 'sections/about';
 @import 'sections/contact';
-@import 'layout';
+@import 'sections/swamp-rabbit';
+
 
 // img {
 //   max-width: 100%;

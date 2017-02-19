@@ -6014,6 +6014,21 @@ button.close {
 @media screen and (min-width: 1024px) {
   .footer {
     display: none; } }
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 60px; }
+
 @media screen {
   .home__title {
     font-family: "Libre Baskerville"; } }
@@ -6168,19 +6183,39 @@ button.close {
 @media screen and (min-width: 1024px) {
   .about {
     margin: 0 40px 0 24%; }
+    .about__header {
+      display: inline-block;
+      width: 49%; }
     .about__title {
       font-size: 55px;
-      margin-top: 50px; }
+      margin-top: 75px; }
     .about__sub-title {
       font-size: 17px; }
     .about__title:first-child, .about__sub-title {
-      display: inline; }
+      display: block; }
     .about__profile-pic {
-      width: 30%;
-      float: right; }
+      width: 45%;
+      max-height: 868px;
+      max-width: 525px;
+      float: right;
+      display: inline-block;
+      margin: 0;
+      padding-top: 80px; }
+    .about__description {
+      width: 49%; }
+    .about__location {
+      display: block;
+      margin-top: 100px; }
+    .about__map {
+      max-width: 600px;
+      width: 45%;
+      display: inline-block;
+      padding: 0; }
     .about__wsnc {
-      font-size: 35px;
-      margin: 60px 0 60px 0; } }
+      font-size: 45px;
+      margin: 60px 0 140px 10%;
+      width: 40%;
+      display: inline-block; } }
 @media screen {
   .contact__title {
     font-family: "Montseratt";
@@ -6333,19 +6368,140 @@ button.close {
     font-size: 16px;
     padding-top: 15px;
     margin: auto 10%; } }
-html {
-  height: 100%;
-  box-sizing: border-box; }
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit; }
-
-body {
-  margin: 0px;
-  min-height: 100%;
-  position: relative;
-  padding-bottom: 60px; }
+@media screen {
+  .swamp-rabbit__title {
+    font-family: "Libre Baskerville";
+    color: #9A9995; }
+  .swamp-rabbit__sub-title {
+    font-family: "Montseratt";
+    color: #9A9995; }
+  .swamp-rabbit__description {
+    font-family: "Open Sans";
+    color: #61605B; }
+  .swamp-rabbit__links {
+    font-family: "Montseratt";
+    color: #9A9995; }
+  .swamp-rabbit__view a {
+    color: #9A9995;
+    border-bottom: 2px solid #ed986f; }
+  .swamp-rabbit__view a:hover {
+    color: #9A9995;
+    text-decoration: none; }
+  .swamp-rabbit__code {
+    font-family: "Open Sans";
+    color: #61605B;
+    list-style: none; } }
+@media screen and (max-width: 374px) {
+  .swamp-rabbit {
+    margin: 20px 9px 0 9px; }
+    .swamp-rabbit__title {
+      font-size: 40px;
+      line-height: 50px; }
+    .swamp-rabbit__sub-title {
+      margin-top: 30px;
+      font-size: 22px; }
+    .swamp-rabbit__description {
+      font-size: 12px;
+      line-height: 20px; }
+    .swamp-rabbit__links {
+      margin: 25px 0 25px 0; }
+    .swamp-rabbit__view {
+      font-size: 16px; }
+    .swamp-rabbit__mockup {
+      width: 100%; }
+    .swamp-rabbit__code {
+      padding: 0 0 25px 5px;
+      font-size: 12px;
+      line-height: 30px; } }
+@media screen and (min-width: 375px) {
+  .swamp-rabbit {
+    margin: 20px 20px 0 20px; }
+    .swamp-rabbit__title {
+      font-size: 40px;
+      line-height: 50px; }
+    .swamp-rabbit__sub-title {
+      margin-top: 30px;
+      font-size: 22px; }
+    .swamp-rabbit__description {
+      font-size: 12px;
+      line-height: 20px; }
+    .swamp-rabbit__links {
+      margin: 25px 0 25px 0; }
+    .swamp-rabbit__view {
+      font-size: 16px; }
+    .swamp-rabbit__mockup {
+      width: 100%; }
+    .swamp-rabbit__code {
+      padding: 0 0 25px 5px;
+      font-size: 12px;
+      line-height: 30px; } }
+@media screen and (min-width: 768px) {
+  .swamp-rabbit {
+    margin: 20px 30px 0 30px; }
+    .swamp-rabbit__description {
+      font-size: 14px;
+      line-height: 28px; }
+    .swamp-rabbit__code {
+      column-count: 3;
+      font-size: 14px;
+      padding-bottom: 100px;
+      margin-left: 12%; } }
+@media screen and (min-width: 960px) {
+  .swamp-rabbit {
+    margin: 20px 30px 0 30px; }
+    .swamp-rabbit__mockup {
+      width: 49%;
+      float: right; }
+    .swamp-rabbit__title {
+      font-size: 55px;
+      line-height: 65px;
+      margin-top: 50px; }
+    .swamp-rabbit__project-info {
+      width: 45%;
+      display: inline-block;
+      padding-bottom: 50px; }
+    .swamp-rabbit__sub-title {
+      font-size: 25px;
+      margin-top: 50px; }
+    .swamp-rabbit__description {
+      font-size: 14px;
+      line-height: 28px; }
+    .swamp-rabbit__links {
+      margin-top: 50px; }
+    .swamp-rabbit__code {
+      font-size: 14px; } }
+@media screen and (min-width: 1024px) {
+  .swamp-rabbit {
+    margin: 0 40px 0 24%; }
+    .swamp-rabbit__mockup {
+      width: 49%;
+      float: right;
+      padding-top: 45px; }
+    .swamp-rabbit__title {
+      font-size: 55px;
+      line-height: 65px;
+      margin-top: 0;
+      padding-top: 75px; }
+    .swamp-rabbit__project-info {
+      width: 45%;
+      display: inline-block;
+      padding-bottom: 10px; }
+    .swamp-rabbit__sub-title {
+      font-size: 25px;
+      margin-top: 50px; }
+    .swamp-rabbit__description {
+      font-size: 14px;
+      line-height: 28px; }
+    .swamp-rabbit__links {
+      margin-top: 50px; }
+    .swamp-rabbit__code {
+      font-size: 14px;
+      padding-bottom: 0; } }
+@media screen and (min-width: 1024px) {
+  .swamp-rabbit__project-info {
+    width: 45%;
+    display: inline-block; }
+  .swamp-rabbit__code {
+    margin: 0; } }
 
 /*# sourceMappingURL=app.css.map */

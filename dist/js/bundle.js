@@ -23,7 +23,7 @@ var About = React.createClass({displayName: "About",
 
             React.createElement("div", {className: "about__header"}, 
               React.createElement("h1", {className: "about__title"}, "Anna Impson"), 
-              React.createElement("h1", {className: "about__sub-title"}, "front-end developer")
+              React.createElement("h6", {className: "about__sub-title"}, "front-end developer")
             ), 
 
             React.createElement("img", {src: "images/anna headshots-anna headshots lr-0008.jpg", alt: "", className: "about__profile-pic"}), 
@@ -51,17 +51,19 @@ var About = React.createClass({displayName: "About",
               React.createElement("li", {className: "about__skill"}, "Git")
             ), 
 
-            React.createElement("h1", {className: "about__title"}, "My Location"), 
 
-            React.createElement("img", {src: "images/icon-map-greensboro.png", alt: "", className: "about__map"}), 
-
-            React.createElement("h1", {className: "about__wsnc"}, "Winston-Salem, NC")
+            React.createElement("div", {className: "about__location"}, 
+              React.createElement("h1", {className: "about__title"}, "My Location"), 
+              React.createElement("img", {src: "images/icon-map-greensboro.png", alt: "", className: "about__map"}), 
+              React.createElement("h1", {className: "about__wsnc"}, "Winston-Salem, NC")
+            )
 
         ), 
 
         React.createElement("div", null, 
             React.createElement(Footer, null)
         )
+
 
       )
     );
@@ -551,44 +553,53 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var SwampRabbit = React.createClass({displayName: "SwampRabbit",
   render: function(){
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "container-fluid header"}, 
-          React.createElement("div", {className: "row"}, 
+
+        React.createElement("div", null, 
             React.createElement(Header, null)
-          )
         ), 
 
-        React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-md-12 swamprabbit-info"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("h1", {className: "swamprabbit-heading"}, "That time I made something responsive"), 
-                React.createElement("h1", {className: "swamprabbit-purpose"}, "Purpose: "), 
-                React.createElement("p", null, "Create a site that was responsive on all devices"), 
-                React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "I was provided with a wireframe which I made responsive using the Bootstrap grid system"), 
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")), 
-                React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, "here"))
-              ), 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, React.createElement("img", {src: "images/responsive.png", alt: "", className: "mockup-pic"}))
-              )
+            React.createElement("div", {className: "swamp-rabbit"}, 
+
+                    React.createElement("h1", {className: "swamp-rabbit__title"}, "That time I made something responsive"), 
+
+                    React.createElement("div", {className: "swamp-rabbit__project-info"}, 
+                      React.createElement("div", {className: "swamp-rabbit__about"}, 
+                        React.createElement("h1", {className: "swamp-rabbit__sub-title"}, "Purpose: "), 
+                        React.createElement("p", {className: "swamp-rabbit__description"}, "Create a site that was responsive on all devices"), 
+
+                        React.createElement("h1", {className: "swamp-rabbit__sub-title"}, "Description: "), 
+                        React.createElement("p", {className: "swamp-rabbit__description"}, "I was provided with a wireframe which I made responsive using the Bootstrap grid system")
+                      ), 
+
+                      React.createElement("div", {className: "swamp-rabbit__links"}, 
+                        React.createElement("h6", {className: "swamp-rabbit__view"}, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")), 
+                        React.createElement("h6", {className: "swamp-rabbit__view"}, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, "here"))
+                      )
+                    ), 
+
+                    React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, React.createElement("img", {src: "images/responsive.png", alt: "", className: "swamp-rabbit__mockup"})), 
+
+                    React.createElement("h1", {className: "swamp-rabbit__sub-title"}, "The Code:"), 
+                    React.createElement("ul", {className: "swamp-rabbit__code"}, 
+                      React.createElement("li", null, "HTML5"), 
+                      React.createElement("li", null, "CSS"), 
+                      React.createElement("li", null, "Bootstrap")
+                    )
+
             ), 
-            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
-                React.createElement("h1", null, "The Code:"), 
-                React.createElement("div", null, "HTML5"), 
-                React.createElement("div", null, "CSS"), 
-                React.createElement("div", null, "Bootstrap")
-              )
-            )
-          )
+
+        React.createElement("div", null, 
+            React.createElement(Footer, null)
         )
+
+
       )
     );
   }
@@ -596,7 +607,7 @@ var SwampRabbit = React.createClass({displayName: "SwampRabbit",
 
 module.exports = SwampRabbit;
 
-},{"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],11:[function(require,module,exports){
+},{"./footer.jsx":4,"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],11:[function(require,module,exports){
 "use strict";
 var Backbone = require('backbone');
 var $ = require('jquery');

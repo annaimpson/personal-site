@@ -21,7 +21,7 @@ var About = React.createClass({
 
             <div className="about__header">
               <h1 className="about__title">Anna Impson</h1>
-              <h1 className="about__sub-title">front-end developer</h1>
+              <h6 className="about__sub-title">front-end developer</h6>
             </div>
 
             <img src="images/anna headshots-anna headshots lr-0008.jpg" alt="" className="about__profile-pic"/>
@@ -49,17 +49,19 @@ var About = React.createClass({
               <li className="about__skill">Git</li>
             </ul>
 
-            <h1 className="about__title">My Location</h1>
 
-            <img src="images/icon-map-greensboro.png" alt="" className="about__map"/>
-
-            <h1 className="about__wsnc">Winston-Salem, NC</h1>
+            <div className="about__location">
+              <h1 className="about__title">My Location</h1>
+              <img src="images/icon-map-greensboro.png" alt="" className="about__map"/>
+              <h1 className="about__wsnc">Winston-Salem, NC</h1>
+            </div>
 
         </div>
 
         <div>
             <Footer/>
         </div>
+
 
       </div>
     );

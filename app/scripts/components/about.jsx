@@ -19,8 +19,10 @@ var About = React.createClass({
 
         <div className="about">
 
-            <h1 className="about__title">Anna Impson</h1>
-            <h1 className="about__sub-title">front-end developer</h1>
+            <div className="about__header">
+              <h1 className="about__title">Anna Impson</h1>
+              <h1 className="about__sub-title">front-end developer</h1>
+            </div>
 
             <img src="images/anna headshots-anna headshots lr-0008.jpg" alt="" className="about__profile-pic"/>
 

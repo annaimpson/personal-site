@@ -21,8 +21,10 @@ var About = React.createClass({displayName: "About",
 
         React.createElement("div", {className: "about"}, 
 
-            React.createElement("h1", {className: "about__title"}, "Anna Impson"), 
-            React.createElement("h1", {className: "about__sub-title"}, "front-end developer"), 
+            React.createElement("div", {className: "about__header"}, 
+              React.createElement("h1", {className: "about__title"}, "Anna Impson"), 
+              React.createElement("h1", {className: "about__sub-title"}, "front-end developer")
+            ), 
 
             React.createElement("img", {src: "images/anna headshots-anna headshots lr-0008.jpg", alt: "", className: "about__profile-pic"}), 
 

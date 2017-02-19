@@ -6062,17 +6062,125 @@ button.close {
   .about__sub-title {
     font-family: "Montseratt";
     font-style: italic;
-    color: #333333; } }
+    color: #333333; }
+  .about__description {
+    font-family: "Open Sans";
+    color: #61605B; }
+  .about__skills-list {
+    list-style: none;
+    font-family: "Open Sans";
+    color: #61605B; }
+  .about__wsnc {
+    font-family: "Montseratt";
+    font-style: italic;
+    color: #ed986f; } }
 @media screen and (max-width: 374px) {
   .about {
     margin: 20px 9px 0 9px; }
+    .about__title:first-child, .about__sub-title {
+      display: none; }
     .about__title {
       font-size: 40px;
-      margin-top: 40px; }
-    .about__sub-title {
-      font-size: 14px; }
+      margin-top: 30px; }
     .about__profile-pic {
-      width: 100%; } }
+      width: 100%; }
+    .about__description {
+      font-size: 12px;
+      line-height: 25px;
+      margin-top: 10px; }
+    .about__skills-list {
+      font-size: 12px;
+      column-count: 2;
+      line-height: 30px;
+      padding-left: 10px; }
+    .about__map {
+      margin: 20px 20px 0 0;
+      width: 55%;
+      float: left; }
+    .about__wsnc {
+      font-size: 20px;
+      margin: 30px 0 75px 0; } }
+@media screen and (min-width: 375px) {
+  .about {
+    margin: 20px 20px 0 20px; }
+    .about__title:first-child, .about__sub-title {
+      display: none; }
+    .about__title {
+      font-size: 40px;
+      margin-top: 30px; }
+    .about__profile-pic {
+      width: 100%; }
+    .about__description {
+      font-size: 12px;
+      line-height: 25px;
+      margin-top: 10px; }
+    .about__skills-list {
+      font-size: 12px;
+      column-count: 3;
+      line-height: 30px;
+      padding-left: 0px; }
+    .about__map {
+      margin: 20px 20px 0 0;
+      width: 55%;
+      float: left; }
+    .about__wsnc {
+      font-size: 20px;
+      margin: 25px 0 75px 0; } }
+@media screen and (min-width: 414px) {
+  .about__wsnc {
+    margin: 30px 0 110px 0; } }
+@media screen and (min-width: 768px) {
+  .about {
+    margin: 20px 30px 0 30px; }
+    .about__description {
+      font-size: 14px;
+      line-height: 28px; }
+    .about__skills-list {
+      font-size: 14px; }
+    .about__map {
+      float: left;
+      width: 50%;
+      padding-right: 25px; }
+    .about__wsnc {
+      font-size: 35px;
+      margin: 60px 0 170px 0; } }
+@media screen and (min-width: 960px) {
+  .about {
+    margin: 20px 30px 0 30px; }
+    .about__profile-pic {
+      width: 50%;
+      margin-left: 25%; }
+    .about__title {
+      font-size: 55px;
+      margin-top: 50px; }
+    .about__description {
+      font-size: 14px;
+      line-height: 28px; }
+    .about__skills-list {
+      font-size: 14px; }
+    .about__map {
+      float: left;
+      width: 50%;
+      padding-right: 25px; }
+    .about__wsnc {
+      font-size: 35px;
+      margin: 60px 0 170px 0; } }
+@media screen and (min-width: 1024px) {
+  .about {
+    margin: 0 40px 0 24%; }
+    .about__title {
+      font-size: 55px;
+      margin-top: 50px; }
+    .about__sub-title {
+      font-size: 17px; }
+    .about__title:first-child, .about__sub-title {
+      display: inline; }
+    .about__profile-pic {
+      width: 30%;
+      float: right; }
+    .about__wsnc {
+      font-size: 35px;
+      margin: 60px 0 60px 0; } }
 @media screen {
   .contact__title {
     font-family: "Montseratt";

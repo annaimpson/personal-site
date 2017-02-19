@@ -5,6 +5,7 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 
@@ -12,69 +13,54 @@ var About = React.createClass({displayName: "About",
   render: function(){
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "container-fluid header"}, 
-          React.createElement("div", {className: "row"}, 
+
+        React.createElement("div", null, 
             React.createElement(Header, null)
-          )
         ), 
 
 
-        React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-md-12 about-info"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("h1", {className: "about-heading"}, "Anna Impson"), 
-                React.createElement("h1", {className: "about-career"}, "front-end developer"), 
-                React.createElement("h1", {className: "what-i-do"}, "What I Do"), 
-                React.createElement("p", null, "These days, I've been writing in code. What kind, you may ask? Not django and not Morse. I have been doing that front-end developing business. It has only been a measly three months, but I'm getting in a groove and really enjoying it." + ' ' +
-                "I went from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! "), 
-                React.createElement("div", {className: "col-xs-12 col-md-12 my-skills"}, 
-                  React.createElement("h1", null, "My Mad Skills")
-                ), 
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
-                  React.createElement("div", null, "HTML5"), 
-                  React.createElement("div", null, "CSS3"), 
-                  React.createElement("div", null, "SCSS"), 
-                  React.createElement("div", null, "JavaScript")
-                ), 
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
-                  React.createElement("div", null, "jQuery"), 
-                  React.createElement("div", null, "Underscore.js"), 
-                  React.createElement("div", null, "Handlebars.js"), 
-                  React.createElement("div", null, "Backbone.js")
-                ), 
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
-                  React.createElement("div", null, "React.js"), 
-                  React.createElement("div", null, "Bootstrap"), 
-                  React.createElement("div", null, "Parse Server")
-                ), 
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
-                  React.createElement("div", null, "Heroku"), 
-                  React.createElement("div", null, "GitHub"), 
-                  React.createElement("div", null, "Git")
-                )
-              ), 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("img", {src: "images/anna headshots-anna headshots lr-0008.jpg", alt: "", className: "about-profile-pic"})
-              )
+        React.createElement("div", {className: "about"}, 
+
+            React.createElement("h1", {className: "about__title"}, "Anna Impson"), 
+            React.createElement("h1", {className: "about__sub-title"}, "front-end developer"), 
+
+            React.createElement("img", {src: "images/anna headshots-anna headshots lr-0008.jpg", alt: "", className: "about__profile-pic"}), 
+
+            React.createElement("h1", {className: "about__title"}, "What I Do"), 
+            React.createElement("p", {className: "about__description"}, "These days, I've been writing in code. What kind, you may ask? Not django and not Morse. I have been doing that front-end developing business. It has only been a measly three months, but I'm getting in a groove and really enjoying it." + ' ' +
+            "I went from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! "), 
+
+          React.createElement("h1", {className: "about__title"}, "My Mad Skills"), 
+
+            React.createElement("ul", {className: "about__skills-list"}, 
+              React.createElement("li", {className: "about__skill"}, "HTML5"), 
+              React.createElement("li", {className: "about__skill"}, "CSS3"), 
+              React.createElement("li", {className: "about__skill"}, "SCSS"), 
+              React.createElement("li", {className: "about__skill"}, "JavaScript"), 
+              React.createElement("li", {className: "about__skill"}, "jQuery"), 
+              React.createElement("li", {className: "about__skill"}, "Underscore.js"), 
+              React.createElement("li", {className: "about__skill"}, "Handlebars.js"), 
+              React.createElement("li", {className: "about__skill"}, "Backbone.js"), 
+              React.createElement("li", {className: "about__skill"}, "React.js"), 
+              React.createElement("li", {className: "about__skill"}, "Bootstrap"), 
+              React.createElement("li", {className: "about__skill"}, "Parse Server"), 
+              React.createElement("li", {className: "about__skill"}, "Heroku"), 
+              React.createElement("li", {className: "about__skill"}, "GitHub"), 
+              React.createElement("li", {className: "about__skill"}, "Git")
             ), 
-            React.createElement("div", {className: "my-location"}, 
-              React.createElement("div", {className: "row"}, 
-                React.createElement("div", {className: "col-xs-12 col-md-offset-5 col-md-12"}, 
-                  React.createElement("h1", null, "My Location")
-                )
-              ), 
-              React.createElement("div", {className: "row"}, 
-                React.createElement("div", {className: "col-xs-12 col-md-offset-1 col-md-6"}, 
-                  React.createElement("img", {src: "images/icon-map-greensboro.png", alt: "", className: "map-photo"})
-                ), 
-                React.createElement("div", {className: "col-md-3"}, 
-                  React.createElement("h1", {className: "wsnc"}, "Winston-Salem, NC")
-                )
-              )
-            )
-          )
+
+            React.createElement("h1", {className: "about__title"}, "My Location"), 
+
+            React.createElement("img", {src: "images/icon-map-greensboro.png", alt: "", className: "about__map"}), 
+
+            React.createElement("h1", {className: "about__wsnc"}, "Winston-Salem, NC")
+
+        ), 
+
+        React.createElement("div", null, 
+            React.createElement(Footer, null)
         )
+
       )
     );
   }
@@ -82,7 +68,7 @@ var About = React.createClass({displayName: "About",
 
 module.exports = About;
 
-},{"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],2:[function(require,module,exports){
+},{"./footer.jsx":4,"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],2:[function(require,module,exports){
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');

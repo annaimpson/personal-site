@@ -6056,6 +6056,24 @@ button.close {
       transform: translate(0%, 420%);
       text-align: center; } }
 @media screen {
+  .about__title {
+    font-family: "Montseratt";
+    color: #9A9995; }
+  .about__sub-title {
+    font-family: "Montseratt";
+    font-style: italic;
+    color: #333333; } }
+@media screen and (max-width: 374px) {
+  .about {
+    margin: 20px 9px 0 9px; }
+    .about__title {
+      font-size: 40px;
+      margin-top: 40px; }
+    .about__sub-title {
+      font-size: 14px; }
+    .about__profile-pic {
+      width: 100%; } }
+@media screen {
   .contact__title {
     font-family: "Montseratt";
     color: #9A9995; }

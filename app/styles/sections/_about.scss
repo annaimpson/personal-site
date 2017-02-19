@@ -1,1 +1,52 @@
+///
+///$mq-default
+///
+    @media #{$mq-default} {
+      .about {
 
+        &__title {
+          font-family: $font_montseratt;
+          color: $color_light-font-grey;
+        }
+
+        &__sub-title {
+          font-family: $font_montseratt;
+          font-style: italic;
+          color: $color_dark-grey;
+        }
+
+      }
+    }
+
+///
+///end of $mq-default
+///
+
+
+
+///
+///$mq-extra-small
+///
+    @media #{$mq-extra-small} {
+      .about {
+        margin: 20px 9px 0 9px;
+
+        &__title {
+          font-size: 40px;
+          margin-top: 40px;
+        }
+
+        &__sub-title {
+          font-size: 14px;
+        }
+
+        &__profile-pic {
+          width: 100%;
+        }
+
+      }
+    }
+
+///
+///end of $mq-extra-small
+///

@@ -11,64 +11,64 @@ require('backbone-react-component');
 var About = React.createClass({displayName: "About",
   render: function(){
     return (
-      React.createElement("div", null,
-        React.createElement("div", {className: "container-fluid header"},
-          React.createElement("div", {className: "row"},
+      React.createElement("div", null, 
+        React.createElement("div", {className: "container-fluid header"}, 
+          React.createElement("div", {className: "row"}, 
             React.createElement(Header, null)
           )
-        ),
+        ), 
 
 
-        React.createElement("div", {className: "container"},
-          React.createElement("div", {className: "row"},
-            React.createElement("div", {className: "col-md-12 about-info"},
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
-                React.createElement("h1", {className: "about-heading"}, "Anna Impson"),
-                React.createElement("h1", {className: "about-career"}, "front-end developer"),
-                React.createElement("h1", {className: "what-i-do"}, "What I Do"),
+        React.createElement("div", {className: "container"}, 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "col-md-12 about-info"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("h1", {className: "about-heading"}, "Anna Impson"), 
+                React.createElement("h1", {className: "about-career"}, "front-end developer"), 
+                React.createElement("h1", {className: "what-i-do"}, "What I Do"), 
                 React.createElement("p", null, "These days, I've been writing in code. What kind, you may ask? Not django and not Morse. I have been doing that front-end developing business. It has only been a measly three months, but I'm getting in a groove and really enjoying it." + ' ' +
-                "I went from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! "),
-                React.createElement("div", {className: "col-xs-12 col-md-12 my-skills"},
+                "I went from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! "), 
+                React.createElement("div", {className: "col-xs-12 col-md-12 my-skills"}, 
                   React.createElement("h1", null, "My Mad Skills")
-                ),
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"},
-                  React.createElement("div", null, "HTML5"),
-                  React.createElement("div", null, "CSS3"),
-                  React.createElement("div", null, "SCSS"),
+                ), 
+                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
+                  React.createElement("div", null, "HTML5"), 
+                  React.createElement("div", null, "CSS3"), 
+                  React.createElement("div", null, "SCSS"), 
                   React.createElement("div", null, "JavaScript")
-                ),
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"},
-                  React.createElement("div", null, "jQuery"),
-                  React.createElement("div", null, "Underscore.js"),
-                  React.createElement("div", null, "Handlebars.js"),
+                ), 
+                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
+                  React.createElement("div", null, "jQuery"), 
+                  React.createElement("div", null, "Underscore.js"), 
+                  React.createElement("div", null, "Handlebars.js"), 
                   React.createElement("div", null, "Backbone.js")
-                ),
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"},
-                  React.createElement("div", null, "React.js"),
-                  React.createElement("div", null, "Bootstrap"),
+                ), 
+                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
+                  React.createElement("div", null, "React.js"), 
+                  React.createElement("div", null, "Bootstrap"), 
                   React.createElement("div", null, "Parse Server")
-                ),
-                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"},
-                  React.createElement("div", null, "Heroku"),
-                  React.createElement("div", null, "GitHub"),
+                ), 
+                React.createElement("div", {className: "col-xs-12 col-md-3 skills-list"}, 
+                  React.createElement("div", null, "Heroku"), 
+                  React.createElement("div", null, "GitHub"), 
                   React.createElement("div", null, "Git")
                 )
-              ),
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("img", {src: "images/anna headshots-anna headshots lr-0008.jpg", alt: "", className: "about-profile-pic"})
               )
-            ),
-            React.createElement("div", {className: "my-location"},
-              React.createElement("div", {className: "row"},
-                React.createElement("div", {className: "col-xs-12 col-md-offset-5 col-md-12"},
+            ), 
+            React.createElement("div", {className: "my-location"}, 
+              React.createElement("div", {className: "row"}, 
+                React.createElement("div", {className: "col-xs-12 col-md-offset-5 col-md-12"}, 
                   React.createElement("h1", null, "My Location")
                 )
-              ),
-              React.createElement("div", {className: "row"},
-                React.createElement("div", {className: "col-xs-12 col-md-offset-1 col-md-6"},
+              ), 
+              React.createElement("div", {className: "row"}, 
+                React.createElement("div", {className: "col-xs-12 col-md-offset-1 col-md-6"}, 
                   React.createElement("img", {src: "images/icon-map-greensboro.png", alt: "", className: "map-photo"})
-                ),
-                React.createElement("div", {className: "col-md-3"},
+                ), 
+                React.createElement("div", {className: "col-md-3"}, 
                   React.createElement("h1", {className: "wsnc"}, "Winston-Salem, NC")
                 )
               )
@@ -95,38 +95,38 @@ require('backbone-react-component');
 var Contact = React.createClass({displayName: "Contact",
   render: function(){
     return (
-      React.createElement("div", null,
+      React.createElement("div", null, 
 
-        React.createElement("div", null,
+        React.createElement("div", null, 
           React.createElement(Header, null)
-        ),
+        ), 
 
-        React.createElement("div", {className: "contact"},
+        React.createElement("div", {className: "contact"}, 
 
-            React.createElement("h1", {className: "contact__title"}, "Let's Chat"),
+            React.createElement("h1", {className: "contact__title"}, "Let's Chat"), 
 
             React.createElement("p", {className: "contact__info"}, "I am a front-end web developer seeking to contribute and grow in a junior web development role. I work well in" + ' ' +
-              "a team environment, consistently meet deadlines, and have an eye for detail. If those qualities fit into your team environment, let's talk!"),
-            React.createElement("p", {className: "contact__info"}, "I am a quick learner who is eager to gain knowledge and acquire new skills"),
+              "a team environment, consistently meet deadlines, and have an eye for detail. If those qualities fit into your team environment, let's talk!"), 
+            React.createElement("p", {className: "contact__info"}, "I am a quick learner who is eager to gain knowledge and acquire new skills"), 
 
-            React.createElement("div", {className: "contact__contact-block"},
-              React.createElement("h6", {className: "contact__contact"}, React.createElement("a", {href: "mailto:annaimpson@gmail.com"}, "annaimpson@gmail.com")),
+            React.createElement("div", {className: "contact__contact-block"}, 
+              React.createElement("h6", {className: "contact__contact"}, React.createElement("a", {href: "mailto:annaimpson@gmail.com"}, "annaimpson@gmail.com")), 
               React.createElement("h6", {className: "contact__sub-title"}, "email")
-            ),
+            ), 
 
-            React.createElement("div", {className: "contact__contact-block"},
-              React.createElement("h6", {className: "contact__contact"}, "864 351 9864"),
+            React.createElement("div", {className: "contact__contact-block"}, 
+              React.createElement("h6", {className: "contact__contact"}, "864 351 9864"), 
               React.createElement("h6", {className: "contact__sub-title"}, "phone")
-            ),
+            ), 
 
-            React.createElement("div", {className: "contact__bubbles"},
-              React.createElement("h3", {className: "contact__links"}, React.createElement("a", {href: "images/Impson_resume.pdf"}, "Resume")),
+            React.createElement("div", {className: "contact__bubbles"}, 
+              React.createElement("h3", {className: "contact__links"}, React.createElement("a", {href: "images/Impson_resume.pdf"}, "Resume")), 
               React.createElement("h3", {className: "contact__links"}, React.createElement("a", {href: "https://github.com/annaimpson"}, "GitHub"))
             )
-        ),
+        ), 
 
 
-        React.createElement("div", null,
+        React.createElement("div", null, 
           React.createElement(Footer, null)
         )
 
@@ -150,50 +150,50 @@ require('backbone-react-component');
 var DrinkUp = React.createClass({displayName: "DrinkUp",
   render: function(){
     return (
-      React.createElement("div", null,
-        React.createElement("div", {className: "container-fluid header"},
-          React.createElement("div", {className: "row"},
+      React.createElement("div", null, 
+        React.createElement("div", {className: "container-fluid header"}, 
+          React.createElement("div", {className: "row"}, 
             React.createElement(Header, null)
           )
-        ),
+        ), 
 
-        React.createElement("div", {className: "container"},
-          React.createElement("div", {className: "row"},
-            React.createElement("div", {className: "col-md-12 drinkup-info"},
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
-                React.createElement("h1", {className: "drinkup-heading"}, "That time I made something that combined all my skills"),
-                React.createElement("h1", {className: "purpose"}, "Purpose: "),
-                React.createElement("p", null, "Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos."),
-                React.createElement("h1", null, "Description: "),
+        React.createElement("div", {className: "container"}, 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "col-md-12 drinkup-info"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("h1", {className: "drinkup-heading"}, "That time I made something that combined all my skills"), 
+                React.createElement("h1", {className: "purpose"}, "Purpose: "), 
+                React.createElement("p", null, "Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos."), 
+                React.createElement("h1", null, "Description: "), 
                 React.createElement("p", null, "I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something that worked well and looked great." + ' ' +
                   "Drink Up was created for those who also like beer. It allows the user to create a profile," + ' ' +
-                  "search for beer types, flavor profiles, and breweries. In addition, the user can save specific beer to their profile to refer to later. "),
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/beer-final-project"}, "here")),
+                  "search for beer types, flavor profiles, and breweries. In addition, the user can save specific beer to their profile to refer to later. "), 
+                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/beer-final-project"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, "here"))
-              ),
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, React.createElement("img", {src: "images/drinkUp-snap.png", alt: "", className: "drinkup-pic"}))
               )
-            ),
-            React.createElement("div", {className: "col-xs-12 col-md-12"},
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"},
-                React.createElement("h1", null, "The Code:"),
-                React.createElement("div", null, "HTML5"),
-                React.createElement("div", null, "SCSS"),
-                React.createElement("div", null, "Bootstrap"),
-                React.createElement("div", null, "JavaScript"),
-                React.createElement("div", null, "jQuery"),
-                React.createElement("div", null, "Underscore.js"),
-                React.createElement("div", null, "Node.js"),
-                React.createElement("div", null, "Backbone.js"),
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
+                React.createElement("h1", null, "The Code:"), 
+                React.createElement("div", null, "HTML5"), 
+                React.createElement("div", null, "SCSS"), 
+                React.createElement("div", null, "Bootstrap"), 
+                React.createElement("div", null, "JavaScript"), 
+                React.createElement("div", null, "jQuery"), 
+                React.createElement("div", null, "Underscore.js"), 
+                React.createElement("div", null, "Node.js"), 
+                React.createElement("div", null, "Backbone.js"), 
                 React.createElement("div", null, "React.js")
-              ),
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-server"},
-                React.createElement("h1", null, "The Server:"),
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-4 the-server"}, 
+                React.createElement("h1", null, "The Server:"), 
                 React.createElement("div", null, "Parse")
-              ),
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-backend"},
-                React.createElement("h1", null, "The Backend:"),
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-4 the-backend"}, 
+                React.createElement("h1", null, "The Backend:"), 
                 React.createElement("div", null, "Heroku")
               )
             )
@@ -218,13 +218,13 @@ var footer = React. createClass({displayName: "footer",
 
   render: function(){
     return (
-      React.createElement("div", null,
+      React.createElement("div", null, 
 
-        React.createElement("div", {className: "footer"},
+        React.createElement("div", {className: "footer"}, 
 
-          React.createElement("div", {className: "footer__social-icons"},
-            React.createElement("a", {href: "https://www.linkedin.com/in/anna-impson-620058b0"}, React.createElement("img", {src: "images/linkedin.png", alt: "", className: "footer__social"})),
-            React.createElement("a", {href: "https://www.instagram.com/anna.impson/"}, React.createElement("img", {src: "images/instagram.png", alt: "", className: "footer__social"})),
+          React.createElement("div", {className: "footer__social-icons"}, 
+            React.createElement("a", {href: "https://www.linkedin.com/in/anna-impson-620058b0"}, React.createElement("img", {src: "images/linkedin.png", alt: "", className: "footer__social"})), 
+            React.createElement("a", {href: "https://www.instagram.com/anna.impson/"}, React.createElement("img", {src: "images/instagram.png", alt: "", className: "footer__social"})), 
             React.createElement("a", {href: "https://twitter.com/annaimpson1"}, React.createElement("img", {src: "images/twitter.png", alt: "", className: "footer__social"}))
           )
         )
@@ -249,39 +249,39 @@ require('backbone-react-component');
 var GitHub = React.createClass({displayName: "GitHub",
   render: function(){
     return (
-      React.createElement("div", null,
-        React.createElement("div", {className: "container-fluid header"},
-          React.createElement("div", {className: "row"},
+      React.createElement("div", null, 
+        React.createElement("div", {className: "container-fluid header"}, 
+          React.createElement("div", {className: "row"}, 
             React.createElement(Header, null)
           )
-        ),
+        ), 
 
-        React.createElement("div", {className: "container"},
-          React.createElement("div", {className: "row"},
-            React.createElement("div", {className: "col-md-12 github-info"},
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
-                React.createElement("h1", {className: "github-heading"}, "That time I made and AJAX request"),
-                React.createElement("h1", {className: "github-purpose"}, "Purpose: "),
-                React.createElement("p", null, "Make an AJAX request and recreate your GitHub profile"),
-                React.createElement("h1", null, "Description: "),
-                React.createElement("p", null, "For this project, I worked with the GitHub API and recreated the repository portion of my profile page. "),
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/github-profile"}, "here")),
+        React.createElement("div", {className: "container"}, 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "col-md-12 github-info"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("h1", {className: "github-heading"}, "That time I made and AJAX request"), 
+                React.createElement("h1", {className: "github-purpose"}, "Purpose: "), 
+                React.createElement("p", null, "Make an AJAX request and recreate your GitHub profile"), 
+                React.createElement("h1", null, "Description: "), 
+                React.createElement("p", null, "For this project, I worked with the GitHub API and recreated the repository portion of my profile page. "), 
+                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/github-profile"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, "here"))
-              ),
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, React.createElement("img", {src: "images/github-snap.png", alt: "", className: "github-pic"}))
               )
-            ),
-            React.createElement("div", {className: "col-xs-12 col-md-12"},
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"},
-                React.createElement("h1", null, "The Code:"),
-                React.createElement("div", null, "HTML5"),
-                React.createElement("div", null, "SCSS"),
-                React.createElement("div", null, "Bootstrap"),
-                React.createElement("div", null, "JavaScript"),
-                React.createElement("div", null, "jQuery"),
-                React.createElement("div", null, "Underscore.js"),
-                React.createElement("div", null, "Handlebars.js"),
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
+                React.createElement("h1", null, "The Code:"), 
+                React.createElement("div", null, "HTML5"), 
+                React.createElement("div", null, "SCSS"), 
+                React.createElement("div", null, "Bootstrap"), 
+                React.createElement("div", null, "JavaScript"), 
+                React.createElement("div", null, "jQuery"), 
+                React.createElement("div", null, "Underscore.js"), 
+                React.createElement("div", null, "Handlebars.js"), 
                 React.createElement("div", null, "AJAX")
               )
             )
@@ -332,51 +332,51 @@ var head = React. createClass({displayName: "head",
   },
   render: function(){
     return (
-      React.createElement("div", {className: "head"},
+      React.createElement("div", {className: "head"}, 
 
-        React.createElement("div", {className: "head__fixed"},
-          React.createElement("div", {className: "head__mobile-hamburger", id: "hamburger"},
+        React.createElement("div", {className: "head__fixed"}, 
+          React.createElement("div", {className: "head__mobile-hamburger", id: "hamburger"}, 
             React.createElement("a", {onClick: this.modalToggle}, React.createElement("span", {className: "head__line"}))
           )
-        ),
+        ), 
 
-        React.createElement("img", {src: "images/Impson_web logo-02.png", alt: "", className: "head__logo"}),
+        React.createElement("img", {src: "images/Impson_web logo-02.png", alt: "", className: "head__logo"}), 
 
 
 
-        React.createElement("div", {id: "myModal", className: "head__modal modal"},
-          React.createElement("span", {className: "close-btn"},
+        React.createElement("div", {id: "myModal", className: "head__modal modal"}, 
+          React.createElement("span", {className: "close-btn"}, 
             React.createElement("span", {className: "head__modal-close close"})
-          ),
-          React.createElement("ul", {className: "head__mobile-nav"},
-            React.createElement("li", null, React.createElement("a", {onClick: this.portfolioToggle, className: "head__modal-nav selection"}, "Portfolio")),
-            React.createElement("li", null, React.createElement("a", {onClick: this.aboutToggle, className: "head__modal-nav selection"}, "About")),
+          ), 
+          React.createElement("ul", {className: "head__mobile-nav"}, 
+            React.createElement("li", null, React.createElement("a", {onClick: this.portfolioToggle, className: "head__modal-nav selection"}, "Portfolio")), 
+            React.createElement("li", null, React.createElement("a", {onClick: this.aboutToggle, className: "head__modal-nav selection"}, "About")), 
             React.createElement("li", null, React.createElement("a", {onClick: this.contactToggle, className: "head__modal-nav selection"}, "Contact"))
-          ),
+          ), 
 
-          React.createElement("div", {className: "head__modal-social"},
-            React.createElement("a", {href: "https://www.linkedin.com/in/anna-impson-620058b0"}, React.createElement("img", {src: "images/linkedin.png", alt: "", className: "head__modal-icons"})),
-            React.createElement("a", {href: "https://www.instagram.com/anna.impson/"}, React.createElement("img", {src: "images/instagram.png", alt: "", className: "head__modal-icons"})),
+          React.createElement("div", {className: "head__modal-social"}, 
+            React.createElement("a", {href: "https://www.linkedin.com/in/anna-impson-620058b0"}, React.createElement("img", {src: "images/linkedin.png", alt: "", className: "head__modal-icons"})), 
+            React.createElement("a", {href: "https://www.instagram.com/anna.impson/"}, React.createElement("img", {src: "images/instagram.png", alt: "", className: "head__modal-icons"})), 
             React.createElement("a", {href: "https://twitter.com/annaimpson1"}, React.createElement("img", {src: "images/twitter.png", alt: "", className: "head__modal-icons"}))
           )
-        ),
+        ), 
 
 
 
-        React.createElement("div", {className: "head__sticky-nav"},
-          React.createElement("div", {className: "head__nav-list"},
-              React.createElement("img", {src: "images/Impson_web logo-02.png", alt: "", className: "head__logo-desktop"}),
+        React.createElement("div", {className: "head__sticky-nav"}, 
+          React.createElement("div", {className: "head__nav-list"}, 
+              React.createElement("img", {src: "images/Impson_web logo-02.png", alt: "", className: "head__logo-desktop"}), 
 
-              React.createElement("ul", {className: "head__main-nav"},
-                React.createElement("li", null, React.createElement("a", {onClick: this.portfolioToggle, className: "head__main-nav"}, "Portfolio")),
-                React.createElement("li", null, React.createElement("a", {onClick: this.aboutToggle, className: "head__main-nav"}, "About")),
+              React.createElement("ul", {className: "head__main-nav"}, 
+                React.createElement("li", null, React.createElement("a", {onClick: this.portfolioToggle, className: "head__main-nav"}, "Portfolio")), 
+                React.createElement("li", null, React.createElement("a", {onClick: this.aboutToggle, className: "head__main-nav"}, "About")), 
                 React.createElement("li", null, React.createElement("a", {onClick: this.contactToggle, className: "head__main-nav"}, "Contact"))
               )
 
-          ),
-          React.createElement("div", {className: "head__social-icons"},
-            React.createElement("a", {href: "https://www.linkedin.com/in/anna-impson-620058b0"}, React.createElement("img", {src: "images/linkedin.png", alt: "", className: "head__sticky-nav-social"})),
-            React.createElement("a", {href: "https://www.instagram.com/anna.impson/"}, React.createElement("img", {src: "images/instagram.png", alt: "", className: "head__sticky-nav-social"})),
+          ), 
+          React.createElement("div", {className: "head__social-icons"}, 
+            React.createElement("a", {href: "https://www.linkedin.com/in/anna-impson-620058b0"}, React.createElement("img", {src: "images/linkedin.png", alt: "", className: "head__sticky-nav-social"})), 
+            React.createElement("a", {href: "https://www.instagram.com/anna.impson/"}, React.createElement("img", {src: "images/instagram.png", alt: "", className: "head__sticky-nav-social"})), 
             React.createElement("a", {href: "https://twitter.com/annaimpson1"}, React.createElement("img", {src: "images/twitter.png", alt: "", className: "head__sticky-nav-social"}))
           )
         )
@@ -414,47 +414,47 @@ var Home = React.createClass({displayName: "Home",
   },
   render: function(){
     return (
-      React.createElement("div", null,
+      React.createElement("div", null, 
 
-        React.createElement("div", null,
+        React.createElement("div", null, 
             React.createElement(Header, null)
-        ),
+        ), 
 
 
 
-        React.createElement("div", {className: "home"},
+        React.createElement("div", {className: "home"}, 
 
-            React.createElement("div", {className: "home__projects-block"},
+            React.createElement("div", {className: "home__projects-block"}, 
               /*<h1 className="home__title">Drink Up</h1>*/
-              React.createElement("a", {onClick: this.drinkToggle},
+              React.createElement("a", {onClick: this.drinkToggle}, 
                 React.createElement("img", {src: "images/drinkup.png", alt: "", className: "home__icon"})
               )
-            ),
+            ), 
 
-            React.createElement("div", {className: "home__projects-block"},
+            React.createElement("div", {className: "home__projects-block"}, 
               /*<h1 className="home__title">GitHub</h1>*/
-              React.createElement("a", {onClick: this.gitHubToggle},
+              React.createElement("a", {onClick: this.gitHubToggle}, 
                 React.createElement("img", {src: "images/github.png", alt: "", className: "home__icon"})
               )
-            ),
+            ), 
 
-            React.createElement("div", {className: "home__projects-block"},
+            React.createElement("div", {className: "home__projects-block"}, 
               /*<h1 className="home__title">Surf &amp; Paddle</h1>*/
-              React.createElement("a", {onClick: this.surfToggle},
+              React.createElement("a", {onClick: this.surfToggle}, 
                 React.createElement("img", {src: "images/surfpaddle.png", alt: "", className: "home__icon"})
               )
-            ),
+            ), 
 
-            React.createElement("div", {className: "home__projects-block"},
+            React.createElement("div", {className: "home__projects-block"}, 
               /*<h1 className="home__title">Swamp Rabbit Cycling</h1>*/
-              React.createElement("a", {onClick: this.swampRabbitToggle},
+              React.createElement("a", {onClick: this.swampRabbitToggle}, 
                 React.createElement("img", {src: "images/bike.png", alt: "", className: "home__icon"})
               )
             )
 
-        ),
+        ), 
 
-        React.createElement("div", null,
+        React.createElement("div", null, 
             React.createElement(Footer, null)
         )
 
@@ -482,16 +482,16 @@ var LandingPage = React.createClass({displayName: "LandingPage",
   },
   render: function(){
     return (
-      React.createElement("div", null,
-        React.createElement("div", {className: "landing-page-background"},
-          React.createElement("div", {className: "container"},
-            React.createElement("div", {className: "row"},
-              React.createElement("div", {className: "col-xs-8 col-md-offset-5 col-md-7"},
+      React.createElement("div", null, 
+        React.createElement("div", {className: "landing-page-background"}, 
+          React.createElement("div", {className: "container"}, 
+            React.createElement("div", {className: "row"}, 
+              React.createElement("div", {className: "col-xs-8 col-md-offset-5 col-md-7"}, 
                 React.createElement("img", {className: "landing-page-logo", src: "images/Impson_logo.png", alt: "my logo"})
               )
-            ),
-            React.createElement("div", {className: "row"},
-              React.createElement("div", {className: "col-xs-8 col-md-offset-5 col-md-4"},
+            ), 
+            React.createElement("div", {className: "row"}, 
+              React.createElement("div", {className: "col-xs-8 col-md-offset-5 col-md-4"}, 
                 React.createElement("button", {onClick: this.enterToggle, className: "enter"}, "Take a Gander")
               )
             )
@@ -516,34 +516,34 @@ require('backbone-react-component');
 var SurfAndPaddle = React.createClass({displayName: "SurfAndPaddle",
   render: function(){
     return (
-      React.createElement("div", null,
-        React.createElement("div", {className: "container-fluid header"},
-          React.createElement("div", {className: "row"},
+      React.createElement("div", null, 
+        React.createElement("div", {className: "container-fluid header"}, 
+          React.createElement("div", {className: "row"}, 
             React.createElement(Header, null)
           )
-        ),
-        React.createElement("div", {className: "container"},
-          React.createElement("div", {className: "row"},
-            React.createElement("div", {className: "col-md-12 surfandpaddle-info"},
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
-                React.createElement("h1", {className: "surfandpaddle-heading"}, "That time I made a pixel perfect rendition"),
-                React.createElement("h1", {className: "surfandpaddle-purpose"}, "Purpose: "),
-                React.createElement("p", null, "Refine newly established skills in HTML and CSS."),
-                React.createElement("h1", null, "Description: "),
-                React.createElement("p", null, "Surf and Paddle is a static but detailed application which I made pixel perfect."),
-                React.createElement("p", null, "View the original ", React.createElement("a", {href: "images/surf-and-paddle-1 copy.png"}, "here")),
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/surfandpaddle"}, "here")),
+        ), 
+        React.createElement("div", {className: "container"}, 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "col-md-12 surfandpaddle-info"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("h1", {className: "surfandpaddle-heading"}, "That time I made a pixel perfect rendition"), 
+                React.createElement("h1", {className: "surfandpaddle-purpose"}, "Purpose: "), 
+                React.createElement("p", null, "Refine newly established skills in HTML and CSS."), 
+                React.createElement("h1", null, "Description: "), 
+                React.createElement("p", null, "Surf and Paddle is a static but detailed application which I made pixel perfect."), 
+                React.createElement("p", null, "View the original ", React.createElement("a", {href: "images/surf-and-paddle-1 copy.png"}, "here")), 
+                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/surfandpaddle"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, "here"))
-              ),
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, React.createElement("img", {src: "images/surfandpaddleheader.png", alt: "", className: "surfandpaddle-pic"}))
               )
-            ),
-            React.createElement("div", {className: "col-xs-12 col-md-12"},
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"},
-                React.createElement("h1", null, "The Code:"),
-                React.createElement("div", null, "HTML5"),
-                React.createElement("div", null, "CSS"),
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
+                React.createElement("h1", null, "The Code:"), 
+                React.createElement("div", null, "HTML5"), 
+                React.createElement("div", null, "CSS"), 
                 React.createElement("div", null, "Bootstrap")
               )
             )
@@ -568,34 +568,34 @@ require('backbone-react-component');
 var SwampRabbit = React.createClass({displayName: "SwampRabbit",
   render: function(){
     return (
-      React.createElement("div", null,
-        React.createElement("div", {className: "container-fluid header"},
-          React.createElement("div", {className: "row"},
+      React.createElement("div", null, 
+        React.createElement("div", {className: "container-fluid header"}, 
+          React.createElement("div", {className: "row"}, 
             React.createElement(Header, null)
           )
-        ),
+        ), 
 
-        React.createElement("div", {className: "container"},
-          React.createElement("div", {className: "row"},
-            React.createElement("div", {className: "col-md-12 swamprabbit-info"},
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
-                React.createElement("h1", {className: "swamprabbit-heading"}, "That time I made something responsive"),
-                React.createElement("h1", {className: "swamprabbit-purpose"}, "Purpose: "),
-                React.createElement("p", null, "Create a site that was responsive on all devices"),
-                React.createElement("h1", null, "Description: "),
-                React.createElement("p", null, "I was provided with a wireframe which I made responsive using the Bootstrap grid system"),
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")),
+        React.createElement("div", {className: "container"}, 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "col-md-12 swamprabbit-info"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
+                React.createElement("h1", {className: "swamprabbit-heading"}, "That time I made something responsive"), 
+                React.createElement("h1", {className: "swamprabbit-purpose"}, "Purpose: "), 
+                React.createElement("p", null, "Create a site that was responsive on all devices"), 
+                React.createElement("h1", null, "Description: "), 
+                React.createElement("p", null, "I was provided with a wireframe which I made responsive using the Bootstrap grid system"), 
+                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")), 
                 React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, "here"))
-              ),
-              React.createElement("div", {className: "col-xs-12 col-md-6"},
+              ), 
+              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
                 React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, React.createElement("img", {src: "images/responsive.png", alt: "", className: "mockup-pic"}))
               )
-            ),
-            React.createElement("div", {className: "col-xs-12 col-md-12"},
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"},
-                React.createElement("h1", null, "The Code:"),
-                React.createElement("div", null, "HTML5"),
-                React.createElement("div", null, "CSS"),
+            ), 
+            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
+              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
+                React.createElement("h1", null, "The Code:"), 
+                React.createElement("div", null, "HTML5"), 
+                React.createElement("div", null, "CSS"), 
                 React.createElement("div", null, "Bootstrap")
               )
             )
@@ -5115,7 +5115,7 @@ module.exports = performanceNow;
  *
  * @providesModule shallowEqual
  * @typechecks
- *
+ * 
  */
 
 'use strict';
@@ -28411,9 +28411,7 @@ module.exports = exports['default'];
 
 module.exports = require('react/lib/ReactDOM');
 
-<<<<<<< HEAD
 },{"react/lib/ReactDOM":328}],270:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28470,7 +28468,6 @@ var _activeElement2 = _interopRequireDefault(_activeElement);
 var _contains = require('dom-helpers/query/contains');
 
 var _contains2 = _interopRequireDefault(_contains);
-<<<<<<< HEAD
 
 var _getContainer = require('./utils/getContainer');
 
@@ -28945,9 +28942,7 @@ Modal.Manager = _ModalManager2.default;
 
 exports.default = Modal;
 module.exports = exports['default'];
-
 },{"./ModalManager":271,"./Portal":273,"./utils/addEventListener":277,"./utils/addFocusListener":278,"./utils/getContainer":280,"./utils/ownerDocument":283,"dom-helpers/activeElement":49,"dom-helpers/query/contains":59,"dom-helpers/util/inDOM":76,"react":422,"react-prop-types/lib/componentOrElement":284,"react-prop-types/lib/elementType":285,"warning":287}],271:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29364,9 +29359,7 @@ Overlay.propTypes = _extends({}, _Portal2.default.propTypes, _Position2.default.
 
 exports.default = Overlay;
 module.exports = exports['default'];
-
 },{"./Portal":273,"./Position":274,"./RootCloseWrapper":275,"react":422,"react-prop-types/lib/elementType":285}],273:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29484,9 +29477,7 @@ var Portal = _react2.default.createClass({
 
 exports.default = Portal;
 module.exports = exports['default'];
-
 },{"./utils/getContainer":280,"./utils/ownerDocument":283,"react":422,"react-dom":269,"react-prop-types/lib/componentOrElement":284}],274:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29698,9 +29689,7 @@ Position.defaultProps = {
 
 exports.default = Position;
 module.exports = exports['default'];
-
 },{"./utils/calculatePosition":279,"./utils/getContainer":280,"./utils/ownerDocument":283,"classnames":25,"react":422,"react-dom":269,"react-prop-types/lib/componentOrElement":284}],275:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29861,9 +29850,7 @@ RootCloseWrapper.defaultProps = {
   event: 'click'
 };
 module.exports = exports['default'];
-
 },{"./utils/addEventListener":277,"./utils/ownerDocument":283,"dom-helpers/query/contains":59,"react":422,"react-dom":269}],276:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30227,9 +30214,7 @@ Transition.defaultProps = {
 };
 
 exports.default = Transition;
-
 },{"classnames":25,"dom-helpers/events/on":57,"dom-helpers/transition/properties":70,"react":422,"react-dom":269}],277:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30257,9 +30242,7 @@ var _off2 = _interopRequireDefault(_off);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = exports['default'];
-
 },{"dom-helpers/events/off":56,"dom-helpers/events/on":57}],278:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30291,9 +30274,7 @@ function addFocusListener(handler) {
   return { remove: remove };
 }
 module.exports = exports['default'];
-
 },{}],279:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30424,7 +30405,6 @@ function calculatePosition(placement, overlayNode, target, container, padding) {
 }
 module.exports = exports['default'];
 },{"./ownerDocument":283,"dom-helpers/query/offset":61,"dom-helpers/query/position":63,"dom-helpers/query/scrollTop":66}],280:[function(require,module,exports){
-
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30557,9 +30537,7 @@ var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = exports['default'];
-
 },{"dom-helpers/ownerDocument":58,"react-dom":269}],284:[function(require,module,exports){
-
 'use strict';
 
 exports.__esModule = true;
@@ -30592,9 +30570,7 @@ function validate(props, propName, componentName, location, propFullName) {
 }
 
 exports.default = (0, _createChainableTypeChecker2.default)(validate);
-
 },{"./utils/createChainableTypeChecker":286,"react":422}],285:[function(require,module,exports){
-
 'use strict';
 
 exports.__esModule = true;
@@ -30627,9 +30603,7 @@ function elementType(props, propName, componentName, location, propFullName) {
 }
 
 exports.default = (0, _createChainableTypeChecker2.default)(elementType);
-
 },{"./utils/createChainableTypeChecker":286,"react":422}],286:[function(require,module,exports){
-
 'use strict';
 
 exports.__esModule = true;
@@ -30670,9 +30644,7 @@ function createChainableTypeChecker(validate) {
 
   return chainedCheckType;
 }
-
 },{}],287:[function(require,module,exports){
-
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -30736,9 +30708,7 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = warning;
 
 }).call(this,require('_process'))
-
 },{"_process":177}],288:[function(require,module,exports){
-
 'use strict';
 
 exports.__esModule = true;
@@ -30779,9 +30749,7 @@ function all() {
 }
 
 module.exports = exports['default'];
-
 },{"./common":289}],289:[function(require,module,exports){
-
 'use strict';
 
 exports.__esModule = true;
@@ -30816,9 +30784,7 @@ function createChainableTypeChecker(validate) {
 
   return chainedCheckType;
 }
-
 },{}],290:[function(require,module,exports){
-
 'use strict';
 
 exports.__esModule = true;
@@ -30852,9 +30818,7 @@ function _resetWarned() {
 
 deprecated._resetWarned = _resetWarned;
 module.exports = exports['default'];
-
 },{"warning":427}],291:[function(require,module,exports){
-
 'use strict';
 
 exports.__esModule = true;
@@ -30896,9 +30860,7 @@ function validate(props, propName, componentName) {
 
 exports['default'] = _common.createChainableTypeChecker(validate);
 module.exports = exports['default'];
-
 },{"./common":289,"react":422}],292:[function(require,module,exports){
-
 "use strict";
 
 exports.__esModule = true;
@@ -50486,7 +50448,6 @@ function has(o, k) {
     });
   }
 }.call(this));
-
 
 },{}],427:[function(require,module,exports){
 arguments[4][287][0].apply(exports,arguments)

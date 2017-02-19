@@ -1,0 +1,295 @@
+///
+/// Default
+///
+    @media #{$mq-default} {
+        .head {
+
+          &__modal {background-color: $color_light-grey;overflow-y: auto;}
+
+          &__fixed {float:right; position: relative;}
+
+          &__mobile-hamburger {
+              position: fixed;
+              z-index: 100;
+              cursor: pointer;
+            }
+
+            &__line, &__line:before, &__line:after {
+              position: relative;
+              display: block;
+              content: "";
+              background: $color_gold;
+            }
+
+            &__mobile-hamburger:hover {cursor: pointer;}
+
+            &__mobile-nav {
+              list-style: none;
+              padding: 0px;
+            }
+
+            &__modal-nav {font-family: $font_open-sans; color: $color_dark-grey;}
+
+            &__mobile-nav a:hover {
+              color: $color_dark-grey;
+              text-decoration: none;
+              cursor: pointer;
+            }
+
+            &__modal-social {
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              left: 0;
+            }
+
+            &__sticky-nav {
+              position: fixed;
+              background-color: $color_light-grey;
+              height: 100%;
+              width: 20%;
+            }
+
+            &__main-nav {
+              list-style: none;
+              text-transform: uppercase;
+              font-family: $font_open-sans;
+              color: $color_dark-grey;
+            }
+
+            &__main-nav a:hover {
+              text-decoration: none;
+              color: $color_dark-grey;
+              cursor: pointer;
+            }
+
+        }
+    }
+///
+/// end of default
+///
+
+
+
+///
+///$mq-extra-small
+///
+    @media #{$mq-extra-small} {
+      .head {
+        &__sticky-nav {display: none;}
+
+        &__logo {width: 70%; margin:25px 0 0 10px;}
+
+        &__fixed {right: 50px;}
+
+        &__modal {padding: 9px;}
+
+        &__mobile-hamburger {height: 60px;width: 60px;}
+
+        &__line {margin: 40px 0 0 0;}
+
+        &__line, &__line:before, &__line:after {width: 40px;height: 3px;}
+
+        &__line:before {bottom: 10px;}
+
+        &__line:after {top: 7px;}
+
+        &__mobile-nav {margin: 60px 0 0 30px;}
+
+        &__modal-nav {font-size: 25px; line-height: 60px;}
+
+        &__modal-icons {
+          width: 50px;
+          margin: 0 0 6% 13%;
+        }
+
+      }
+    }
+
+///
+///end of $mq-extra-small
+///
+
+
+
+///
+///$mq-small
+///
+    @media #{$mq-small} {
+      .head {
+        &__sticky-nav {display: none;}
+
+        &__logo {width: 70%; margin: 25px 0 0 20px;}
+
+        &__fixed {right: 60px;}
+
+        &__modal {padding: 9px;}
+
+        &__mobile-hamburger {height: 60px;width: 60px;}
+
+        &__line {margin: 40px 0 0 0;}
+
+        &__line, &__line:before, &__line:after {width: 40px;height: 3px;}
+
+        &__line:before {bottom: 10px;}
+
+        &__line:after {top: 7px;}
+
+        &__mobile-nav {margin: 100px 0 0 30px;}
+
+        &__modal-nav {font-size: 25px; line-height: 60px;}
+
+        &__modal-icons {
+          width: 50px;
+          margin: 0 0 20px 14%;
+        }
+
+      }
+    }
+
+///
+///end of $mq-small
+///
+
+
+
+///
+///$mq-small-plus
+///
+    @media #{$mq-small-plus} {
+      .head {
+
+        &__modal-icons {
+          width: 50px;
+          margin: 0 0 20px 14%;
+        }
+
+      }
+    }
+
+///
+///end of $mq-small-plus
+///
+
+
+
+///
+///$mq-medium
+///
+    @media #{$mq-medium} {
+      .head {
+
+        &__logo {width: 50%; margin-left: 40px;}
+
+        &__fixed {right: 80px;}
+
+        &__line {margin: 40px 0 0 0;}
+
+        &__line, &__line:before, &__line:after {width: 50px;height: 4px;}
+
+        &__modal-nav {font-size: 32px; line-height: 80px;}
+
+        &__mobile-nav {margin: 145px 0 0 60px;}
+
+        &__modal-icons {
+          width: 75px;
+          margin: 0 0 35px 17%;
+        }
+
+      }
+    }
+
+///
+///end of $mq-medium
+///
+
+
+
+
+///
+///$mq-medium-landscape
+///
+    @media #{$mq-medium-landscape} {
+      .head {
+
+        &__fixed, &__logo {display:none;}
+
+        &__sticky-nav {
+          display: inline;
+        }
+
+        &__logo-desktop {
+          width: 180px;
+          margin: 40px 0 0 13px;
+        }
+
+        &__main-nav {
+          font-size: 15px;
+          line-height: 40px;
+          padding: 25px 0 0 10px;
+        }
+
+        &__social-icons {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+
+        &__sticky-nav-social {
+          width: 50px;
+          padding-bottom: 25px;
+          margin: auto 8px;
+        }
+
+      }
+    }
+
+///
+///end of $mq-medium-landscape
+///
+
+
+
+///
+///$mq-largest
+///
+    @media #{$mq-largest} {
+      .head {
+
+        &__fixed, &__logo {display:none;}
+
+        &__sticky-nav {
+          display: inline;
+        }
+
+        &__logo-desktop {
+          width: 85%;
+          margin: 40px 0 0 13px;
+        }
+
+        &__main-nav {
+          font-size: 20px;
+          line-height: 65px;
+          padding: 25px 0 0 10px;
+        }
+
+        &__social-icons {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+
+        &__sticky-nav-social {
+          width: 50px;
+          padding-bottom: 25px;
+          margin: 0 0 0 10%;
+        }
+
+      }
+    }
+
+///
+///end of $mq-largest
+///

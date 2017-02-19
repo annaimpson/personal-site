@@ -12,494 +12,505 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
   box-sizing: border-box;
 }
 
-img {
-  max-width: 100%;
-}
-.container{
-  margin-right: 0px;
-}
-// Landing page
-.landing-page-background{
-  background-color: rgba(216, 216, 216, 1);
-  width: 100%;
-  height: 8000px;
-  position: fixed;
-}
-.landing-page-logo{
-  margin-top: 200px;
-  width: 100px;
-  height: 100px;
-  margin-left: 40px;
-}
-.enter{
-  text-align: center;
-  border: 3px solid rgba(238, 44, 144, 1);
-  border-radius: 10px;
-  background-color: white;
-  width: 200px;
-  height: 80px;
-  margin-top: 100px;
-}
-// end of landing page
+@import 'base/fonts';
+@import 'base/colors';
+@import 'base/media-queries';
+@import 'sections/header';
+@import 'sections/footer';
+@import 'sections/home';
+@import 'sections/portfolio';
+@import 'sections/about';
+@import 'sections/contact';
+@import 'layout';
 
-// header
-.header-background{
-  background-color:  #D8D7D3;
-  height: 3000px;
-  width: 300px;
-  position: fixed;
-  .row{
-    margin-top: 40px;
-  }
-}
-.header-logo{
-  height: 190px;
-  display: inline-block;
-  margin-top: 40px;
-}
-.nav-list{
-  display: inline-block;
-  text-transform: uppercase;
-  font-family: "Open Sans";
-    a {
-      color: #333333;
-      margin-left: 22px;
-    }
-}
-.social-icons{
-  img {
-    height: 50px;
-    margin-top: 300px;
-    margin-left: 20px;
-  }
-}
-
-// end of header
-
-//footer
-.footer-background{
-  background-color: #D8D7D3;
-}
-.footer-logo{
-  width: 50px;
-  height: 50px;
-}
-//end of footer
-
-//home page list of work
-.surfandpaddle-icon,
-.drinkup-icon,
-.swamprabbit-icon,
-.github-icon{
-  opacity: 1.0;
-  display: inline-block;
-  position: relative;
-}
-.drinkup-icon,
-.surfandpaddle-icon{
-  margin-left: 30px;
-}
-.surfandpaddle-icon:hover,
-.drinkup-icon:hover,
-.swamprabbit-icon:hover,
-.github-icon:hover{
-  opacity: 0.4;
-}
-.surfandpaddle-title,
-.drinkup-title,
-.swamprabbit-title,
-.github-title{
-  font-family: 'Libre Baskerville';
-  font-size: 50px;
-  color: #333333;
-  position: absolute;
-}
-.drinkup-title,
-.github-title{
-  margin-top: 250px;
-  margin-left: 203px;
-}
-.surfandpaddle-title{
-  margin-top: 230px;
-  margin-left: 130px;
-}
-.swamprabbit-title{
-  margin-top: 220px;
-  text-align: center;
-  margin-left: 120px;
-}
-.surfandpaddle-title:hover,
-.drinkup-title:hover,
-.swamprabbit-title:hover,
-.github-title:hover{
-  visibility: visible;
-}
-// end of list of work
-
-// drink up detail page
-.drinkup-pic{
-  margin-top: 320px;
-}
-.drinkup-info{
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  h1.drinkup-heading{
-    font-size: 57px;
-    margin-top: 40px;
-    margin-left: 30px;
-  }
-  p{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 30px;
-    line-height: 23px;
-    padding-right: 13px;
-  }
-}
-.purpose{
-  margin-top: 75px;
-}
-.the-code,
-.the-server,
-.the-backend{
-  margin-bottom: 100px;
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  div{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 35px;
-    line-height: 23px;
-  }
-}
-// end of drink up detail page
-
-//github detail page
-.github-pic{
-  margin-top: 225px;
-}
-.github-info{
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  h1.github-heading{
-    font-size: 57px;
-    margin-top: 40px;
-    margin-left: 30px;
-    padding-right: 50px;
-  }
-  p{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 30px;
-    line-height: 23px;
-    padding-right: 13px;
-  }
-}
-.github-purpose{
-  margin-top: 75px;
-}
-.the-code{
-  margin-bottom: 100px;
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  div{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 35px;
-    line-height: 23px;
-  }
-}
-//end of github detail page
-
-//surf and paddle detail page
-.surfandpaddle-pic{
-  margin-top: 260px;
-}
-.surfandpaddle-info{
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  h1.surfandpaddle-heading{
-    font-size: 57px;
-    margin-top: 40px;
-    margin-left: 30px;
-  }
-  p{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 30px;
-    line-height: 23px;
-    padding-right: 13px;
-  }
-}
-.surfandpaddle-purpose{
-  margin-top: 75px;
-}
-.the-code{
-  margin-bottom: 100px;
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  div{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 35px;
-    line-height: 23px;
-  }
-}
-// end of surf and paddle detail page
-
-//swamprabbit detail page
-.mockup-pic{
-  margin-top: -5px;
-}
-.swamprabbit-info{
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  h1.swamprabbit-heading{
-    font-size: 57px;
-    margin-top: 40px;
-    margin-left: 30px;
-    padding-right: 105px;
-  }
-  p{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 30px;
-    line-height: 23px;
-    padding-right: 13px;
-  }
-}
-.swamprabbit-purpose{
-  margin-top: 75px;
-}
-.the-code{
-  margin-bottom: 100px;
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  div{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 35px;
-    line-height: 23px;
-  }
-}
-// end of swamprabbit detail page
-
-//about section
-.about-profile-pic{
-  margin-top: 215px;
-  height: 400px;
-  padding-left: 160px;
-}
-.about-info{
-  h1{
-    font-family: 'Montseratt';
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-  h1.about-heading{
-    font-size: 57px;
-    margin-top: 40px;
-    margin-left: 30px;
-    padding-right: 105px;
-  }
-  h1.about-career{
-    font-style: italic;
-    font-size: 20px;
-  }
-  h1.what-i-do{
-    margin-top: 60px;
-  }
-  p{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 30px;
-    line-height: 23px;
-    padding-right: 13px;
-  }
-}
-.my-skills{
-  h1{
-    font-family: 'Montseratt';
-    font-size: 32px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-    margin-left: 30px;
-  }
-}
-.skills-list{
-  margin-bottom: 100px;
-  div{
-    font-family: 'Open Sans';
-    font-size: 13px;
-    color: #61605B;
-    margin-left: 35px;
-    line-height: 23px;
-  }
-}
-.my-location{
-  h1{
-    font-family: 'Montseratt';
-    font-size: 40px;
-    color: #9A9995;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    line-height: 47px;
-  }
-  h1.wsnc{
-    font-family: 'Montseratt';
-    font-style: italic;
-    color: rgba(229, 145, 97, 1);
-    font-size: 35px;
-    margin-top: 92px;
-  }
-}
-.map-photo{
-  margin-top: 40px;
-  padding-bottom: 100px;
-}
-//end of about section
-
-//contact section
-.chat{
-  font-family: 'Montseratt';
-  font-size: 50px;
-  color: #9A9995;
-  font-weight: bolder;
-  letter-spacing: -1px;
-  line-height: 47px;
-  text-align: center;
-  margin-top: 40px;
-}
-.talk-to-me{
-  margin-top: 30px;
-  font-family: 'Open Sans';
-  font-size: 13px;
-  color: #61605B;
-  line-height: 23px;
-  margin-left: 30px;
-}
-.final-statement{
-  margin-top: 30px;
-  font-size: 14px;
-  font-family: 'Montseratt';
-  font-style: italic;
-  margin-left: 60px;
-}
-.phone,
-.email{
-  margin-top: 30px;
-  font-family: 'Open Sans';
-  font-size: 14px;
-  text-decoration: none;
-  color: #61605B;
-}
-.email{
-  a{
-    color:#61605B;
-  }
-}
-.word-phone{
-  margin-left: 25px;
-}
-.word-email{
-  margin-left: 60px;
-}
-.word-phone,
-.word-email{
-  font-family: 'Montseratt';
-  font-style: italic;
-  margin-top: 10px;
-}
-.resume,
-.github{
-  margin-top: 150px;
-  background-color: rgba(237, 152, 111, 1);
-  border-radius: 5%;
-  width: 150px;
-  height: 50px;
-  padding-top: 17px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: white;
-  font-family: 'Montseratt';
-  font-size: 14px;
-  text-align: center;
-}
-.resume{
-  margin-left: 33px;
-}
-.github{
-  margin-left: 210px;
-}
+// img {
+//   max-width: 100%;
+// }
+// .container{
+//   margin-right: 0px;
+// }
+// // Landing page
+// .landing-page-background{
+//   background-color: rgba(216, 216, 216, 1);
+//   width: 100%;
+//   height: 8000px;
+//   position: fixed;
+// }
+// .landing-page-logo{
+//   margin-top: 200px;
+//   width: 100px;
+//   height: 100px;
+//   margin-left: 40px;
+// }
+// .enter{
+//   text-align: center;
+//   border: 3px solid rgba(238, 44, 144, 1);
+//   border-radius: 10px;
+//   background-color: white;
+//   width: 200px;
+//   height: 80px;
+//   margin-top: 100px;
+// }
+// // end of landing page
+//
+// // header
+// .header-background{
+//   background-color:  #D8D7D3;
+//   height: 3000px;
+//   width: 300px;
+//   position: fixed;
+//   .row{
+//     margin-top: 40px;
+//   }
+// }
+// .header-logo{
+//   height: 190px;
+//   display: inline-block;
+//   margin-top: 40px;
+// }
+// .nav-list{
+//   display: inline-block;
+//   text-transform: uppercase;
+//   font-family: "Open Sans";
+//     a {
+//       color: #333333;
+//       margin-left: 22px;
+//     }
+// }
+// .social-icons{
+//   img {
+//     height: 50px;
+//     margin-top: 300px;
+//     margin-left: 20px;
+//   }
+// }
+//
+// // end of header
+//
+// //footer
+// .footer-background{
+//   background-color: #D8D7D3;
+// }
+// .footer-logo{
+//   width: 50px;
+//   height: 50px;
+// }
+// //end of footer
+//
+// //home page list of work
+// .surfandpaddle-icon,
+// .drinkup-icon,
+// .swamprabbit-icon,
+// .github-icon{
+//   opacity: 1.0;
+//   display: inline-block;
+//   position: relative;
+// }
+// .drinkup-icon,
+// .surfandpaddle-icon{
+//   margin-left: 30px;
+// }
+// .surfandpaddle-icon:hover,
+// .drinkup-icon:hover,
+// .swamprabbit-icon:hover,
+// .github-icon:hover{
+//   opacity: 0.4;
+// }
+// .surfandpaddle-title,
+// .drinkup-title,
+// .swamprabbit-title,
+// .github-title{
+//   font-family: 'Libre Baskerville';
+//   font-size: 50px;
+//   color: #333333;
+//   position: absolute;
+// }
+// .drinkup-title,
+// .github-title{
+//   margin-top: 250px;
+//   margin-left: 203px;
+// }
+// .surfandpaddle-title{
+//   margin-top: 230px;
+//   margin-left: 130px;
+// }
+// .swamprabbit-title{
+//   margin-top: 220px;
+//   text-align: center;
+//   margin-left: 120px;
+// }
+// .surfandpaddle-title:hover,
+// .drinkup-title:hover,
+// .swamprabbit-title:hover,
+// .github-title:hover{
+//   visibility: visible;
+// }
+// // end of list of work
+//
+// // drink up detail page
+// .drinkup-pic{
+//   margin-top: 320px;
+// }
+// .drinkup-info{
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   h1.drinkup-heading{
+//     font-size: 57px;
+//     margin-top: 40px;
+//     margin-left: 30px;
+//   }
+//   p{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 30px;
+//     line-height: 23px;
+//     padding-right: 13px;
+//   }
+// }
+// .purpose{
+//   margin-top: 75px;
+// }
+// .the-code,
+// .the-server,
+// .the-backend{
+//   margin-bottom: 100px;
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   div{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 35px;
+//     line-height: 23px;
+//   }
+// }
+// // end of drink up detail page
+//
+// //github detail page
+// .github-pic{
+//   margin-top: 225px;
+// }
+// .github-info{
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   h1.github-heading{
+//     font-size: 57px;
+//     margin-top: 40px;
+//     margin-left: 30px;
+//     padding-right: 50px;
+//   }
+//   p{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 30px;
+//     line-height: 23px;
+//     padding-right: 13px;
+//   }
+// }
+// .github-purpose{
+//   margin-top: 75px;
+// }
+// .the-code{
+//   margin-bottom: 100px;
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   div{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 35px;
+//     line-height: 23px;
+//   }
+// }
+// //end of github detail page
+//
+// //surf and paddle detail page
+// .surfandpaddle-pic{
+//   margin-top: 260px;
+// }
+// .surfandpaddle-info{
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   h1.surfandpaddle-heading{
+//     font-size: 57px;
+//     margin-top: 40px;
+//     margin-left: 30px;
+//   }
+//   p{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 30px;
+//     line-height: 23px;
+//     padding-right: 13px;
+//   }
+// }
+// .surfandpaddle-purpose{
+//   margin-top: 75px;
+// }
+// .the-code{
+//   margin-bottom: 100px;
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   div{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 35px;
+//     line-height: 23px;
+//   }
+// }
+// // end of surf and paddle detail page
+//
+// //swamprabbit detail page
+// .mockup-pic{
+//   margin-top: -5px;
+// }
+// .swamprabbit-info{
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   h1.swamprabbit-heading{
+//     font-size: 57px;
+//     margin-top: 40px;
+//     margin-left: 30px;
+//     padding-right: 105px;
+//   }
+//   p{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 30px;
+//     line-height: 23px;
+//     padding-right: 13px;
+//   }
+// }
+// .swamprabbit-purpose{
+//   margin-top: 75px;
+// }
+// .the-code{
+//   margin-bottom: 100px;
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   div{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 35px;
+//     line-height: 23px;
+//   }
+// }
+// // end of swamprabbit detail page
+//
+// //about section
+// .about-profile-pic{
+//   margin-top: 215px;
+//   height: 400px;
+//   padding-left: 160px;
+// }
+// .about-info{
+//   h1{
+//     font-family: 'Montseratt';
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+//   h1.about-heading{
+//     font-size: 57px;
+//     margin-top: 40px;
+//     margin-left: 30px;
+//     padding-right: 105px;
+//   }
+//   h1.about-career{
+//     font-style: italic;
+//     font-size: 20px;
+//   }
+//   h1.what-i-do{
+//     margin-top: 60px;
+//   }
+//   p{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 30px;
+//     line-height: 23px;
+//     padding-right: 13px;
+//   }
+// }
+// .my-skills{
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 32px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//     margin-left: 30px;
+//   }
+// }
+// .skills-list{
+//   margin-bottom: 100px;
+//   div{
+//     font-family: 'Open Sans';
+//     font-size: 13px;
+//     color: #61605B;
+//     margin-left: 35px;
+//     line-height: 23px;
+//   }
+// }
+// .my-location{
+//   h1{
+//     font-family: 'Montseratt';
+//     font-size: 40px;
+//     color: #9A9995;
+//     font-weight: bolder;
+//     letter-spacing: -1px;
+//     line-height: 47px;
+//   }
+//   h1.wsnc{
+//     font-family: 'Montseratt';
+//     font-style: italic;
+//     color: rgba(229, 145, 97, 1);
+//     font-size: 35px;
+//     margin-top: 92px;
+//   }
+// }
+// .map-photo{
+//   margin-top: 40px;
+//   padding-bottom: 100px;
+// }
+// //end of about section
+//
+// //contact section
+// .chat{
+//   font-family: 'Montseratt';
+//   font-size: 50px;
+//   color: #9A9995;
+//   font-weight: bolder;
+//   letter-spacing: -1px;
+//   line-height: 47px;
+//   text-align: center;
+//   margin-top: 40px;
+// }
+// .talk-to-me{
+//   margin-top: 30px;
+//   font-family: 'Open Sans';
+//   font-size: 13px;
+//   color: #61605B;
+//   line-height: 23px;
+//   margin-left: 30px;
+// }
+// .final-statement{
+//   margin-top: 30px;
+//   font-size: 14px;
+//   font-family: 'Montseratt';
+//   font-style: italic;
+//   margin-left: 60px;
+// }
+// .phone,
+// .email{
+//   margin-top: 30px;
+//   font-family: 'Open Sans';
+//   font-size: 14px;
+//   text-decoration: none;
+//   color: #61605B;
+// }
+// .email{
+//   a{
+//     color:#61605B;
+//   }
+// }
+// .word-phone{
+//   margin-left: 25px;
+// }
+// .word-email{
+//   margin-left: 60px;
+// }
+// .word-phone,
+// .word-email{
+//   font-family: 'Montseratt';
+//   font-style: italic;
+//   margin-top: 10px;
+// }
+// .resume,
+// .github{
+//   margin-top: 150px;
+//   background-color: rgba(237, 152, 111, 1);
+//   border-radius: 5%;
+//   width: 150px;
+//   height: 50px;
+//   padding-top: 17px;
+//   padding-bottom: 10px;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   color: white;
+//   font-family: 'Montseratt';
+//   font-size: 14px;
+//   text-align: center;
+// }
+// .resume{
+//   margin-left: 33px;
+// }
+// .github{
+//   margin-left: 210px;
+// }
 //end contact section

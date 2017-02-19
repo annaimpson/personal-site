@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var Home = React.createClass({
@@ -21,52 +22,51 @@ var Home = React.createClass({
   render: function(){
     return (
       <div>
-        <div className="container-fluid header">
-          <div className="row">
+
+        <div>
             <Header/>
-          </div>
         </div>
 
-        <div className="container">
-          <div className="row">
 
 
-            <div className="projects">
-              <div className="row">
-                <div className="col-xs-12 col-md-6">
-                  <div className="overlay">
-                    <a onClick={this.drinkToggle}>
-                      <h1 className="drinkup-title">Drink Up</h1>
-                      <img src="images/drinkup.png" alt=""  className="drinkup-icon"/>
-                    </a>
-                  </div>
-                </div>
-                <div className="col-xs-12 col-md-6">
-                  <a onClick={this.gitHubToggle}>
-                    <h1 className="github-title">GitHub</h1>
-                    <img src="images/github.png" alt=""  className="github-icon"/>
-                  </a>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-xs-12 col-md-6">
-                  <a onClick={this.surfToggle}>
-                    <h1 className="surfandpaddle-title">Surf &amp; Paddle</h1>
-                    <img src="images/surfpaddle.png" alt=""  className="surfandpaddle-icon"/>
-                  </a>
-                </div>
-                <div className="col-xs-12 col-md-6">
-                  <a onClick={this.swampRabbitToggle}>
-                    <h1 className="swamprabbit-title">Swamp Rabbit <br/>Cycling</h1>
-                    <img src="images/bike.png" alt="" className="swamprabbit-icon"/>
-                  </a>
-                </div>
-              </div>
+        <div className="home">
+
+            <div className="home__projects-block">
+              {/*<h1 className="home__title">Drink Up</h1>*/}
+              <a onClick={this.drinkToggle}>
+                <img src="images/drinkup.png" alt=""  className="home__icon"/>
+              </a>
             </div>
 
+            <div className="home__projects-block">
+              {/*<h1 className="home__title">GitHub</h1>*/}
+              <a onClick={this.gitHubToggle}>
+                <img src="images/github.png" alt=""  className="home__icon"/>
+              </a>
+            </div>
 
-          </div>
+            <div className="home__projects-block">
+              {/*<h1 className="home__title">Surf &amp; Paddle</h1>*/}
+              <a onClick={this.surfToggle}>
+                <img src="images/surfpaddle.png" alt=""  className="home__icon"/>
+              </a>
+            </div>
+
+            <div className="home__projects-block">
+              {/*<h1 className="home__title">Swamp Rabbit Cycling</h1>*/}
+              <a onClick={this.swampRabbitToggle}>
+                <img src="images/bike.png" alt="" className="home__icon"/>
+              </a>
+            </div>
+
         </div>
+
+        <div>
+            <Footer/>
+        </div>
+
+
+
       </div>
     );
   }

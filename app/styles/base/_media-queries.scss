@@ -1,0 +1,15 @@
+/**
+ * Define media queries
+ */
+$mq-default:  "screen";
+$mq-extra-small: "screen and (max-width: 374px)";                  // Small Phones
+$mq-small:     "screen and (min-width: 375px)";                    // Phone Portrait - Default
+$mq-small-plus:"screen and (min-width: 414px)";                    // iPhone 6 Plus
+$mq-medium:    "screen and (min-width: 768px)";                    // Tablet Portrait
+$mq-large:     "screen and (min-width: 960px)";                    // Desktop Regular
+$mq-medium-landscape:
+               "screen and (min-width: 1024px)";                   // Tablet Landscape
+$mq-largest:   "screen and (min-width: 1160px)";                   // Desktop Large
+$mq-retina:    "screen and (-webkit-min-device-pixel-ratio: 1.5),
+                screen and (min--moz-device-pixel-ratio: 1.5),
+                screen and (min-device-pixel-ratio: 1.5)";         // Retina Screens

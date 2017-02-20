@@ -2,7 +2,7 @@
 /// Default
 ///
     @media #{$mq-default} {
-        .swamp-rabbit {
+        .project {
 
             &__title {
               font-family: $font_baskerville;
@@ -50,7 +50,7 @@
 ///$mq-extra-small
 ///
     @media #{$mq-extra-small} {
-      .swamp-rabbit {
+      .project {
         margin: 20px 9px 0 9px;
 
         &__title {font-size: 40px; line-height: 50px;}
@@ -92,7 +92,7 @@
 ///$mq-small
 ///
     @media #{$mq-small} {
-      .swamp-rabbit {
+      .project {
         margin: 20px 20px 0 20px;
 
         &__title {font-size: 40px; line-height: 50px;}
@@ -134,7 +134,7 @@
 ///$mq-medium
 ///
     @media #{$mq-medium} {
-      .swamp-rabbit {
+      .project {
         margin: 20px 30px 0 30px;
 
         &__description {
@@ -163,7 +163,7 @@
 ///$mq-large
 ///
     @media #{$mq-large} {
-      .swamp-rabbit {
+      .project {
         margin: 20px 30px 0 30px;
 
         &__mockup {
@@ -215,7 +215,7 @@
 ///$mq-medium-landscape
 ///
     @media #{$mq-medium-landscape} {
-      .swamp-rabbit {
+      .project {
           margin: 0 40px 0 24%;
 
         &__mockup {
@@ -267,14 +267,13 @@
 
 
 ///
-///$mq-medium-landscape
+///$mq-largest
 ///
-    @media #{$mq-medium-landscape} {
-      .swamp-rabbit {
+    @media #{$mq-largest} {
+      .project {
 
-        &__mockup {
-          //max-width: 450px;
-          //max-height: 415px;
+        &__title {
+          width: 80%;
         }
 
         &__project-info {
@@ -290,5 +289,5 @@
     }
 
 ///
-///end of $mq-medium-landscape
+///end of $mq-largest
 ///

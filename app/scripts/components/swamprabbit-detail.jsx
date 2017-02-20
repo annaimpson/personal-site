@@ -15,29 +15,29 @@ var SwampRabbit = React.createClass({
             <Header/>
         </div>
 
-            <div className="swamp-rabbit">
+            <div className="project">
 
-                    <h1 className="swamp-rabbit__title">That time I made something responsive</h1>
+                    <h1 className="project__title">That time I made something responsive</h1>
 
-                    <div className="swamp-rabbit__project-info">
-                      <div className="swamp-rabbit__about">
-                        <h1 className="swamp-rabbit__sub-title">Purpose: </h1>
-                        <p className="swamp-rabbit__description">Create a site that was responsive on all devices</p>
+                    <div className="project__project-info">
+                      <div className="project__about">
+                        <h1 className="project__sub-title">Purpose: </h1>
+                        <p className="project__description">Create a site that was responsive on all devices</p>
 
-                        <h1 className="swamp-rabbit__sub-title">Description: </h1>
-                        <p className="swamp-rabbit__description">I was provided with a wireframe which I made responsive using the Bootstrap grid system</p>
+                        <h1 className="project__sub-title">Description: </h1>
+                        <p className="project__description">I was provided with a wireframe which I made responsive using the Bootstrap grid system</p>
                       </div>
 
-                      <div className="swamp-rabbit__links">
-                        <h6 className="swamp-rabbit__view">View the code <a href="https://github.com/annaimpson/responsive-site/tree/master">here</a></h6>
-                        <h6 className="swamp-rabbit__view">View the live site <a href="http://annaimpson.github.io/responsive-site/dist/index.html">here</a></h6>
+                      <div className="project__links">
+                        <h6 className="project__view">View the code <a href="https://github.com/annaimpson/responsive-site/tree/master">here</a></h6>
+                        <h6 className="project__view">View the live site <a href="http://annaimpson.github.io/responsive-site/dist/index.html">here</a></h6>
                       </div>
                     </div>
 
-                    <a href="http://annaimpson.github.io/responsive-site/dist/index.html"><img src="images/responsive.png" alt="" className="swamp-rabbit__mockup"/></a>
+                    <a href="http://annaimpson.github.io/responsive-site/dist/index.html"><img src="images/responsive.png" alt="" className="project__mockup"/></a>
 
-                    <h1 className="swamp-rabbit__sub-title">The Code:</h1>
-                    <ul className="swamp-rabbit__code">
+                    <h1 className="project__sub-title">The Code:</h1>
+                    <ul className="project__code">
                       <li>HTML5</li>
                       <li>CSS</li>
                       <li>Bootstrap</li>

@@ -4,7 +4,7 @@
     @media #{$mq-default} {
       .about {
 
-        &__title {
+        &__title, &__header-title {
           font-family: $font_montseratt;
           color: $color_light-font-grey;
         }
@@ -48,7 +48,7 @@
       .about {
         margin: 20px 9px 0 9px;
 
-        &__title:first-child, &__sub-title {
+        &__header-title, &__sub-title {
           display: none;
         }
 
@@ -72,7 +72,7 @@
         }
 
         &__map {
-          margin: 20px 20px 0 0;
+          margin: 0 20px 0 0;
           width: 55%;
           float: left;
         }
@@ -99,7 +99,7 @@
       .about {
         margin: 20px 20px 0 20px;
 
-        &__title:first-child, &__sub-title {
+        &__header-title, &__sub-title {
           display: none;
         }
 
@@ -210,7 +210,7 @@
           margin-left: 25%;
         }
 
-        &__title {font-size: 55px; margin-top: 50px;}
+        &__title, &__header-title {font-size: 55px; margin-top: 50px;}
 
         &__description {
           font-size: 14px;
@@ -251,11 +251,11 @@
 
         &__header {display: inline-block; width: 49%;}
 
-        &__title {font-size: 55px; margin-top: 75px;}
+        &__title, &__header-title {font-size: 55px; margin-top: 75px;}
 
         &__sub-title {font-size: 17px;}
 
-        &__title:first-child, &__sub-title {
+        &__header-title, &__sub-title {
           display: block;
         }
 
@@ -273,7 +273,7 @@
 
         &__location {
           display: block;
-          margin-top: 100px;
+          margin: 100px 0 50px 0;
         }
 
         &__map {
@@ -285,7 +285,7 @@
 
         &__wsnc {
           font-size: 45px;
-          margin: 60px 0 140px 10%;
+          margin: 15px 0 140px 10%;
           width: 40%;
           display: inline-block;
         }

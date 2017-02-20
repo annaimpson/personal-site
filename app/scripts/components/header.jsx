@@ -67,7 +67,7 @@ var head = React. createClass({
 
         <div className="head__sticky-nav">
           <div className="head__nav-list">
-              <img src="images/Impson_web logo-02.png" alt="" className="head__logo-desktop"/>
+              <a onClick={this.portfolioToggle}><img src="images/Impson_web logo-02.png" alt="" className="head__logo-desktop"/></a>
 
               <ul className="head__main-nav">
                 <li><a onClick={this.portfolioToggle} className="head__main-nav">Portfolio</a></li>

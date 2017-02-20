@@ -5860,6 +5860,8 @@ button.close {
   .head__main-nav a:hover {
     text-decoration: none;
     color: #333333;
+    cursor: pointer; }
+  .head__logo-desktop {
     cursor: pointer; } }
 @media screen and (max-width: 374px) {
   .head__sticky-nav {
@@ -5974,9 +5976,9 @@ button.close {
     width: 85%;
     margin: 40px 0 0 13px; }
   .head__main-nav {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 65px;
-    padding: 25px 0 0 10px; }
+    padding: 25px 0 0 20px; }
   .head__social-icons {
     position: absolute;
     right: 0;
@@ -6026,12 +6028,31 @@ html {
 body {
   margin: 0px;
   min-height: 100%;
-  position: relative;
-  padding-bottom: 60px; }
+  position: relative; }
 
+@media screen and (max-width: 374px) {
+  body {
+    padding-bottom: 60px; } }
+@media screen and (min-width: 375px) {
+  body {
+    padding-bottom: 60px; } }
+@media screen and (min-width: 768px) {
+  body {
+    padding-bottom: 60px; } }
+@media screen and (min-width: 960px) {
+  body {
+    padding-bottom: 90px; } }
+@media screen and (min-width: 1024px) {
+  body {
+    padding-bottom: 0; } }
+@media screen and (min-width: 1160px) {
+  body {
+    padding-bottom: 0; } }
 @media screen {
   .home__title {
-    font-family: "Libre Baskerville"; } }
+    font-family: "Libre Baskerville"; }
+  .home__icon {
+    cursor: pointer; } }
 @media screen and (max-width: 374px) {
   .home {
     margin: 20px 9px 0 9px; }
@@ -6071,7 +6092,7 @@ body {
       transform: translate(0%, 420%);
       text-align: center; } }
 @media screen {
-  .about__title {
+  .about__title, .about__header-title {
     font-family: "Montseratt";
     color: #9A9995; }
   .about__sub-title {
@@ -6092,7 +6113,7 @@ body {
 @media screen and (max-width: 374px) {
   .about {
     margin: 20px 9px 0 9px; }
-    .about__title:first-child, .about__sub-title {
+    .about__header-title, .about__sub-title {
       display: none; }
     .about__title {
       font-size: 40px;
@@ -6109,7 +6130,7 @@ body {
       line-height: 30px;
       padding-left: 10px; }
     .about__map {
-      margin: 20px 20px 0 0;
+      margin: 0 20px 0 0;
       width: 55%;
       float: left; }
     .about__wsnc {
@@ -6118,7 +6139,7 @@ body {
 @media screen and (min-width: 375px) {
   .about {
     margin: 20px 20px 0 20px; }
-    .about__title:first-child, .about__sub-title {
+    .about__header-title, .about__sub-title {
       display: none; }
     .about__title {
       font-size: 40px;
@@ -6165,7 +6186,7 @@ body {
     .about__profile-pic {
       width: 50%;
       margin-left: 25%; }
-    .about__title {
+    .about__title, .about__header-title {
       font-size: 55px;
       margin-top: 50px; }
     .about__description {
@@ -6186,12 +6207,12 @@ body {
     .about__header {
       display: inline-block;
       width: 49%; }
-    .about__title {
+    .about__title, .about__header-title {
       font-size: 55px;
       margin-top: 75px; }
     .about__sub-title {
       font-size: 17px; }
-    .about__title:first-child, .about__sub-title {
+    .about__header-title, .about__sub-title {
       display: block; }
     .about__profile-pic {
       width: 45%;
@@ -6205,7 +6226,7 @@ body {
       width: 49%; }
     .about__location {
       display: block;
-      margin-top: 100px; }
+      margin: 100px 0 50px 0; }
     .about__map {
       max-width: 600px;
       width: 45%;
@@ -6213,7 +6234,7 @@ body {
       padding: 0; }
     .about__wsnc {
       font-size: 45px;
-      margin: 60px 0 140px 10%;
+      margin: 15px 0 140px 10%;
       width: 40%;
       display: inline-block; } }
 @media screen {
@@ -6369,139 +6390,141 @@ body {
     padding-top: 15px;
     margin: auto 10%; } }
 @media screen {
-  .swamp-rabbit__title {
+  .project__title {
     font-family: "Libre Baskerville";
     color: #9A9995; }
-  .swamp-rabbit__sub-title {
+  .project__sub-title {
     font-family: "Montseratt";
     color: #9A9995; }
-  .swamp-rabbit__description {
+  .project__description {
     font-family: "Open Sans";
     color: #61605B; }
-  .swamp-rabbit__links {
+  .project__links {
     font-family: "Montseratt";
     color: #9A9995; }
-  .swamp-rabbit__view a {
+  .project__view a {
     color: #9A9995;
     border-bottom: 2px solid #ed986f; }
-  .swamp-rabbit__view a:hover {
+  .project__view a:hover {
     color: #9A9995;
     text-decoration: none; }
-  .swamp-rabbit__code {
+  .project__code {
     font-family: "Open Sans";
     color: #61605B;
     list-style: none; } }
 @media screen and (max-width: 374px) {
-  .swamp-rabbit {
+  .project {
     margin: 20px 9px 0 9px; }
-    .swamp-rabbit__title {
+    .project__title {
       font-size: 40px;
       line-height: 50px; }
-    .swamp-rabbit__sub-title {
+    .project__sub-title {
       margin-top: 30px;
       font-size: 22px; }
-    .swamp-rabbit__description {
+    .project__description {
       font-size: 12px;
       line-height: 20px; }
-    .swamp-rabbit__links {
+    .project__links {
       margin: 25px 0 25px 0; }
-    .swamp-rabbit__view {
+    .project__view {
       font-size: 16px; }
-    .swamp-rabbit__mockup {
+    .project__mockup {
       width: 100%; }
-    .swamp-rabbit__code {
+    .project__code {
       padding: 0 0 25px 5px;
       font-size: 12px;
       line-height: 30px; } }
 @media screen and (min-width: 375px) {
-  .swamp-rabbit {
+  .project {
     margin: 20px 20px 0 20px; }
-    .swamp-rabbit__title {
+    .project__title {
       font-size: 40px;
       line-height: 50px; }
-    .swamp-rabbit__sub-title {
+    .project__sub-title {
       margin-top: 30px;
       font-size: 22px; }
-    .swamp-rabbit__description {
+    .project__description {
       font-size: 12px;
       line-height: 20px; }
-    .swamp-rabbit__links {
+    .project__links {
       margin: 25px 0 25px 0; }
-    .swamp-rabbit__view {
+    .project__view {
       font-size: 16px; }
-    .swamp-rabbit__mockup {
+    .project__mockup {
       width: 100%; }
-    .swamp-rabbit__code {
+    .project__code {
       padding: 0 0 25px 5px;
       font-size: 12px;
       line-height: 30px; } }
 @media screen and (min-width: 768px) {
-  .swamp-rabbit {
+  .project {
     margin: 20px 30px 0 30px; }
-    .swamp-rabbit__description {
+    .project__description {
       font-size: 14px;
       line-height: 28px; }
-    .swamp-rabbit__code {
+    .project__code {
       column-count: 3;
       font-size: 14px;
       padding-bottom: 100px;
       margin-left: 12%; } }
 @media screen and (min-width: 960px) {
-  .swamp-rabbit {
+  .project {
     margin: 20px 30px 0 30px; }
-    .swamp-rabbit__mockup {
+    .project__mockup {
       width: 49%;
       float: right; }
-    .swamp-rabbit__title {
+    .project__title {
       font-size: 55px;
       line-height: 65px;
       margin-top: 50px; }
-    .swamp-rabbit__project-info {
+    .project__project-info {
       width: 45%;
       display: inline-block;
       padding-bottom: 50px; }
-    .swamp-rabbit__sub-title {
+    .project__sub-title {
       font-size: 25px;
       margin-top: 50px; }
-    .swamp-rabbit__description {
+    .project__description {
       font-size: 14px;
       line-height: 28px; }
-    .swamp-rabbit__links {
+    .project__links {
       margin-top: 50px; }
-    .swamp-rabbit__code {
+    .project__code {
       font-size: 14px; } }
 @media screen and (min-width: 1024px) {
-  .swamp-rabbit {
+  .project {
     margin: 0 40px 0 24%; }
-    .swamp-rabbit__mockup {
+    .project__mockup {
       width: 49%;
       float: right;
       padding-top: 45px; }
-    .swamp-rabbit__title {
+    .project__title {
       font-size: 55px;
       line-height: 65px;
       margin-top: 0;
       padding-top: 75px; }
-    .swamp-rabbit__project-info {
+    .project__project-info {
       width: 45%;
       display: inline-block;
       padding-bottom: 10px; }
-    .swamp-rabbit__sub-title {
+    .project__sub-title {
       font-size: 25px;
       margin-top: 50px; }
-    .swamp-rabbit__description {
+    .project__description {
       font-size: 14px;
       line-height: 28px; }
-    .swamp-rabbit__links {
+    .project__links {
       margin-top: 50px; }
-    .swamp-rabbit__code {
+    .project__code {
       font-size: 14px;
       padding-bottom: 0; } }
-@media screen and (min-width: 1024px) {
-  .swamp-rabbit__project-info {
+@media screen and (min-width: 1160px) {
+  .project__title {
+    width: 80%; }
+  .project__project-info {
     width: 45%;
     display: inline-block; }
-  .swamp-rabbit__code {
+  .project__code {
     margin: 0; } }
 
 /*# sourceMappingURL=app.css.map */

@@ -3,49 +3,57 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var GitHub = React.createClass({
   render: function(){
     return (
       <div>
-        <div className="container-fluid header">
-          <div className="row">
-            <Header/>
-          </div>
+
+        <div>
+          <Header/>
         </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 github-info">
-              <div className="col-xs-12 col-md-6">
-                <h1 className="github-heading">That time I made and AJAX request</h1>
-                <h1 className="github-purpose">Purpose: </h1>
-                <p>Make an AJAX request and recreate your GitHub profile</p>
-                <h1>Description: </h1>
-                <p>For this project, I worked with the GitHub API and recreated the repository portion of my profile page. </p>
-                <p>View the code <a href="https://github.com/annaimpson/github-profile">here</a></p>
-                <p>View the live site <a href="http://annaimpson.github.io/github-profile/dist/index.html">here</a></p>
-              </div>
-              <div className="col-xs-12 col-md-6">
-                <a href="http://annaimpson.github.io/github-profile/dist/index.html"><img src="images/github-snap.png" alt="" className="github-pic"/></a>
-              </div>
-            </div>
-            <div className="col-xs-12 col-md-12">
-              <div className="col-xs-12 col-md-4 the-code">
-                <h1>The Code:</h1>
-                <div>HTML5</div>
-                <div>SCSS</div>
-                <div>Bootstrap</div>
-                <div>JavaScript</div>
-                <div>jQuery</div>
-                <div>Underscore.js</div>
-                <div>Handlebars.js</div>
-                <div>AJAX</div>
-              </div>
-            </div>
+        <div className="project">
+
+                <h1 className="project__title">That time I made and AJAX request</h1>
+
+                <div className="project__project-info">
+                  <div className="project__about">
+                    <h1 className="project__sub-title">Purpose: </h1>
+                    <p className="project__description">Make an AJAX request and recreate your GitHub profile</p>
+                    <h1 className="project__sub-title">Description: </h1>
+                    <p className="project__description">For this project, I worked with the GitHub API and recreated the repository portion of my profile page. </p>
+                  </div>
+
+                  <div className="project__links">
+                    <p className="project__view">View the code <a href="https://github.com/annaimpson/github-profile">here</a></p>
+                    <p className="project__view">View the live site <a href="http://annaimpson.github.io/github-profile/dist/index.html">here</a></p>
+                  </div>
+                </div>
+
+                <a href="http://annaimpson.github.io/github-profile/dist/index.html"><img src="images/github-snap.png" alt="" className="project__mockup"/></a>
+
+                <h1 className="project__sub-title">The Code:</h1>
+                <ul className="project__code">
+                  <li>HTML5</li>
+                  <li>SCSS</li>
+                  <li>Bootstrap</li>
+                  <li>JavaScript</li>
+                  <li>jQuery</li>
+                  <li>Underscore.js</li>
+                  <li>Handlebars.js</li>
+                  <li>AJAX</li>
+                </ul>
+
           </div>
+
+        <div>
+          <Footer/>
         </div>
+
+
       </div>
     );
   }

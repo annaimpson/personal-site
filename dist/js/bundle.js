@@ -22,17 +22,16 @@ var About = React.createClass({displayName: "About",
         React.createElement("div", {className: "about"}, 
 
             React.createElement("div", {className: "about__header"}, 
-              React.createElement("h1", {className: "about__title"}, "Anna Impson"), 
+              React.createElement("h1", {className: "about__header-title"}, "Anna Impson"), 
               React.createElement("h6", {className: "about__sub-title"}, "front-end developer")
             ), 
 
             React.createElement("img", {src: "images/anna headshots-anna headshots lr-0008.jpg", alt: "", className: "about__profile-pic"}), 
 
             React.createElement("h1", {className: "about__title"}, "What I Do"), 
-            React.createElement("p", {className: "about__description"}, "These days, I've been writing in code. What kind, you may ask? Not django and not Morse. I have been doing that front-end developing business. It has only been a measly three months, but I'm getting in a groove and really enjoying it." + ' ' +
-            "I went from the beginning of HTML and came out able to write JavaScritp, Backbone, and React. It was quite the whirlwind, but it was a grand time. I am stil in the process of learning, but I love it and I'm ready to learn more. Bring it on! "), 
+            React.createElement("p", {className: "about__description"}, "I am currently in Winston-Salem, working full time at Airtype, slaying the dart game, and hanging out with the best dog in town. I've been working on some pretty cool projects at work, and I'm setting up some personal projects as well. Otherwise, I'm listening to podcasts (if you have any recs, let me know!), eating some good food, and looking for my next travel adventure."), 
 
-          React.createElement("h1", {className: "about__title"}, "My Mad Skills"), 
+          React.createElement("h1", {className: "about__title"}, "What I Know"), 
 
             React.createElement("ul", {className: "about__skills-list"}, 
               React.createElement("li", {className: "about__skill"}, "HTML5"), 
@@ -44,16 +43,18 @@ var About = React.createClass({displayName: "About",
               React.createElement("li", {className: "about__skill"}, "Handlebars.js"), 
               React.createElement("li", {className: "about__skill"}, "Backbone.js"), 
               React.createElement("li", {className: "about__skill"}, "React.js"), 
+              React.createElement("li", {className: "about__skill"}, "Angular.js"), 
               React.createElement("li", {className: "about__skill"}, "Bootstrap"), 
               React.createElement("li", {className: "about__skill"}, "Parse Server"), 
               React.createElement("li", {className: "about__skill"}, "Heroku"), 
               React.createElement("li", {className: "about__skill"}, "GitHub"), 
-              React.createElement("li", {className: "about__skill"}, "Git")
+              React.createElement("li", {className: "about__skill"}, "Git"), 
+              React.createElement("li", {className: "about__skill"}, "Craft CMS")
             ), 
 
 
             React.createElement("div", {className: "about__location"}, 
-              React.createElement("h1", {className: "about__title"}, "My Location"), 
+              React.createElement("h1", {className: "about__title"}, "Where I Live"), 
               React.createElement("img", {src: "images/icon-map-greensboro.png", alt: "", className: "about__map"}), 
               React.createElement("h1", {className: "about__wsnc"}, "Winston-Salem, NC")
             )
@@ -95,9 +96,8 @@ var Contact = React.createClass({displayName: "Contact",
 
             React.createElement("h1", {className: "contact__title"}, "Let's Chat"), 
 
-            React.createElement("p", {className: "contact__info"}, "I am a front-end web developer seeking to contribute and grow in a junior web development role. I work well in" + ' ' +
-              "a team environment, consistently meet deadlines, and have an eye for detail. If those qualities fit into your team environment, let's talk!"), 
-            React.createElement("p", {className: "contact__info"}, "I am a quick learner who is eager to gain knowledge and acquire new skills"), 
+            React.createElement("p", {className: "contact__info"}, "I'm a junior front-end developer, and I'm always looking for new projects. Let's talk if you have a cool thing you're working on or if you have a great idea that needs a site. I'm pretty much always up for a coffee and a good chat. I look forward to talking to you!"), 
+            React.createElement("p", {className: "contact__info"}, "and really, if you know of a good podcast, let me know"), 
 
             React.createElement("div", {className: "contact__contact-block"}, 
               React.createElement("h6", {className: "contact__contact"}, React.createElement("a", {href: "mailto:annaimpson@gmail.com"}, "annaimpson@gmail.com")), 
@@ -135,60 +135,68 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 var Carousel = require('react-bootstrap').Carousel;
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var DrinkUp = React.createClass({displayName: "DrinkUp",
   render: function(){
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "container-fluid header"}, 
-          React.createElement("div", {className: "row"}, 
+
+        React.createElement("div", null, 
             React.createElement(Header, null)
-          )
         ), 
 
-        React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-md-12 drinkup-info"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("h1", {className: "drinkup-heading"}, "That time I made something that combined all my skills"), 
-                React.createElement("h1", {className: "purpose"}, "Purpose: "), 
-                React.createElement("p", null, "Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos."), 
-                React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something that worked well and looked great." + ' ' +
-                  "Drink Up was created for those who also like beer. It allows the user to create a profile," + ' ' +
-                  "search for beer types, flavor profiles, and breweries. In addition, the user can save specific beer to their profile to refer to later. "), 
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/beer-final-project"}, "here")), 
-                React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, "here"))
-              ), 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, React.createElement("img", {src: "images/drinkUp-snap.png", alt: "", className: "drinkup-pic"}))
-              )
-            ), 
-            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
-                React.createElement("h1", null, "The Code:"), 
-                React.createElement("div", null, "HTML5"), 
-                React.createElement("div", null, "SCSS"), 
-                React.createElement("div", null, "Bootstrap"), 
-                React.createElement("div", null, "JavaScript"), 
-                React.createElement("div", null, "jQuery"), 
-                React.createElement("div", null, "Underscore.js"), 
-                React.createElement("div", null, "Node.js"), 
-                React.createElement("div", null, "Backbone.js"), 
-                React.createElement("div", null, "React.js")
-              ), 
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-server"}, 
-                React.createElement("h1", null, "The Server:"), 
-                React.createElement("div", null, "Parse")
-              ), 
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-backend"}, 
-                React.createElement("h1", null, "The Backend:"), 
-                React.createElement("div", null, "Heroku")
-              )
-            )
-          )
+        React.createElement("div", {className: "project"}, 
+
+                React.createElement("h1", {className: "project__title"}, "That time I made something that combined all my skills"), 
+
+                React.createElement("div", {className: "project__project-info"}, 
+                  React.createElement("div", {className: "project__about"}, 
+                    React.createElement("h1", {className: "project__sub-title"}, "Purpose: "), 
+                    React.createElement("p", {className: "project__description"}, "Use what you know. Also, have a log-in, API, information stored in Parse, and ability to upload photos."), 
+
+                    React.createElement("h1", {className: "project__sub-title"}, "Description: "), 
+                    React.createElement("p", {className: "project__description"}, "I created this application for several reasons, I love beer, I wanted to challenge myself, and I wanted something that worked well and looked great." + ' ' +
+                      "Drink Up was created for those who also like beer. It allows the user to create a profile," + ' ' +
+                      "search for beer types, flavor profiles, and breweries. In addition, the user can save specific beer to their profile to refer to later. ")
+                  ), 
+
+                    React.createElement("div", {className: "project__links"}, 
+                      React.createElement("h6", {className: "project__view"}, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/beer-final-project"}, "here")), 
+                      React.createElement("h6", {className: "project__view"}, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, "here"))
+                    )
+                  ), 
+
+                React.createElement("a", {href: "http://annaimpson.github.io/beer-final-project/dist/index.html"}, React.createElement("img", {src: "images/drinkUp-snap.png", alt: "", className: "project__mockup"})), 
+
+
+                React.createElement("h1", {className: "project__sub-title"}, "The Code:"), 
+                React.createElement("ul", {className: "project__code"}, 
+                  React.createElement("li", null, "HTML5"), 
+                  React.createElement("li", null, "SCSS"), 
+                  React.createElement("li", null, "Bootstrap"), 
+                  React.createElement("li", null, "JavaScript"), 
+                  React.createElement("li", null, "jQuery"), 
+                  React.createElement("li", null, "Underscore.js"), 
+                  React.createElement("li", null, "Node.js"), 
+                  React.createElement("li", null, "Backbone.js"), 
+                  React.createElement("li", null, "React.js")
+                ), 
+
+                React.createElement("h1", {className: "project__sub-title"}, "The Server:"), 
+                React.createElement("div", {className: "project__code"}, "Parse"), 
+
+                React.createElement("h1", {className: "project__sub-title"}, "The Backend:"), 
+                React.createElement("div", {className: "project__code"}, "Heroku")
+
+        ), 
+
+        React.createElement("div", null, 
+            React.createElement(Footer, null)
         )
+
+
       )
     );
   }
@@ -196,7 +204,7 @@ var DrinkUp = React.createClass({displayName: "DrinkUp",
 
 module.exports = DrinkUp;
 
-},{"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-bootstrap":258,"react-dom":269}],4:[function(require,module,exports){
+},{"./footer.jsx":4,"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-bootstrap":258,"react-dom":269}],4:[function(require,module,exports){
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -234,49 +242,57 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var GitHub = React.createClass({displayName: "GitHub",
   render: function(){
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "container-fluid header"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement(Header, null)
-          )
+
+        React.createElement("div", null, 
+          React.createElement(Header, null)
         ), 
 
-        React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-md-12 github-info"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("h1", {className: "github-heading"}, "That time I made and AJAX request"), 
-                React.createElement("h1", {className: "github-purpose"}, "Purpose: "), 
-                React.createElement("p", null, "Make an AJAX request and recreate your GitHub profile"), 
-                React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "For this project, I worked with the GitHub API and recreated the repository portion of my profile page. "), 
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/github-profile"}, "here")), 
-                React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, "here"))
-              ), 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, React.createElement("img", {src: "images/github-snap.png", alt: "", className: "github-pic"}))
-              )
-            ), 
-            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
-                React.createElement("h1", null, "The Code:"), 
-                React.createElement("div", null, "HTML5"), 
-                React.createElement("div", null, "SCSS"), 
-                React.createElement("div", null, "Bootstrap"), 
-                React.createElement("div", null, "JavaScript"), 
-                React.createElement("div", null, "jQuery"), 
-                React.createElement("div", null, "Underscore.js"), 
-                React.createElement("div", null, "Handlebars.js"), 
-                React.createElement("div", null, "AJAX")
-              )
-            )
-          )
+        React.createElement("div", {className: "project"}, 
+
+                React.createElement("h1", {className: "project__title"}, "That time I made and AJAX request"), 
+
+                React.createElement("div", {className: "project__project-info"}, 
+                  React.createElement("div", {className: "project__about"}, 
+                    React.createElement("h1", {className: "project__sub-title"}, "Purpose: "), 
+                    React.createElement("p", {className: "project__description"}, "Make an AJAX request and recreate your GitHub profile"), 
+                    React.createElement("h1", {className: "project__sub-title"}, "Description: "), 
+                    React.createElement("p", {className: "project__description"}, "For this project, I worked with the GitHub API and recreated the repository portion of my profile page. ")
+                  ), 
+
+                  React.createElement("div", {className: "project__links"}, 
+                    React.createElement("p", {className: "project__view"}, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/github-profile"}, "here")), 
+                    React.createElement("p", {className: "project__view"}, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, "here"))
+                  )
+                ), 
+
+                React.createElement("a", {href: "http://annaimpson.github.io/github-profile/dist/index.html"}, React.createElement("img", {src: "images/github-snap.png", alt: "", className: "project__mockup"})), 
+
+                React.createElement("h1", {className: "project__sub-title"}, "The Code:"), 
+                React.createElement("ul", {className: "project__code"}, 
+                  React.createElement("li", null, "HTML5"), 
+                  React.createElement("li", null, "SCSS"), 
+                  React.createElement("li", null, "Bootstrap"), 
+                  React.createElement("li", null, "JavaScript"), 
+                  React.createElement("li", null, "jQuery"), 
+                  React.createElement("li", null, "Underscore.js"), 
+                  React.createElement("li", null, "Handlebars.js"), 
+                  React.createElement("li", null, "AJAX")
+                )
+
+          ), 
+
+        React.createElement("div", null, 
+          React.createElement(Footer, null)
         )
+
+
       )
     );
   }
@@ -284,7 +300,7 @@ var GitHub = React.createClass({displayName: "GitHub",
 
 module.exports = GitHub;
 
-},{"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],6:[function(require,module,exports){
+},{"./footer.jsx":4,"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],6:[function(require,module,exports){
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -355,7 +371,7 @@ var head = React. createClass({displayName: "head",
 
         React.createElement("div", {className: "head__sticky-nav"}, 
           React.createElement("div", {className: "head__nav-list"}, 
-              React.createElement("img", {src: "images/Impson_web logo-02.png", alt: "", className: "head__logo-desktop"}), 
+              React.createElement("a", {onClick: this.portfolioToggle}, React.createElement("img", {src: "images/Impson_web logo-02.png", alt: "", className: "head__logo-desktop"})), 
 
               React.createElement("ul", {className: "head__main-nav"}, 
                 React.createElement("li", null, React.createElement("a", {onClick: this.portfolioToggle, className: "head__main-nav"}, "Portfolio")), 
@@ -501,44 +517,53 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 require('backbone-react-component');
 
 var SurfAndPaddle = React.createClass({displayName: "SurfAndPaddle",
   render: function(){
     return (
       React.createElement("div", null, 
-        React.createElement("div", {className: "container-fluid header"}, 
-          React.createElement("div", {className: "row"}, 
+
+        React.createElement("div", null, 
             React.createElement(Header, null)
-          )
         ), 
-        React.createElement("div", {className: "container"}, 
-          React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-md-12 surfandpaddle-info"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("h1", {className: "surfandpaddle-heading"}, "That time I made a pixel perfect rendition"), 
-                React.createElement("h1", {className: "surfandpaddle-purpose"}, "Purpose: "), 
-                React.createElement("p", null, "Refine newly established skills in HTML and CSS."), 
-                React.createElement("h1", null, "Description: "), 
-                React.createElement("p", null, "Surf and Paddle is a static but detailed application which I made pixel perfect."), 
-                React.createElement("p", null, "View the original ", React.createElement("a", {href: "images/surf-and-paddle-1 copy.png"}, "here")), 
-                React.createElement("p", null, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/surfandpaddle"}, "here")), 
-                React.createElement("p", null, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, "here"))
-              ), 
-              React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-                React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, React.createElement("img", {src: "images/surfandpaddleheader.png", alt: "", className: "surfandpaddle-pic"}))
-              )
-            ), 
-            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
-              React.createElement("div", {className: "col-xs-12 col-md-4 the-code"}, 
-                React.createElement("h1", null, "The Code:"), 
-                React.createElement("div", null, "HTML5"), 
-                React.createElement("div", null, "CSS"), 
-                React.createElement("div", null, "Bootstrap")
-              )
-            )
-          )
+
+        React.createElement("div", {className: "project"}, 
+
+                React.createElement("h1", {className: "project__title"}, "That time I made a pixel perfect rendition"), 
+
+                React.createElement("div", {className: "project__project-info"}, 
+                  React.createElement("div", {className: "project__about"}, 
+                    React.createElement("h1", {className: "project__sub-title"}, "Purpose: "), 
+                    React.createElement("p", {className: "project__description"}, "Refine newly established skills in HTML and CSS."), 
+                    React.createElement("h1", {className: "project__sub-title"}, "Description: "), 
+                    React.createElement("p", {className: "project__description"}, "Surf and Paddle is a static but detailed application which I made pixel perfect.")
+                  ), 
+
+                  React.createElement("div", {className: "project__links"}, 
+                    React.createElement("h6", {className: "project__view"}, "View the original ", React.createElement("a", {href: "images/surf-and-paddle-1 copy.png"}, "here")), 
+                    React.createElement("h6", {className: "project__view"}, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/surfandpaddle"}, "here")), 
+                    React.createElement("h6", {className: "project__view"}, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, "here"))
+                  )
+                ), 
+
+                React.createElement("a", {href: "http://annaimpson.github.io/surfandpaddle/dist/index.html"}, React.createElement("img", {src: "images/surfandpaddleheader.png", alt: "", className: "project__mockup"})), 
+
+
+                React.createElement("h1", {className: "project__sub-title"}, "The Code:"), 
+                React.createElement("ul", {className: "project__code"}, 
+                  React.createElement("li", null, "HTML5"), 
+                  React.createElement("li", null, "CSS"), 
+                  React.createElement("li", null, "Bootstrap")
+                )
+
+        ), 
+
+        React.createElement("div", null, 
+            React.createElement(Footer, null)
         )
+
       )
     );
   }
@@ -546,7 +571,7 @@ var SurfAndPaddle = React.createClass({displayName: "SurfAndPaddle",
 
 module.exports = SurfAndPaddle;
 
-},{"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],10:[function(require,module,exports){
+},{"./footer.jsx":4,"./header.jsx":6,"backbone":24,"backbone-react-component":23,"jquery":106,"react":422,"react-dom":269}],10:[function(require,module,exports){
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -565,29 +590,29 @@ var SwampRabbit = React.createClass({displayName: "SwampRabbit",
             React.createElement(Header, null)
         ), 
 
-            React.createElement("div", {className: "swamp-rabbit"}, 
+            React.createElement("div", {className: "project"}, 
 
-                    React.createElement("h1", {className: "swamp-rabbit__title"}, "That time I made something responsive"), 
+                    React.createElement("h1", {className: "project__title"}, "That time I made something responsive"), 
 
-                    React.createElement("div", {className: "swamp-rabbit__project-info"}, 
-                      React.createElement("div", {className: "swamp-rabbit__about"}, 
-                        React.createElement("h1", {className: "swamp-rabbit__sub-title"}, "Purpose: "), 
-                        React.createElement("p", {className: "swamp-rabbit__description"}, "Create a site that was responsive on all devices"), 
+                    React.createElement("div", {className: "project__project-info"}, 
+                      React.createElement("div", {className: "project__about"}, 
+                        React.createElement("h1", {className: "project__sub-title"}, "Purpose: "), 
+                        React.createElement("p", {className: "project__description"}, "Create a site that was responsive on all devices"), 
 
-                        React.createElement("h1", {className: "swamp-rabbit__sub-title"}, "Description: "), 
-                        React.createElement("p", {className: "swamp-rabbit__description"}, "I was provided with a wireframe which I made responsive using the Bootstrap grid system")
+                        React.createElement("h1", {className: "project__sub-title"}, "Description: "), 
+                        React.createElement("p", {className: "project__description"}, "I was provided with a wireframe which I made responsive using the Bootstrap grid system")
                       ), 
 
-                      React.createElement("div", {className: "swamp-rabbit__links"}, 
-                        React.createElement("h6", {className: "swamp-rabbit__view"}, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")), 
-                        React.createElement("h6", {className: "swamp-rabbit__view"}, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, "here"))
+                      React.createElement("div", {className: "project__links"}, 
+                        React.createElement("h6", {className: "project__view"}, "View the code ", React.createElement("a", {href: "https://github.com/annaimpson/responsive-site/tree/master"}, "here")), 
+                        React.createElement("h6", {className: "project__view"}, "View the live site ", React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, "here"))
                       )
                     ), 
 
-                    React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, React.createElement("img", {src: "images/responsive.png", alt: "", className: "swamp-rabbit__mockup"})), 
+                    React.createElement("a", {href: "http://annaimpson.github.io/responsive-site/dist/index.html"}, React.createElement("img", {src: "images/responsive.png", alt: "", className: "project__mockup"})), 
 
-                    React.createElement("h1", {className: "swamp-rabbit__sub-title"}, "The Code:"), 
-                    React.createElement("ul", {className: "swamp-rabbit__code"}, 
+                    React.createElement("h1", {className: "project__sub-title"}, "The Code:"), 
+                    React.createElement("ul", {className: "project__code"}, 
                       React.createElement("li", null, "HTML5"), 
                       React.createElement("li", null, "CSS"), 
                       React.createElement("li", null, "Bootstrap")

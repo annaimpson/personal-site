@@ -1,0 +1,406 @@
+@keyframes bg-animation {
+  12.5% {
+    background-color: red; }
+  25% {
+    background-color: orange; }
+  37.5% {
+    background-color: yellow; }
+  50% {
+    background-color: green; }
+  62.5% {
+    background-color: blue; }
+  75% {
+    background-color: indigo; }
+  87.5% {
+    background-color: violet; }
+  100% {
+    background-color: red; } }
+@-webkit-keyframes slide {
+  100% {
+    left: 0; } }
+@keyframes slide {
+  100% {
+    left: 0; } }
+@keyframes spin {
+  0% {
+    transform: rotate(360deg); }
+  100% {
+    transform: rotate(0deg); } }
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(360deg); }
+  100% {
+    -webkit-transform: rotate(0deg); } }
+@-ms-keyframes spin {
+  0% {
+    -ms-transform: rotate(360deg); }
+  100% {
+    -ms-transform: rotate(0deg); } }
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(360deg); }
+  100% {
+    -moz-transform: rotate(0deg); } }
+@keyframes marquee {
+  from {
+    transform: translateX(100%); }
+  to {
+    transform: translateX(-100%); } }
+@keyframes marquee2 {
+  from {
+    transform: translateX(0%); }
+  to {
+    transform: translateX(-200%); } }
+/**
+ * Define media queries
+ */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  cursor: url(img/lemon.png) 2 2, pointer; }
+
+*:focus {
+  outline: none; }
+
+.anna--email__input:hover,
+.anna--email__input:focus,
+.anna--email__form-submit:hover,
+.anna--banner__link:hover,
+.anna--smiley__img:hover {
+  cursor: url(img/polish.png) 2 2, pointer; }
+
+.anna--rainbow__body-wrap {
+  position: relative;
+  display: block;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: orange;
+  animation: bg-animation 30s infinite; }
+
+.anna--name__wrap {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.name {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  grid-template-columns: repeat(2, 50px 1fr) 100px;
+  display: block;
+  position: relative;
+  left: -100%;
+  -webkit-animation: slide 0.5s forwards;
+  -webkit-animation-delay: 2s;
+  animation: slide 0.5s forwards;
+  font-size: 55vw;
+  letter-spacing: -5px;
+  line-height: 34%;
+  text-align: center; }
+
+.name:nth-of-type(2) {
+  animation-delay: 2s;
+  top: 12.86%; }
+
+.name:nth-of-type(3) {
+  animation-delay: 4s;
+  top: 25.71%; }
+
+.name:nth-of-type(4) {
+  animation-delay: 6s;
+  top: 38.57%; }
+
+.name:nth-of-type(5) {
+  animation-delay: 8s;
+  top: 51.43%; }
+
+.name:nth-of-type(6) {
+  animation-delay: 10s;
+  top: 64.29%; }
+
+.name:last-of-type {
+  animation-delay: 12s;
+  top: 77.15%; }
+
+.anna--banner__wrap {
+  background-color: white;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 15px 0;
+  overflow: hidden;
+  white-space: nowrap; }
+
+.anna--banner__link-group--one {
+  width: 100%;
+  padding: 30px 0;
+  display: inline-block;
+  animation: marquee 30s linear infinite; }
+
+.anna--banner__link-group--two {
+  width: 100%;
+  padding: 30px 0;
+  display: inline-block;
+  animation: marquee2 30s linear infinite;
+  animation-delay: 15s; }
+
+.anna--banner__link {
+  font-size: 20px;
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  text-decoration: none; }
+
+.anna--smiley__body-wrap {
+  position: relative;
+  height: 100vh;
+  overflow: hidden; }
+
+.anna--smiley__img {
+  position: absolute;
+  width: 10vw;
+  -webkit-animation: spin 8s linear infinite;
+  -moz-animation: spin 8s linear infinite;
+  animation: spin 8s linear infinite; }
+
+.anna--smiley__img:hover {
+  -webkit-animation: spin 8s infinite reverse;
+  -moz-animation: spin 8s infinite reverse;
+  animation: spin 8s linear infinite reverse; }
+
+.anna--smiley__img:first-of-type {
+  top: 5%;
+  left: 5%; }
+
+.anna--smiley__img:nth-of-type(2) {
+  top: 8%;
+  right: 47%; }
+
+.anna--smiley__img:nth-of-type(3) {
+  top: 32%;
+  left: 30%; }
+
+.anna--smiley__img:nth-of-type(4) {
+  top: 40%;
+  right: -5%; }
+
+.anna--smiley__img:nth-of-type(5) {
+  top: 67%;
+  left: 15%; }
+
+.anna--smiley__img:nth-of-type(6) {
+  bottom: 72%;
+  right: 25%; }
+
+.anna--smiley__img:nth-of-type(7) {
+  bottom: 50%;
+  left: 5%; }
+
+.anna--smiley__img:nth-of-type(8) {
+  bottom: 36%;
+  right: 30%; }
+
+.anna--smiley__img:nth-of-type(9) {
+  bottom: 20%;
+  left: 3%; }
+
+.anna--smiley__img:nth-of-type(10) {
+  top: 1%;
+  right: 3%; }
+
+.anna--smiley__img:nth-of-type(11) {
+  top: 20%;
+  left: 20%; }
+
+.anna--smiley__img:nth-of-type(12) {
+  bottom: 1%;
+  left: 20%; }
+
+.anna--smiley__img:nth-of-type(13) {
+  bottom: 10%;
+  left: 47%; }
+
+.anna--smiley__img:nth-of-type(14) {
+  bottom: 20%;
+  right: 20%; }
+
+.anna--smiley__img:last-of-type {
+  bottom: 5%;
+  right: 5%; }
+
+.anna--email__form {
+  width: 100%; }
+
+.anna--email__input-wrap {
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.anna--email__input {
+  border: 4px solid black;
+  background-color: #f6cd2f;
+  display: block;
+  width: 89%;
+  padding: 10px;
+  margin: 10px 0; }
+
+.anna--email__input-message {
+  resize: none; }
+
+.anna--email__form-submit {
+  line-height: 95%;
+  border: 4px solid #f6cd2f;
+  background: black;
+  color: white;
+  padding: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
+
+@media screen and (min-width: 720px) {
+  .anna--smiley__img {
+    width: 8vw; }
+
+  .anna--smiley__img:nth-of-type(2) {
+    top: 22%;
+    right: 30%; }
+
+  .anna--smiley__img:nth-of-type(3) {
+    top: 25%;
+    left: 17%; }
+
+  .anna--smiley__img:nth-of-type(4) {
+    top: 31%;
+    right: -4%; }
+
+  .anna--smiley__img:nth-of-type(5) {
+    top: 40%;
+    left: 58%; }
+
+  .anna--smiley__img:nth-of-type(6) {
+    bottom: 18%;
+    right: 60%; }
+
+  .anna--smiley__img:nth-of-type(10) {
+    right: 15%; }
+
+  .anna--smiley__img:nth-of-type(11) {
+    top: 11%;
+    left: 36%; }
+
+  .anna--email__input-wrap {
+    width: 55%; }
+
+  .anna--email__input {
+    width: 92%;
+    padding: 13px;
+    margin: 15px 0; }
+
+  .anna--email__form-submit {
+    padding: 13px 18px; } }
+@media screen and (min-width: 960px) {
+  .anna--email__input-wrap {
+    width: 45%; } }
+@media screen and (min-width: 1200px) {
+  .name {
+    line-height: 30%; }
+
+  .anna--smiley__img {
+    width: 6vw; }
+
+  .anna--smiley__img:first-of-type {
+    top: 3%;
+    left: 5%; }
+
+  .anna--smiley__img:nth-of-type(2) {
+    top: 15%;
+    right: 25%; }
+
+  .anna--smiley__img:nth-of-type(4) {
+    top: 25%;
+    right: 42%; }
+
+  .anna--smiley__img:nth-of-type(5) {
+    top: 45%;
+    left: 10%; }
+
+  .anna--smiley__img:nth-of-type(6) {
+    bottom: 60%;
+    right: -1%; }
+
+  .anna--smiley__img:nth-of-type(7) {
+    bottom: 29%;
+    left: 27%; }
+
+  .anna--smiley__img:nth-of-type(8) {
+    bottom: 45%;
+    right: 35%; }
+
+  .anna--smiley__img:nth-of-type(9) {
+    bottom: 15%;
+    left: -2.5%; }
+
+  .anna--smiley__img:nth-of-type(11) {
+    top: 7%; }
+
+  .anna--smiley__img:nth-of-type(14) {
+    bottom: 25%; }
+
+  .anna--smiley__img:last-of-type {
+    bottom: 5%;
+    right: 10%; } }
+@media screen and (min-width: 1600px) {
+  .name {
+    line-height: 20%; }
+
+  .anna--email__input-wrap {
+    width: 450px; } }
+
+/*# sourceMappingURL=main.css.map */

@@ -4,6 +4,7 @@
 
 * {
     cursor: url(img/lemon.png) 2 2, pointer;
+    padding: 10px;
 }
 
 *:focus {
@@ -36,8 +37,8 @@
 }
 
 .name {
-    font-family: $roboto;
-    font-weight: 900;
+    font-family: $source;
+    font-weight: 600;
     display: inline-block;
     grid-template-columns: repeat(2, 50px 1fr) 100px;
     display: block;
@@ -87,35 +88,45 @@
 }
 
 .anna--banner__wrap {
+    position: relative;
     background-color: white;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    margin: 15px 0;
-    overflow: hidden;
+    margin: 15px auto;
     white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .anna--banner__link-group--one {
     width: 100%;
-    padding: 30px 0;
-    display: inline-block;
-    animation: marquee 30s linear infinite;
+    margin: 30px 0;
+    transform: translateX(100%);
+    animation: marquee 20s linear infinite;
 }
 
 .anna--banner__link-group--two {
     width: 100%;
-    padding: 30px 0;
-    display: inline-block;
-    animation: marquee2 30s linear infinite;
-    animation-delay: 15s;
+    margin: 30px 0;
+    transform:translateX(-100%);
+    animation: marquee2 20s linear infinite;
 }
 
 .anna--banner__link {
-    font-size: 20px;
-    display: inline-block;
-    width: 30%;
+    font-family: $hepta;
+    font-size: 14px;
+    color: black;
+    width: 45%;
     text-align: center;
     text-decoration: none;
+    display: inline-block;
+}
+
+.anna--banner__link-group--one:hover,
+.anna--banner__link-group--two:hover {
+    -moz-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 .anna--smiley__body-wrap {
@@ -127,9 +138,9 @@
 .anna--smiley__img {
     position: absolute;
     width: 10vw;
-    -webkit-animation:spin 8s linear infinite;
-    -moz-animation:spin 8s linear infinite;
-    animation:spin 8s linear infinite;
+    -webkit-animation: spin 8s linear infinite;
+    -moz-animation: spin 8s linear infinite;
+    animation: spin 8s linear infinite;
 }
 
 .anna--smiley__img:hover {
@@ -226,12 +237,25 @@
 }
 
 .anna--email__input {
+    font-family: $hepta;
+    font-weight: 600;
+    letter-spacing: .5px;
+    font-size: 12px;
+    color: white;
     border: 4px solid black;
     background-color: $yellow;
     display: block;
     width: 89%;
     padding: 10px;
     margin: 10px 0;
+}
+
+.anna--email__input::placeholder {
+    color: white;
+}
+
+.anna--email__input:-internal-autofill-selected {
+    border: 4px solid $yellow;
 }
 
 .anna--email__input-name {
@@ -246,6 +270,10 @@
 }
 
 .anna--email__form-submit {
+    font-family: $hepta;
+    font-weight: 600;
+    letter-spacing: .5px;
+    font-size: 12px;
     line-height: 95%;
     border: 4px solid $yellow;
     background: black;
@@ -254,7 +282,6 @@
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-
 
 
 ////////////////////////////////////////////////////////
@@ -267,11 +294,6 @@
         width: 8vw;
     }
 
-    // .anna--smiley__img:first-of-type {
-    //     top: -3vw;
-    //     left: 5vw;
-    // }
-
     .anna--smiley__img:nth-of-type(2) {
         top: 22%;
         right: 30%;
@@ -280,7 +302,6 @@
     .anna--smiley__img:nth-of-type(3) {
         top: 25%;
         left: 17%;
-        // left: 20vw;
     }
 
     .anna--smiley__img:nth-of-type(4) {
@@ -298,23 +319,7 @@
         right: 60%;
     }
 
-    // .anna--smiley__img:nth-of-type(7) {
-    //     bottom: 50vw;
-    //     left: 27vw;
-    // }
-    //
-    // .anna--smiley__img:nth-of-type(8) {
-    //     bottom: 36vw;
-    //     right: 30vw;
-    // }
-    //
-    // .anna--smiley__img:nth-of-type(9) {
-    //     bottom: 20vw;
-    //     left: 15vw;
-    // }
-
     .anna--smiley__img:nth-of-type(10) {
-        // top: 1%;
         right: 15%;
     }
 
@@ -323,25 +328,21 @@
         left: 36%;
     }
 
-    // .anna--smiley__img:nth-of-type(12) {
-    //     bottom: 1%;
-    //     left: 20%;
-    // }
-    //
-    // .anna--smiley__img:nth-of-type(13) {
-    //     bottom: 10%;
-    //     left: 47%;
-    // }
-    //
-    // .anna--smiley__img:nth-of-type(14) {
-    //     bottom: 20%;
-    //     right: 20%;
-    // }
-    //
-    // .anna--smiley__img:last-of-type {
-    //     bottom: 7vw;
-    //     right: 15vw;
-    // }
+    .anna--banner__link-group--one {
+        margin: 30px 0;
+        animation: marquee 20s linear infinite;
+    }
+
+    .anna--banner__link-group--two {
+        margin: 30px 0;
+        transform:translateX(-100%);
+        animation: marquee2 20s linear infinite;
+    }
+
+    .anna--banner__link {
+        font-size: 16px;
+        width: 30%;
+    }
 
     .anna--email__input-wrap {
         width: 55%;
@@ -349,11 +350,13 @@
 
     .anna--email__input {
         width: 92%;
+        font-size: 13px;
         padding: 13px;
         margin: 15px 0;
     }
 
     .anna--email__form-submit {
+        font-size: 13px;
         padding: 13px 18px;
     }
 }
@@ -367,19 +370,17 @@
 
 @media #{$mq-large} {
 
-    .anna--email__input-wrap {
-        width: 45%;
+    .anna--banner__link-group--one {
+        animation: marquee 30s linear infinite;
     }
 
-    // .anna--email__input {
-    //     width: 92%;
-    //     padding: 13px;
-    //     margin: 15px 0;
-    // }
-    //
-    // .anna--email__form-submit {
-    //     padding: 13px 18px;
-    // }
+    .anna--banner__link-group--two {
+        animation: marquee2 30s linear infinite;
+    }
+
+    .anna--email__input-wrap {
+        width: 38%;
+    }
 
 }
 
@@ -396,6 +397,15 @@
         line-height: 30%;
     }
 
+    .anna--banner__link-group--one,
+    .anna--banner__link-group--two {
+        margin: 35px 0;
+    }
+
+    .anna--banner__link {
+        font-size: 17px;
+    }
+
     .anna--smiley__img {
         width: 6vw;
     }
@@ -410,11 +420,6 @@
         right: 25%;
     }
 
-    // .anna--smiley__img:nth-of-type(3) {
-    //     top: 26vw;
-    //     left: 20vw;
-    // }
-    //
     .anna--smiley__img:nth-of-type(4) {
         top: 25%;
         right: 42%;
@@ -445,29 +450,12 @@
         left: -2.5%;
     }
 
-    // .anna--smiley__img:nth-of-type(10) {
-    //     // top: 1%;
-    //     right: 15%;
-    // }
-
     .anna--smiley__img:nth-of-type(11) {
         top: 7%;
-        // left: 36%;
     }
-
-    // // .anna--smiley__img:nth-of-type(12) {
-    // //     bottom: 1%;
-    // //     left: 20%;
-    // // }
-    // //
-    // // .anna--smiley__img:nth-of-type(13) {
-    // //     bottom: 10%;
-    // //     left: 47%;
-    // // }
 
     .anna--smiley__img:nth-of-type(14) {
         bottom: 25%;
-        // right: 20%;
     }
 
     .anna--smiley__img:last-of-type {
@@ -475,19 +463,16 @@
         right: 10%;
     }
 
-    // .anna--email__input-wrap {
-    //     width: 45%;
-    // }
+    .anna--email__input {
+        font-size: 15px;
+        padding: 15px;
+        margin: 18px 0;
+    }
 
-    // .anna--email__input {
-    //     width: 92%;
-    //     padding: 13px;
-    //     margin: 15px 0;
-    // }
-    //
-    // .anna--email__form-submit {
-    //     padding: 13px 18px;
-    // }
+    .anna--email__form-submit {
+        font-size: 15px;
+        padding: 15px 20px;
+    }
 }
 
 
@@ -507,3 +492,5 @@
         width: 450px;
     }
 }
+
+@import "portfolio";

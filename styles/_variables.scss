@@ -1,6 +1,9 @@
+@import "media-queries";
+
 $yellow: #f6cd2f;
 
-$roboto: 'Source Sans Pro', sans-serif;
+$source: 'Source Sans Pro', sans-serif;
+$hepta: 'Hepta Slab', serif;
 
 @keyframes bg-animation {
     12.5% {
@@ -26,6 +29,33 @@ $roboto: 'Source Sans Pro', sans-serif;
     }
     100% {
         background-color: red;
+    }
+}
+
+@keyframes color-animation {
+    12.5% {
+        color: red;
+    }
+    25% {
+        color: orange;
+    }
+    37.5% {
+        color: yellow;
+    }
+    50% {
+        color: green;
+    }
+    62.5% {
+        color: blue;
+    }
+    75% {
+        color: indigo;
+    }
+    87.5% {
+        color: violet;
+    }
+    100% {
+        color: red;
     }
 }
 
@@ -78,19 +108,49 @@ $roboto: 'Source Sans Pro', sans-serif;
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+    0% {
+       transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-270%);
+    }
 }
 
 @keyframes marquee2 {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-200%);
-  }
+    0% {
+       transform: translateX(-270%);
+    }
+    100% {
+      transform: translateX(90%);
+    }
+}
+
+@keyframes wheel-spin {
+    to { transform: rotateY(-360deg); }
+}
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media #{$mq-medium} {
+
+    @keyframes marquee {
+        0% {
+           transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-175%);
+        }
+    }
+
+    @keyframes marquee2 {
+        0% {
+           transform: translateX(-175%);
+        }
+        100% {
+          transform: translateX(90%);
+        }
+    }
 }

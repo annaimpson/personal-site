@@ -498,7 +498,8 @@ table {
 
   .anna--email__input-wrap {
     width: 450px; } }
-.anna--portfolio__block-link:hover {
+.anna--portfolio__block-link:hover,
+.anna--portfolio__header-title:hover {
   cursor: url(img/polish.png) 2 2, pointer; }
 
 .anna--portfolio__body-wrap {
@@ -566,7 +567,7 @@ table {
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 7px;
-  top: 98%;
+  top: 96%;
   background-size: 100px 100px; }
 
 .swiper-button-next {
@@ -626,7 +627,7 @@ table {
 .anna--portfolio__block-signal {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 27px;
   letter-spacing: .5px;
   text-transform: uppercase;
   color: white;
@@ -676,10 +677,23 @@ table {
   .anna--portfolio__header {
     width: 20%;
     margin: 30px auto 40px auto;
-    padding: 10px 0 14px 0; }
+    padding: 10px 0 14px 0;
+    position: relative; }
 
   .anna--portfolio__header-title {
     font-size: 5vw; }
+
+  .anna--portfolio__header-title:hover:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    content: "go home";
+    font-size: 2vw;
+    color: white;
+    background-color: black;
+    padding: 10px 15px; }
 
   .anna--portfolio__body {
     display: flex;
@@ -697,6 +711,17 @@ table {
     height: 45vw;
     z-index: 1;
     font-size: 18px; }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 5px;
+    top: 97%; }
+
+  .swiper-button-next {
+    right: 15px; }
+
+  .swiper-button-prev {
+    left: 15px; }
 
   .anna--portfolio__block-intro-img {
     height: 45vw; }
@@ -739,11 +764,16 @@ table {
   .swiper-slide {
     height: 40vw; }
 
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 7px;
+    top: 96%; }
+
   .swiper-button-next {
-    right: 15px; }
+    right: 20px; }
 
   .swiper-button-prev {
-    left: 15px; }
+    left: 20px; }
 
   .anna--portfolio__block-intro-img {
     height: 40vw; }
@@ -762,7 +792,8 @@ table {
     margin-bottom: 50px; }
 
   .anna--portfolio__block-signal {
-    font-size: 22px; }
+    font-size: 24px;
+    padding: 12px; }
 
   .swiper-slide div.anna--portfolio__block-signal span {
     position: relative;
@@ -832,6 +863,11 @@ table {
     margin: 50px auto 60px auto;
     padding: 9px 0 20px 0; }
 
+  .anna--portfolio__header-title:hover:after {
+    width: 60%;
+    font-size: 2.5vw;
+    padding: 10px 15px; }
+
   .anna--portfolio__body {
     padding: 0 60px; }
 
@@ -859,7 +895,7 @@ table {
     margin-bottom: 60px; }
 
   .anna--portfolio__block-signal {
-    font-size: 25px;
+    font-size: 29px;
     padding: 13px; }
 
   .anna--portfolio__block-link,
@@ -868,5 +904,26 @@ table {
 
   .anna--portfolio__block-list-item {
     padding-bottom: 10px; } }
+@media screen and (min-width: 1600px) {
+  .anna--portfolio__body {
+    width: 1500px;
+    margin: 0 auto;
+    padding: 0; }
+
+  .anna--portfolio__header {
+    width: 290px; }
+
+  .anna--portfolio__header-title {
+    font-size: 80px; }
+
+  .anna-portfolio__block {
+    width: 445px;
+    height: 594px; }
+
+  .swiper-slide {
+    height: 594px; }
+
+  .anna--portfolio__block-intro-img {
+    height: 594px; } }
 
 /*# sourceMappingURL=main.css.map */

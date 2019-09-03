@@ -1,4 +1,5 @@
-.anna--portfolio__block-link:hover {
+.anna--portfolio__block-link:hover,
+.anna--portfolio__header-title:hover {
     cursor: url(img/polish.png) 2 2, pointer;
 }
 
@@ -75,7 +76,7 @@
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 7px;
-    top: 98%;
+    top: 96%;
     background-size: 100px 100px;
 }
 
@@ -151,7 +152,7 @@
 .anna--portfolio__block-signal {
     font-family: $source;
     font-weight: 900;
-    font-size: 24px;
+    font-size: 27px;
     letter-spacing: .5px;
     text-transform: uppercase;
     color: white;
@@ -220,10 +221,24 @@
         width: 20%;
         margin: 30px auto 40px auto;
         padding: 10px 0 14px 0;
+        position: relative;
     }
 
     .anna--portfolio__header-title {
         font-size: 5vw;
+    }
+
+    .anna--portfolio__header-title:hover:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        content: "go home";
+        font-size: 2vw;
+        color: white;
+        background-color: black;
+        padding: 10px 15px;
     }
 
     .anna--portfolio__body {
@@ -244,6 +259,20 @@
         height: 45vw;
         z-index: 1;
         font-size: 18px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        padding: 5px;
+        top: 97%;
+    }
+
+    .swiper-button-next {
+        right: 15px;
+    }
+
+    .swiper-button-prev {
+        left: 15px;
     }
 
     .anna--portfolio__block-intro-img {
@@ -310,12 +339,18 @@
         height: 40vw;
     }
 
+    .swiper-button-next,
+    .swiper-button-prev {
+        padding: 7px;
+        top: 96%;
+    }
+
     .swiper-button-next {
-        right: 15px;
+        right: 20px;
     }
 
     .swiper-button-prev {
-        left: 15px;
+        left: 20px;
     }
 
     .anna--portfolio__block-intro-img {
@@ -340,7 +375,8 @@
     }
 
     .anna--portfolio__block-signal {
-        font-size: 22px;
+        font-size: 24px;
+        padding: 12px;
     }
 
     .swiper-slide div.anna--portfolio__block-signal span {
@@ -441,6 +477,12 @@
         padding: 9px 0 20px 0;
     }
 
+    .anna--portfolio__header-title:hover:after {
+        width: 60%;
+        font-size: 2.5vw;
+        padding: 10px 15px;
+    }
+
     .anna--portfolio__body {
         padding: 0 60px;
     }
@@ -476,7 +518,7 @@
     }
 
     .anna--portfolio__block-signal {
-        font-size: 25px;
+        font-size: 29px;
         padding: 13px;
     }
 
@@ -500,5 +542,154 @@
 ////////////////////////////////////////////////////////
 
 @media screen and (min-width: 1600px) {
+
+    .anna--portfolio__body {
+        width: 1500px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .anna--portfolio__header {
+        width: 290px;
+        // background-color: red;
+        // animation: bg-animation 30s infinite;
+        // width: 45%;
+        // display: block;
+        // margin: 20px auto 40px auto;
+        // padding: 10px 0 15px 0;
+    }
+
+    // .anna--portfolio__header-link {
+    //     text-decoration: none;
+    // }
+
+    .anna--portfolio__header-title {
+        font-size: 80px;
+    }
+
+    .anna--portfolio__body {
+        // padding: 20px 0;
+    }
+
+    .anna-portfolio__block {
+        width: 445px;
+        height: 594px;
+        // display: block;
+        // margin: 0 auto 30px auto;
+    }
+
+    // .swiper-container {
+    //     width: 100%;
+    //     height: 100%;
+    // }
+
+    .swiper-slide {
+        height: 594px;
+    }
+
+    // .swiper-button-next,
+    // .swiper-button-prev {
+    //     width: 0px;
+    //     height: 0px;
+    //     background-image: none;
+    //     border: solid #00f700;
+    //     border-width: 0 3px 3px 0;
+    //     display: inline-block;
+    //     padding: 7px;
+    //     top: 98%;
+    //     background-size: 100px 100px;
+    // }
+    //
+    // .swiper-button-next {
+    //     right: 20px;
+    //     transform: rotate(-45deg);
+    //     -webkit-transform: rotate(-45deg);
+    // }
+    //
+    // .swiper-button-prev {
+    //     left: 20px;
+    //     transform: rotate(135deg);
+    //     -webkit-transform: rotate(135deg);
+    // }
+    //
+    // .swiper-button-next.swiper-button-disabled,
+    // .swiper-button-prev.swiper-button-disabled {
+    //     display: none;
+    // }
+    //
+    // .swiper-slide div.anna--portfolio__block-signal span {
+    //     display: none;
+    // }
+    //
+    // .swiper-slide div.anna--portfolio__block-signal:after {
+    //     width: 95%;
+    //     display: block;
+    //     margin: 0 auto;
+    // }
+
+    .anna--portfolio__block-intro-img {
+        height: 594px;
+    }
+
+    // .anna--portfolio__block-signal {
+    //     font-family: $source;
+    //     font-weight: 900;
+    //     font-size: 24px;
+    //     letter-spacing: .5px;
+    //     text-transform: uppercase;
+    //     color: white;
+    //     background-color: black;
+    //     width: 100%;
+    //     padding: 11px;
+    //     position: absolute;
+    // }
+    //
+    // .anna--portfolio__block-vid-wrap {
+    //     height: 85vw;
+    //     padding: 20px 0;
+    // }
+    //
+    // .anna--portfolio__block-vid {
+    //
+    // }
+    //
+    // .anna--portfolio__block-img {
+    //     height: 85vw;
+    // }
+    //
+    // .anna--portfolio__block-photo {
+    //     height: auto;
+    //     max-height: 85vw;
+    //     max-width: 85%;
+    // }
+    //
+    // .anna--portfolio__block-link {
+    //     font-family: $hepta;
+    //     font-weight: normal;
+    //     font-size: 12px;
+    //     color: white;
+    //     -ms-word-break: break-all;
+    //     word-break: break-word;
+    // }
+    //
+    // .anna--portfolio__block-list {
+    //     font-family: $hepta;
+    //     font-weight: normal;
+    //     font-size: 12px;
+    //     color: white;
+    //     width: 90%;
+    //     display: block;
+    //     margin: 0 auto;
+    // }
+    //
+    // .anna--portfolio__block-list-item {
+    //     padding-bottom: 8px;
+    //     line-height: 145%;
+    // }
+    //
+    // .anna--portfolio__block-list-img {
+    //     width: 25px;
+    //     height: 25px;
+    // }
 
 }

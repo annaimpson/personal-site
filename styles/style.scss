@@ -11,6 +11,10 @@
     outline: none;
 }
 
+body {
+    // line-height: 1.2;
+}
+
 .anna--email__input:hover,
 .anna--email__input:focus,
 .anna--email__form-submit:hover,
@@ -39,7 +43,6 @@
 .name {
     font-family: $source;
     font-weight: 600;
-    display: inline-block;
     grid-template-columns: repeat(2, 50px 1fr) 100px;
     display: block;
     position: relative;
@@ -59,32 +62,26 @@
 
 .name:nth-of-type(2) {
     animation-delay: 2s;
-    top: 12.86%;
 }
 
 .name:nth-of-type(3) {
     animation-delay: 4s;
-    top: 25.71%;
 }
 
 .name:nth-of-type(4) {
     animation-delay: 6s;
-    top: 38.57%;
 }
 
 .name:nth-of-type(5) {
     animation-delay: 8s;
-    top: 51.43%;
 }
 
 .name:nth-of-type(6) {
     animation-delay: 10s;
-    top: 64.29%;
 }
 
 .name:last-of-type {
     animation-delay: 12s;
-    top: 77.15%;
 }
 
 .anna--banner__wrap {
@@ -108,7 +105,7 @@
 .anna--banner__link-group--two {
     width: 100%;
     margin: 30px 0;
-    transform:translateX(-100%);
+    transform: translateX(-100%);
     animation: marquee2 20s linear infinite;
 }
 
@@ -127,6 +124,16 @@
     -moz-animation-play-state: paused;
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
+}
+
+.anna--banner__wrap--portfolio {
+    background-color: black;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+
+    .anna--banner__link {
+        color: white;
+    }
 }
 
 .anna--smiley__body-wrap {
@@ -248,6 +255,10 @@
     width: 89%;
     padding: 10px;
     margin: 10px 0;
+}
+
+.anna--email__input:focus{
+    outline: none;
 }
 
 .anna--email__input::placeholder {

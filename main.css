@@ -38,6 +38,9 @@
 @-webkit-keyframes slide {
   100% {
     left: 0; } }
+@-ms-keyframes spin {
+  100% {
+    left: 0; } }
 @keyframes slide {
   100% {
     left: 0; } }
@@ -167,7 +170,6 @@ table {
 .name {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
-  display: inline-block;
   grid-template-columns: repeat(2, 50px 1fr) 100px;
   display: block;
   position: relative;
@@ -181,28 +183,22 @@ table {
   text-align: center; }
 
 .name:nth-of-type(2) {
-  animation-delay: 2s;
-  top: 12.86%; }
+  animation-delay: 2s; }
 
 .name:nth-of-type(3) {
-  animation-delay: 4s;
-  top: 25.71%; }
+  animation-delay: 4s; }
 
 .name:nth-of-type(4) {
-  animation-delay: 6s;
-  top: 38.57%; }
+  animation-delay: 6s; }
 
 .name:nth-of-type(5) {
-  animation-delay: 8s;
-  top: 51.43%; }
+  animation-delay: 8s; }
 
 .name:nth-of-type(6) {
-  animation-delay: 10s;
-  top: 64.29%; }
+  animation-delay: 10s; }
 
 .name:last-of-type {
-  animation-delay: 12s;
-  top: 77.15%; }
+  animation-delay: 12s; }
 
 .anna--banner__wrap {
   position: relative;
@@ -240,6 +236,13 @@ table {
   -moz-animation-play-state: paused;
   -webkit-animation-play-state: paused;
   animation-play-state: paused; }
+
+.anna--banner__wrap--portfolio {
+  background-color: black;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white; }
+  .anna--banner__wrap--portfolio .anna--banner__link {
+    color: white; }
 
 .anna--smiley__body-wrap {
   position: relative;
@@ -340,6 +343,9 @@ table {
   width: 89%;
   padding: 10px;
   margin: 10px 0; }
+
+.anna--email__input:focus {
+  outline: none; }
 
 .anna--email__input::placeholder {
   color: white; }
@@ -857,7 +863,11 @@ table {
     font-size: 13px; }
 
   .anna--portfolio__block-list-item {
-    padding-bottom: 8px; } }
+    padding-bottom: 8px; }
+
+  .anna--portfolio__block-list-img {
+    width: 30px;
+    height: 30px; } }
 @media screen and (min-width: 1200px) {
   .anna--portfolio__header {
     margin: 50px auto 60px auto;

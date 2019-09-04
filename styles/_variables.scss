@@ -65,6 +65,12 @@ $hepta: 'Hepta Slab', serif;
     }
 }
 
+@-ms-keyframes spin {
+    100% {
+        left: 0;
+    }
+}
+
 @keyframes slide {
     100% {
         left: 0;

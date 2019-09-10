@@ -38,3 +38,8 @@ function toggleFaq() {
         window.addEventListener("touchmove", preventScroll, { passive: false });
     }
 }
+
+function preventScroll(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+}

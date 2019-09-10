@@ -1024,7 +1024,7 @@ table {
   letter-spacing: .3px; }
 
 .anna--faq__list-link {
-  color: red;
+  color: #f6cd2f;
   text-decoration: none; }
 
 .anna--faq__list-item-copy {
@@ -1050,7 +1050,8 @@ table {
     font-size: 45px; }
 
   .anna--faq__list-item {
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    max-width: 85%; }
 
   .anna--faq__list-item-title {
     font-size: 17px; }
@@ -1064,6 +1065,9 @@ table {
   .anna--faq__list-sub-item-title {
     font-size: 14px;
     padding-bottom: 5px; } }
+@media screen and (min-width: 720px) and (max-height: 1120px) {
+  .anna--faq__body-wrap {
+    height: 80vh; } }
 @media screen and (min-width: 960px) {
   .anna--faq__body-wrap {
     height: 65vh;
@@ -1077,7 +1081,8 @@ table {
     font-size: 55px; }
 
   .anna--faq__list-item {
-    padding-bottom: 25px; }
+    padding-bottom: 25px;
+    max-width: 80%; }
 
   .anna--faq__list-item-title {
     font-size: 19px; }
@@ -1090,6 +1095,9 @@ table {
 
   .anna--faq__list-sub-item-title {
     font-size: 16px; } }
+@media screen and (min-width: 960px) and (max-height: 1170px) {
+  .anna--faq__body-wrap {
+    height: 75vh; } }
 @media screen and (min-width: 1200px) {
   .anna--faq__body-wrap {
     width: 100%;
@@ -1100,10 +1108,8 @@ table {
     font-size: 65px;
     padding-bottom: 35px; }
 
-  .anna--faq__body {
-    max-width: 90%; }
-
   .anna--faq__list-item {
+    max-width: 65%;
     padding-bottom: 30px; }
 
   .anna--faq__list-item-title {
@@ -1117,5 +1123,11 @@ table {
 
   .anna--faq__list-sub-item-title {
     font-size: 17px; } }
+@media screen and (min-width: 960px) and (max-height: 1150px) {
+  .anna--faq__body-wrap {
+    height: 80vh; } }
+@media screen and (min-width: 1600px) {
+  .anna--faq__list-item {
+    max-width: 995px; } }
 
 /*# sourceMappingURL=main.css.map */

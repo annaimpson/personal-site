@@ -87,7 +87,7 @@
 }
 
 .anna--faq__list-link {
-    color: red;
+    color: $yellow;
     text-decoration: none;
 }
 
@@ -135,6 +135,7 @@
 
     .anna--faq__list-item {
         padding-bottom: 20px;
+        max-width: 85%;
     }
 
     .anna--faq__list-item-title {
@@ -152,6 +153,14 @@
     .anna--faq__list-sub-item-title {
         font-size: 14px;
         padding-bottom: 5px;
+    }
+
+}
+
+@media #{$mq-medium} and (max-height: 1120px) {
+
+    .anna--faq__body-wrap {
+        height: 80vh;
     }
 
 }
@@ -181,6 +190,7 @@
 
     .anna--faq__list-item {
         padding-bottom: 25px;
+        max-width: 80%;
     }
 
     .anna--faq__list-item-title {
@@ -197,6 +207,14 @@
 
     .anna--faq__list-sub-item-title {
         font-size: 16px;
+    }
+
+}
+
+@media #{$mq-large} and (max-height: 1170px) {
+
+    .anna--faq__body-wrap {
+        height: 75vh;
     }
 
 }
@@ -221,11 +239,8 @@
         padding-bottom: 35px;
     }
 
-    .anna--faq__body {
-        max-width: 90%;
-    }
-
     .anna--faq__list-item {
+        max-width: 65%;
         padding-bottom: 30px;
     }
 
@@ -247,6 +262,14 @@
 
 }
 
+@media #{$mq-large} and (max-height: 1150px) {
+
+    .anna--faq__body-wrap {
+        height: 80vh;
+    }
+
+}
+
 
 
 
@@ -255,5 +278,9 @@
 ////////////////////////////////////////////////////////
 
 @media screen and (min-width: 1600px) {
+
+    .anna--faq__list-item {
+        max-width: 995px;
+    }
 
 }

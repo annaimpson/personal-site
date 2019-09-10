@@ -149,6 +149,11 @@ table {
   color: #ffffff;
   background-color: #ee26f1; }
 
+.body--freeze {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; }
+
 .anna--email__input:hover,
 .anna--email__input:focus,
 .anna--email__form-submit:hover,
@@ -945,7 +950,7 @@ table {
   background-color: blue;
   position: fixed;
   padding: 20px 40px;
-  height: 86vh;
+  height: 75vh;
   z-index: 90;
   bottom: 0;
   transition: .9s ease-in-out; }

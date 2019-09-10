@@ -16,6 +16,12 @@
     background-color: #ee26f1;
 }
 
+.body--freeze {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .anna--email__input:hover,
 .anna--email__input:focus,
 .anna--email__form-submit:hover,

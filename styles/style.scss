@@ -11,15 +11,18 @@
     outline: none;
 }
 
-body {
-    // line-height: 1.2;
+*::selection {
+    color: #ffffff;
+    background-color: #ee26f1;
 }
 
 .anna--email__input:hover,
 .anna--email__input:focus,
 .anna--email__form-submit:hover,
 .anna--banner__link:hover,
-.anna--smiley__img:hover {
+.anna--smiley__img:hover,
+.anna--faq__list-link:hover,
+.anna--faq__arrow:hover {
     cursor: url(img/polish.png) 2 2, pointer;
 }
 
@@ -505,3 +508,4 @@ body {
 }
 
 @import "portfolio";
+@import "faq";

@@ -22,6 +22,47 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body class="anna--portfolio__body-wrap">
+    <img id="button" onclick="toggleFaq(this)" class="anna--faq__arrow" src="img/arrow.png" alt="left arrow">
+    <div id="faq" class="anna--faq__body-wrap anna--faq__body--closed">
+        <div class="anna--faq__body">
+            <h2 class="anna--faq__title">faqs</h2>
+            <ul class="anna--faq__list-wrap">
+                <li class="anna--faq__list-item">
+                    <h3 class="anna--faq__list-item-title">what do you do exactly?</h3>
+                    <p class="anna--faq__list-item-copy">i’m a full time front end web developer that has lots of side projects.</p>
+                </li>
+                <li class="anna--faq__list-item">
+                    <h3 class="anna--faq__list-item-title">what are your side projects?</h3>
+                    <ul class="anna--faq__list-sub">
+                        <li class="anna--faq__list-sub-item">
+                            <h4 class="anna--faq__list-sub-item-title">side project 1: <a class="anna--faq__list-link" href="http://iamladygroove.com/">ladygroove</a></h4>
+                            <p class="anna--faq__list-item-copy anna--faq__list-sub-item-copy">for ladygroove, i shop for her clients, do occasional social media work, and many other small jobs .</p>
+                        </li>
+                        <li class="anna--faq__list-sub-item">
+                            <h4 class="anna--faq__list-sub-item-title">side project 2: personal shopper</h4>
+                            <p class="anna--faq__list-item-copy anna--faq__list-sub-item-copy">in addition to shopping for ladygroove clients, i also shop for those who have an occasion, a vacation, or simply want to elevate their closet a bit.</p>
+                        </li>
+                        <li class="anna--faq__list-sub-item">
+                            <h4 class="anna--faq__list-sub-item-title">side project 3: <a class="anna--faq__list-link" href="https://www.theannual.co/">the annual</a></h4>
+                            <p class="anna--faq__list-item-copy anna--faq__list-sub-item-copy">my newest bby which attempts to consolidate all my interests into one place. what are my interests? fashion, travel, design, art, food, and interior design</p>
+                        </li>
+                    </ul>
+                </li>
+                <li class="anna--faq__list-item">
+                    <h3 class="anna--faq__list-item-title">what'd you do in college?</h3>
+                    <p class="anna--faq__list-item-copy">i got my degree in psychology and was focusing on research.</p>
+                </li>
+                <li class="anna--faq__list-item">
+                    <h3 class="anna--faq__list-item-title">where do you live?</h3>
+                    <p class="anna--faq__list-item-copy">winston-salem, nc</p>
+                </li>
+                <li class="anna--faq__list-item">
+                    <h3 class="anna--faq__list-item-title">what can i get you to drink?</h3>
+                    <p class="anna--faq__list-item-copy">rosé, plz</p>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="anna--portfolio__header">
         <a href="/" class="anna--portfolio__header-link"><h1 class="anna--portfolio__header-title">anna</h1></a>
     </div>
@@ -62,7 +103,7 @@
                         <ul class="anna--portfolio__block-list">
                             <li class="anna--portfolio__block-list-item">built in wordpress</li>
                             <li class="anna--portfolio__block-list-item">html + css + javascript + wordpress libraries</li>
-                            <li class="anna--portfolio__block-list-item"><img class="anna--portfolio__block-list-img" src="img/smiley.png" alt=""></li>
+                            <li class="anna--portfolio__block-list-item"><img class="anna--portfolio__block-list-img" src="img/smiley.png" alt="smily face"></li>
                         </ul>
                     </div>
                 </div>
@@ -84,7 +125,7 @@
                         <ul class="anna--portfolio__block-list">
                             <li class="anna--portfolio__block-list-item">built in craft</li>
                             <li class="anna--portfolio__block-list-item">html + css + twig + javascript</li>
-                            <li><img class="anna--portfolio__block-list-img" src="img/smiley.png" alt=""></li>
+                            <li><img class="anna--portfolio__block-list-img" src="img/smiley.png" alt="smiley face"></li>
                         </ul>
                     </div>
                 </div>
@@ -323,7 +364,7 @@
         <a class="anna--banner__link anna--banner__link--insta" href="https://www.instagram.com/anna.impson/" target="_blank">see me</a>
     </div>
 </div>
-
+    <script src="main.js"></script>
     <script src="libs/swiper/swiper.min.js"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {

@@ -1,3 +1,8 @@
+var button = document.getElementById('button'),
+    faq = document.getElementById('faq'),
+    buttonOpen = 'anna--faq__arrow--open',
+    faqClosed = 'anna--faq__body--closed';
+
 function repeatName() {
     var repeats = "anna";
     var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
@@ -18,3 +23,14 @@ function repeatSmiley() {
     }
 }
 repeatSmiley();
+
+
+function toggleFaq() {
+    if (button.classList.contains(buttonOpen)) {
+        button.classList.remove(buttonOpen);
+        faq.classList.add(faqClosed);
+    } else {
+        button.classList.add(buttonOpen);
+        faq.classList.remove(faqClosed);
+    }
+}

@@ -634,7 +634,7 @@ table {
   content: 'Photo Styling'; }
 
 .anna--portfolio__block--interior div.anna--portfolio__block-signal:after {
-  content: 'Environmental Shopping'; }
+  content: 'Environmental'; }
 
 .anna--portfolio__block-intro-img {
   width: 100%;
@@ -865,7 +865,7 @@ table {
     content: 'Photo Styling'; }
 
   .anna--portfolio__block--interior:hover div.anna--portfolio__block-signal:after {
-    content: 'Environmental Shopping'; }
+    content: 'Environmental'; }
 
   .anna--portfolio__block-link {
     font-size: 13px; }

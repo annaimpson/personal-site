@@ -937,6 +937,10 @@ table {
   .anna--portfolio__header-title {
     font-size: 80px; }
 
+  .anna--portfolio__header-title:hover:after {
+    width: 200px;
+    font-size: 45px; }
+
   .anna-portfolio__block {
     width: 445px;
     height: 594px; }

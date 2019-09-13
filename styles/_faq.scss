@@ -91,6 +91,10 @@
     text-decoration: none;
 }
 
+.anna--faq__list-link:hover {
+    color: $pink;
+}
+
 .anna--faq__list-item-copy {
     font-family: $hepta;
     font-size: 13px;

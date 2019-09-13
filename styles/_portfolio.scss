@@ -46,9 +46,9 @@
 }
 
 .swiper-slide {
-    background-color: black;
+    background-color: white;
     position: relative;
-    width: 100%;
+    min-width: 100%;
     height: 110vw;
     z-index: 1;
     text-align: center;
@@ -97,14 +97,20 @@
     display: none;
 }
 
-.swiper-slide div.anna--portfolio__block-signal span {
-    display: none;
-}
-
 .swiper-slide div.anna--portfolio__block-signal:after {
-    width: 95%;
-    display: block;
-    margin: 0 auto;
+    font-family: $source;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    padding: 10px;
+    word-break: keep-all;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
 }
 
 .anna--portfolio__block--wrangler div.anna--portfolio__block-signal:after {
@@ -140,25 +146,27 @@
 }
 
 .anna--portfolio__block--interior div.anna--portfolio__block-signal:after {
-    content: 'Environmental';
+    content: 'Environmental Styling';
 }
 
-.anna--portfolio__block-intro-img {
+.anna--portfolio__body-border {
+    content: '';
+    background-image: url('img/no-signal.jpg');
+    background-repeat: repeat-x;
+    height: 30px;
     width: 100%;
-    height: 110vw;
-    overflow: hidden;
 }
 
 .anna--portfolio__block-signal {
-    font-family: $source;
+    font-family: $terminal;
     font-weight: 900;
-    font-size: 27px;
+    font-size: 31vw;
     letter-spacing: .5px;
     text-transform: uppercase;
-    color: white;
-    background-color: black;
-    width: 100%;
-    padding: 11px;
+    word-break: break-all;
+    hyphens: auto;
+    color: black;
+    width: 110%;
     position: absolute;
 }
 
@@ -185,24 +193,35 @@
     font-family: $hepta;
     font-weight: normal;
     font-size: 12px;
-    color: white;
+    color: black;
     -ms-word-break: break-all;
     word-break: break-word;
 }
 
+.anna--portfolio__block-link:hover {
+    color: $pink;
+}
+
 .anna--portfolio__block-list {
-    font-family: $hepta;
-    font-weight: normal;
-    font-size: 12px;
-    color: white;
-    width: 90%;
-    display: block;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .anna--portfolio__block-list-item {
+    font-family: $hepta;
+    font-weight: normal;
+    font-size: 12px;
+    color: black;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
     padding-bottom: 8px;
     line-height: 145%;
+}
+
+.anna--portfolio__block-list-item--shopping {
+    padding-bottom: 20px;
+    text-align: left;
+    width: 78%;
 }
 
 .anna--portfolio__block-list-img {
@@ -250,13 +269,14 @@
     }
 
     .anna-portfolio__block {
-        width: 32%;
-        height: 45vw;
+        width: 48%;
+        height: 50vw;
         margin: 0 0 30px 0;
     }
 
     .swiper-slide {
-        height: 45vw;
+        background-color: white;
+        height: 50vw;
         z-index: 1;
         font-size: 18px;
     }
@@ -275,26 +295,27 @@
         left: 15px;
     }
 
-    .anna--portfolio__block-intro-img {
-        height: 45vw;
+    .anna--portfolio__block-signal {
+        font-size: 12vw;
     }
 
-    .anna--portfolio__block-signal {
+    .swiper-slide div.anna--portfolio__block-signal:after {
         font-size: 18px;
-        padding: 10px;
+        width: 60%;
+        padding: 15px 10px;
     }
 
     .anna--portfolio__block-vid-wrap {
-        height: 35vw;
+        height: 42vw;
     }
 
     .anna--portfolio__block-img {
-        height: 35vw;
+        height: 42vw;
     }
 
     .anna--portfolio__block-photo {
         height: auto;
-        max-height: 35vw;
+        max-height: 42vw;
         max-width: 80%;
     }
 
@@ -308,6 +329,10 @@
 
     .anna--portfolio__block-list-item {
         padding-bottom: 5px;
+    }
+
+    .anna--portfolio__block-list-item--shopping {
+        padding-bottom: 13px;
     }
 
 }
@@ -331,12 +356,31 @@
         padding: 0 45px;
     }
 
-    .anna-portfolio__block {
-        height: 40vw;
+    .swiper-slide div.anna--portfolio__block-signal:after {
+        font-size: 17px;
+        width: 60%;
     }
 
-    .swiper-slide {
-        height: 40vw;
+    .anna--portfolio__block-signal {
+        font-size: 13vw;
+    }
+
+    .swiper-container:hover {
+
+        .swiper-slide:first-of-type {
+            background-color: black;
+        }
+
+        .anna--portfolio__block-signal {
+            background-color: black;
+            color: white;
+        }
+
+        div.anna--portfolio__block-signal:after {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
     }
 
     .swiper-button-next,
@@ -353,114 +397,32 @@
         left: 20px;
     }
 
-    .anna--portfolio__block-intro-img {
-        height: 40vw;
-    }
-
-    .anna--portfolio__block-vid-wrap {
-        height: 30vw;
-    }
-
-    .anna--portfolio__block-img {
-        height: 30vw;
-    }
-
     .anna--portfolio__block-photo {
         height: auto;
-        max-height: 30vw;
     }
 
     .anna-portfolio__block {
         margin-bottom: 50px;
     }
 
-    .anna--portfolio__block-signal {
-        font-size: 24px;
-        padding: 12px;
-    }
-
-    .swiper-slide div.anna--portfolio__block-signal span {
-        position: relative;
-        content: 'No Signal'
-    }
-
-    .swiper-slide:hover div.anna--portfolio__block-signal span {
-        display: none;
-    }
-
-    .swiper-slide div.anna--portfolio__block-signal span {
-        position: relative;
-        content: 'No Signal';
-    }
-
-    .swiper-slide div.anna--portfolio__block-signal span {
-        display: block;
-    }
-
-    .swiper-slide:hover div.anna--portfolio__block-signal span {
-        display: none;
-    }
-
-    .anna--portfolio__block--wrangler div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--chamber div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--canteen div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--social-one div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--social-two div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--social-three div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--shopping div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--photo div.anna--portfolio__block-signal:after,
-    .anna--portfolio__block--interior div.anna--portfolio__block-signal:after {
-        content: '';
-    }
-
-    .anna--portfolio__block--wrangler:hover div.anna--portfolio__block-signal:after {
-        content: 'Wrangler Fit Guide';
-    }
-
-    .anna--portfolio__block--chamber:hover div.anna--portfolio__block-signal:after {
-        content: 'Winston Salem Chamber of Commerce';
-    }
-
-    .anna--portfolio__block--canteen:hover div.anna--portfolio__block-signal:after {
-        content: 'Canteen Market & Bistro';
-    }
-
-    .anna--portfolio__block--social-one:hover div.anna--portfolio__block-signal:after {
-        content: 'Ladygroove Instagram Story 01';
-    }
-
-    .anna--portfolio__block--social-two:hover div.anna--portfolio__block-signal:after {
-        content: 'Ladygroove Instagram Story 02';
-    }
-
-    .anna--portfolio__block--social-three:hover div.anna--portfolio__block-signal:after {
-        content: 'Ladygroove Instagram Story 03';
-    }
-
-    .anna--portfolio__block--shopping:hover div.anna--portfolio__block-signal:after {
-        content: 'Personal Shopping';
-    }
-
-    .anna--portfolio__block--photo:hover div.anna--portfolio__block-signal:after {
-        content: 'Photo Styling';
-    }
-
-    .anna--portfolio__block--interior:hover div.anna--portfolio__block-signal:after {
-        content: 'Environmental';
-    }
-
     .anna--portfolio__block-link {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .anna--portfolio__block-list {
-        font-size: 13px;
+
     }
 
     .anna--portfolio__block-list-item {
+        width: 80%;
+        font-size: 14px;
         padding-bottom: 8px;
     }
 
+    .anna--portfolio__block-list-item--shopping {
+        padding-bottom: 15px;
+        width: 63%;
+    }
 
     .anna--portfolio__block-list-img {
         width: 30px;
@@ -494,47 +456,51 @@
     }
 
     .anna-portfolio__block {
-        width: 30%;
-        height: 37vw;
+        height: 55vw;
     }
 
     .swiper-slide {
-        height: 37vw;
+        height: 55vw;
     }
 
-    .anna--portfolio__block-intro-img {
-        height: 37vw;
+    .swiper-slide div.anna--portfolio__block-signal:after {
+        width: 50%;
+    }
+
+    .anna--portfolio__block-signal {
+        font-size: 14vw;
     }
 
     .anna--portfolio__block-vid-wrap {
-        height: 27vw;
+        height: 45vw;
     }
 
     .anna--portfolio__block-img {
-        height: 27vw;
+        height: 45vw;
     }
 
     .anna--portfolio__block-photo {
         height: auto;
-        max-height: 27vw;
+        max-height: 45vw;
     }
 
     .anna-portfolio__block {
         margin-bottom: 60px;
     }
 
-    .anna--portfolio__block-signal {
-        font-size: 29px;
-        padding: 13px;
-    }
-
     .anna--portfolio__block-link,
-    .anna--portfolio__block-list {
-        font-size: 14px;
+    .anna--portfolio__block-list-item {
+        font-size: 15px;
     }
 
     .anna--portfolio__block-list-item {
+        width: 70%;
         padding-bottom: 10px;
+    }
+
+    .anna--portfolio__block-list-item--shopping {
+        padding-bottom: 15px;
+        width: 55%;
     }
 
 
@@ -569,16 +535,34 @@
     }
 
     .anna-portfolio__block {
-        width: 445px;
-        height: 594px;
+        width: 710px;
+        height: 879px;
     }
 
     .swiper-slide {
-        height: 594px;
+        height: 879px;
     }
 
-    .anna--portfolio__block-intro-img {
-        height: 594px;
+    .swiper-slide div.anna--portfolio__block-signal:after {
+        width: 300px;
+    }
+
+    .anna--portfolio__block-signal {
+        font-size: 220px;
+    }
+
+    .anna--portfolio__block-signal:after {
+        font-size: 23px;
+    }
+
+    .anna--portfolio__block-vid-wrap,
+    .anna--portfolio__block-img {
+        height: 750px;
+    }
+
+    .anna--portfolio__block-photo {
+        height: auto;
+        max-height: 750px;
     }
 
 }

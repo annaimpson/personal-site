@@ -1,9 +1,20 @@
 @import "media-queries";
 
+@font-face {
+    font-family: 'terminal';
+    src: url('fonts/terminal-grotesque/terminal-grotesque-webfont.woff') format('woff');
+    src: url('fonts/terminal-grotesque/terminal-grotesque-webfont.woff2') format('woff2'),
+         url('fonts/terminal-grotesque/terminal-grotesque-webfont.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 $yellow: #f6cd2f;
+$pink: #ee26f1;
 
 $source: 'Source Sans Pro', sans-serif;
 $hepta: 'Hepta Slab', serif;
+$terminal: terminal, sans-serif;
 
 @keyframes bg-animation {
     12.5% {

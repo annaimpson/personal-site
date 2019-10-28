@@ -30,16 +30,9 @@ function toggleFaq() {
         button.classList.remove(buttonOpen);
         faq.classList.add(faqClosed);
         document.body.classList.remove("body--freeze");
-        // window.removeEventListener("touchmove", preventScroll, { passive: false });
     } else {
         button.classList.add(buttonOpen);
         faq.classList.remove(faqClosed);
         document.body.classList.add("body--freeze");
-        // window.addEventListener("touchmove", preventScroll, { passive: false });
     }
 }
-
-// function preventScroll(evt) {
-//     evt.preventDefault();
-//     evt.stopPropagation();
-// }

@@ -117,8 +117,16 @@
     content: 'Wrangler Fit Guide';
 }
 
+.anna--portfolio__block--avett div.anna--portfolio__block-signal:after {
+    content: 'Scott Avett Portfolio'
+}
+
 .anna--portfolio__block--chamber div.anna--portfolio__block-signal:after {
     content: 'Winston Salem Chamber of Commerce';
+}
+
+.anna--portfolio__block--ramkat div.anna--portfolio__block-signal:after {
+    content: 'The Ramkat';
 }
 
 .anna--portfolio__block--canteen div.anna--portfolio__block-signal:after {

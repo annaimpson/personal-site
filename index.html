@@ -1,103 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>anna impson</title>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>anna impson</title>
 
-    <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
-    <link rel="manifest" href="img/favicons/manifest.json">
-    <link rel="shortcut icon" href="img/facicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-config" content="img/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <!-- end favicons -->
+        <!-- favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+        <link rel="manifest" href="img/favicons/manifest.json">
+        <link rel="shortcut icon" href="img/facicons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-config" content="img/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <!-- end favicons -->
 
-    <link href="https://fonts.googleapis.com/css?family=Hepta+Slab:400,700,900|Source+Sans+Pro:400,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="main.css">
-</head>
-<body id="body">
-    <img id="button" onclick="toggleFaq(this)" class="anna--faq__arrow" src="img/arrow.png" alt="left arrow">
-    <div id="faq" class="anna--faq__body-wrap anna--faq__body--closed">
-        <div class="anna--faq__body">
-            <h2 class="anna--faq__title">faqs</h2>
-            <ul class="anna--faq__list-wrap">
-                <li class="anna--faq__list-item">
-                    <h3 class="anna--faq__list-item-title">what do you do exactly?</h3>
-                    <p class="anna--faq__list-item-copy">i’m a full time front end web developer that has lots of side projects.</p>
-                </li>
-                <li class="anna--faq__list-item">
-                    <h3 class="anna--faq__list-item-title">what are your side projects?</h3>
-                    <ul class="anna--faq__list-sub">
-                        <li class="anna--faq__list-sub-item">
-                            <h4 class="anna--faq__list-sub-item-title">side project 1: <a class="anna--faq__list-link" href="http://iamladygroove.com/">ladygroove</a></h4>
-                            <p class="anna--faq__list-item-copy anna--faq__list-sub-item-copy">for ladygroove, i shop for her clients, do occasional social media work, and brainstorm photoshoot concepts.</p>
-                        </li>
-                        <li class="anna--faq__list-sub-item">
-                            <h4 class="anna--faq__list-sub-item-title">side project 2: personal shopper</h4>
-                            <p class="anna--faq__list-item-copy anna--faq__list-sub-item-copy">in addition to shopping for ladygroove clients, i also shop for those who have an occasion, a vacation, or simply want to elevate their closet a bit.</p>
-                        </li>
-                        <li class="anna--faq__list-sub-item">
-                            <h4 class="anna--faq__list-sub-item-title">side project 3: <a class="anna--faq__list-link" href="https://www.theannual.co/">the annual</a></h4>
-                            <p class="anna--faq__list-item-copy anna--faq__list-sub-item-copy">this is my newest bby which attempts to consolidate all my interests into one place. what are my interests? fashion, travel, design, art, food, and interior design</p>
-                        </li>
-                    </ul>
-                </li>
-                <li class="anna--faq__list-item">
-                    <h3 class="anna--faq__list-item-title">what'd you do in college?</h3>
-                    <p class="anna--faq__list-item-copy">i got my degree in psychology and was focusing on research.</p>
-                </li>
-                <li class="anna--faq__list-item">
-                    <h3 class="anna--faq__list-item-title">where do you live?</h3>
-                    <p class="anna--faq__list-item-copy">winston-salem, nc</p>
-                </li>
-                <li class="anna--faq__list-item">
-                    <h3 class="anna--faq__list-item-title">what can i get you to drink?</h3>
-                    <p class="anna--faq__list-item-copy">rosé, plz</p>
-                </li>
-            </ul>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body class="port__body-wrap" id="body">
+        <header class="port__header-wrap">
+            <button class="port__header-menu-btn" type="button" name="button" id="nav-toggle">Menu</button>
+            <div class="port__header-menu-wrap" class="" id="nav">
+                <ul class="port__menu-list-wrap">
+                    <li class="port__menu-list-item">
+                        <h2 class="port__list-item-title">Contact</h2>
+                        <a class="port__list-item-link" href="mailto:annaimpson@gmail.com">annaimpson@gmail.com</a>
+                    </li>
+                    <li class="port__menu-list-item">
+                        <h2 class="port__list-item-title">Social</h2>
+                        <ul class="port__list-sub-list">
+                            <li class="port__list-sub-list-item"><a class="port__list-item-link" href="https://twitter.com/annaimpson1" target="_blank">twitter</a></li>
+                            <li class="port__list-sub-list-item"><a class="port__list-item-link" href="https://www.instagram.com/anna.impson/" target="_blank">instagram</a></li>
+                            <li class="port__list-sub-list-item"><a class="port__list-item-link" href="https://www.linkedin.com/in/anna-impson-620058b0/" target="_blank">linkedin</a></li>
+                        </ul>
+                    </li>
+                    <li class="port__menu-list-item">
+                        <h2 class="port__list-item-title">Misc</h2>
+                        <a class="port__list-item-link" href="https://www.theannual.co/" target="_blank">the annual dot com</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="port__content-wrap">
+            <div class="port__title-wrap">
+                <p class="port__subtitle">frontend<br>web developer</p>
+                <h1 class="port__title">this is the portfolio of anna impson</h1>
+                <p class="port__subtitle">fun cute<br>personality</p>
+            </div>
+            <div class="port__projects-body-wrap">
+                <ul class="port__projects-list-wrap">
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/joebiden-dot-com-home.mov" target="_blank">joe biden dot com</a></li>
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/kag.mov" download target="_blank">keep america great dot com</a></li>
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/trump-tax-calc.mov" download target="_blank">trump tax calculator</a></li>
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/map-quiz.mov" download target="_blank">make a plan quiz</a></li>
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/map-quest.mov" download target="_blank">make a plan questionnaire</a></li>
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/trump-covid-plan.mov" download target="_blank">trump covid plan dot com</a></li>
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/scott-avett.mov" download target="_blank">scott avett dot com</a></li>
+                    <li class="port__projects-list-item"><a class="port__projects-item-link" href="img/videos/ramkat.mov" download target="_blank">the ramkat dot com</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="anna--rainbow__body-wrap">
-        <div class="anna--name__wrap" id="nameId"></div>
-    </div>
-    <div class="anna--banner__wrap">
-        <div class="anna--banner__link-group--one">
-            <a class="anna--banner__link" href="portfolio.html">my portfolio</a>
-            <a class="anna--banner__link" href="https://www.theannual.co/" target="_blank">my side piece</a>
-            <a class="anna--banner__link" href="portfolio.html">my portfolio</a>
-            <a class="anna--banner__link" href="https://www.theannual.co/" target="_blank">my side piece</a>
-            <a class="anna--banner__link" href="portfolio.html">my portfolio</a>
-            <a class="anna--banner__link" href="https://www.theannual.co/" target="_blank">my side piece</a>
-        </div>
-    </div>
-    <div class="anna--smiley__body-wrap">
-        <div class="anna--smiley__img-wrap" id="smiley"></div>
-        <form class="anna--email__form" action="https://formspree.io/annaimpson@gmail.com" method="post">
-            <fieldset class="anna--email__input-wrap">
-                <input class="anna--email__input anna--email__input-name" type="text" name="name" required="" placeholder="your name here">
-                <input class="anna--email__input anna--email__input-email" type="email" name="_replyto" required="" placeholder="gorgeous@gmail.com">
-                <textarea class="anna--email__input anna--email__input-message" rows="8" name="message" required="" placeholder="your glorious message to me"></textarea>
-                <input class="anna--email__form-submit" type="submit" value="send away">
-            </fieldset>
-        </form>
-    </div>
-
-    <div class="anna--banner__wrap">
-        <div class="anna--banner__link-group--two">
-            <a class="anna--banner__link anna--banner__link--shop" href="https://society6.com/annaimpson" target="_blank">shop me</a>
-            <a class="anna--banner__link anna--banner__link--twitter" href="https://twitter.com/annaimpson1" target="_blank">hear me</a>
-            <a class="anna--banner__link anna--banner__link--insta" href="https://www.instagram.com/anna.impson/" target="_blank">see me</a>
-            <a class="anna--banner__link anna--banner__link--shop" href="https://society6.com/annaimpson" target="_blank">shop me</a>
-            <a class="anna--banner__link anna--banner__link--twitter" href="https://twitter.com/annaimpson1" target="_blank">hear me</a>
-            <a class="anna--banner__link anna--banner__link--insta" href="https://www.instagram.com/anna.impson/" target="_blank">see me</a>
-        </div>
-    </div>
-
-    <script src="main.js"></script>
-</body>
+    </body>
+    <script src="main.js" type="text/javascript"></script>
 </html>

@@ -1,162 +1,19 @@
-@import "media-queries";
+$green: #BEFB3C;
+$pink: #FF28F6;
+$purple: #E5D9FF;
+$orange: #FFD6BF;
 
-$yellow: #f6cd2f;
-
-$source: 'Source Sans Pro', sans-serif;
-$hepta: 'Hepta Slab', serif;
-
-@keyframes bg-animation {
-    12.5% {
-        background-color: red;
-    }
-    25% {
-        background-color: orange;
-    }
-    37.5% {
-        background-color: yellow;
-    }
-    50% {
-        background-color: green;
-    }
-    62.5% {
-        background-color: blue;
-    }
-    75% {
-        background-color: indigo;
-    }
-    87.5% {
-        background-color: violet;
-    }
-    100% {
-        background-color: red;
-    }
+@font-face {
+    font-family: SavateRegular;
+    src: url("fonts/savate-regular-webfont.woff2") format("woff2"),
+         url("fonts/savate-regular-webfont.woff")  format("woff");
 }
 
-@keyframes color-animation {
-    12.5% {
-        color: red;
-    }
-    25% {
-        color: orange;
-    }
-    37.5% {
-        color: yellow;
-    }
-    50% {
-        color: green;
-    }
-    62.5% {
-        color: blue;
-    }
-    75% {
-        color: indigo;
-    }
-    87.5% {
-        color: violet;
-    }
-    100% {
-        color: red;
-    }
+@font-face {
+  font-family: SavateItalic;
+  src: url("fonts/savate-italique-webfont.woff2") format("woff2"),
+       url("fonts/savate-italique-webfont.woff")  format("woff");
 }
 
-@-webkit-keyframes slide {
-    100% {
-        left: 0;
-    }
-}
-
-@-ms-keyframes spin {
-    100% {
-        left: 0;
-    }
-}
-
-@keyframes slide {
-    100% {
-        left: 0;
-    }
-}
-
-@keyframes spin {
-    0% {
-      transform: rotate(360deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-}
-
-@-webkit-keyframes spin {
-    0% {
-      -webkit-transform: rotate(360deg);
-    }
-    100% {
-      -webkit-transform: rotate(0deg);
-    }
-}
-
-@-ms-keyframes spin {
-    0% {
-      -ms-transform: rotate(360deg);
-    }
-    100% {
-      -ms-transform: rotate(0deg);
-    }
-}
-
-@-moz-keyframes spin {
-    0% {
-      -moz-transform: rotate(360deg);
-    }
-    100% {
-      -moz-transform: rotate(0deg);
-    }
-}
-
-@keyframes marquee {
-    0% {
-       transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-270%);
-    }
-}
-
-@keyframes marquee2 {
-    0% {
-       transform: translateX(-270%);
-    }
-    100% {
-      transform: translateX(90%);
-    }
-}
-
-@keyframes wheel-spin {
-    to { transform: rotateY(-360deg); }
-}
-
-
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-
-@media #{$mq-medium} {
-
-    @keyframes marquee {
-        0% {
-           transform: translateX(100%);
-        }
-        100% {
-          transform: translateX(-175%);
-        }
-    }
-
-    @keyframes marquee2 {
-        0% {
-           transform: translateX(-175%);
-        }
-        100% {
-          transform: translateX(90%);
-        }
-    }
-}
+$sav-reg: "SavateRegular", sans-serif;
+$sav-i: "SavateItalic", sans-serif;

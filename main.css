@@ -207,6 +207,7 @@ table {
 }
 .port__subtitle:last-of-type {
   bottom: 0;
+  transform: translateX(-50%) rotate(180deg);
 }
 
 .port__title {
@@ -247,6 +248,12 @@ table {
   color: #FF28F6;
   transition: all 0.5s;
   text-decoration: none;
+}
+
+.port__projects-disclaimer {
+  font-family: "SavateItalic", sans-serif;
+  color: #FF28F6;
+  opacity: 0.6;
 }
 
 @media screen and (min-width: 720px) {
@@ -425,6 +432,9 @@ table {
     color: #BEFB3C;
   }
 
+  .port__projects-list-item:hover {
+    line-height: 120%;
+  }
   .port__projects-list-item:hover:after {
     content: "";
     background-size: contain;

@@ -158,6 +158,7 @@
 
     &:last-of-type {
         bottom: 0;
+        transform: translateX(-50%) rotate(180deg);
     }
 }
 
@@ -199,6 +200,12 @@
     color: $pink;
     transition: all 0.5s;
     text-decoration: none;
+}
+
+.port__projects-disclaimer {
+    font-family: $sav-i;
+    color: $pink;
+    opacity: 0.6;
 }
 
 
@@ -433,6 +440,7 @@
         }
 
         .port__projects-list-item:hover {
+            line-height: 120%;
 
             &:after {
                 content: '';

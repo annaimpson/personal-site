@@ -140,7 +140,7 @@
     color: $green;
     text-align: center;
     text-transform: uppercase;
-    height: 90vh;
+    height: 85vh;
     min-height: 485px;
 }
 
@@ -157,7 +157,7 @@
     }
 
     &:last-of-type {
-        bottom: 0;
+        bottom: 40px;
         transform: translateX(-50%) rotate(180deg);
     }
 }
@@ -168,7 +168,7 @@
     width: 90%;
     max-width: 650px;
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -323,6 +323,10 @@
         &:last-of-type {
             bottom: 40px;
         }
+    }
+
+    .port__title {
+        top: 50%;
     }
 
     .port__projects-body-wrap {

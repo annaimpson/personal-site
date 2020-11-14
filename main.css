@@ -256,6 +256,28 @@ table {
   opacity: 0.6;
 }
 
+.fourohfour__body-wrap {
+  font-family: "SavateRegular", sans-serif;
+  background-image: url("img/background-mobile.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+.fourohfour__title {
+  color: #FF28F6;
+  width: 90%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: calc(40px + 20 * ((100vw - 375px) / 1065));
+}
+
 @media screen and (min-width: 720px) {
   .port__body-freeze .port__content-wrap {
     width: 100vw;
@@ -372,6 +394,13 @@ table {
   .port__projects-item-link {
     color: #BEFB3C;
   }
+
+  .fourohfour__body-wrap {
+    background-image: url("img/desktop-background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 @media screen and (min-width: 960px) {
   .port__header-menu-btn {
@@ -413,6 +442,10 @@ table {
   .port__projects-list-item {
     font-size: 33px;
   }
+
+  .fourohfour__title {
+    font-size: 65px;
+  }
 }
 @media (hover: hover) {
   .port__header-menu-btn:hover {
@@ -436,9 +469,6 @@ table {
     color: #BEFB3C;
   }
 
-  .port__projects-list-item:hover {
-    line-height: 120%;
-  }
   .port__projects-list-item:hover:after {
     content: "";
     background-size: contain;

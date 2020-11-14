@@ -1,0 +1,576 @@
+.anna--portfolio__block-link:hover,
+.anna--portfolio__header-title:hover {
+    cursor: url(img/polish.png) 2 2, pointer;
+}
+
+.anna--portfolio__body-wrap {
+    background: url('img/static.gif');
+    width: 100%;
+}
+
+.anna--portfolio__header {
+    background-color: red;
+    animation: bg-animation 30s infinite;
+    width: 45%;
+    display: block;
+    margin: 20px auto 40px auto;
+    padding: 10px 0 15px 0;
+}
+
+.anna--portfolio__header-link {
+    text-decoration: none;
+}
+
+.anna--portfolio__header-title {
+    font-family: $source;
+    font-weight: 900;
+    font-size: 11vw;
+    text-align: center;
+    color: orange;
+    animation: color-animation 10s infinite;
+}
+
+.anna--portfolio__body {
+    padding: 20px 0;
+}
+
+.anna-portfolio__block {
+    width: 80%;
+    display: block;
+    margin: 0 auto 30px auto;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    background-color: white;
+    position: relative;
+    min-width: 100%;
+    height: 110vw;
+    z-index: 1;
+    text-align: center;
+    font-size: 18px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 0px;
+    height: 0px;
+    background-image: none;
+    border: solid #00f700;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 7px;
+    top: 96%;
+    background-size: 100px 100px;
+}
+
+.swiper-button-next {
+    right: 20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.swiper-button-prev {
+    left: 20px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+    display: none;
+}
+
+.swiper-slide div.anna--portfolio__block-signal:after {
+    font-family: $source;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    padding: 10px;
+    word-break: keep-all;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+.anna--portfolio__block--wrangler div.anna--portfolio__block-signal:after {
+    content: 'Wrangler Fit Guide';
+}
+
+.anna--portfolio__block--avett div.anna--portfolio__block-signal:after {
+    content: 'Scott Avett Portfolio'
+}
+
+.anna--portfolio__block--chamber div.anna--portfolio__block-signal:after {
+    content: 'Winston Salem Chamber of Commerce';
+}
+
+.anna--portfolio__block--ramkat div.anna--portfolio__block-signal:after {
+    content: 'The Ramkat';
+}
+
+.anna--portfolio__block--canteen div.anna--portfolio__block-signal:after {
+    content: 'Canteen Market & Bistro';
+}
+
+.anna--portfolio__block--social-one div.anna--portfolio__block-signal:after {
+    content: 'Ladygroove Instagram Story 01';
+}
+
+.anna--portfolio__block--social-two div.anna--portfolio__block-signal:after {
+    content: 'Ladygroove Instagram Story 02';
+}
+
+.anna--portfolio__block--social-three div.anna--portfolio__block-signal:after {
+    content: 'Ladygroove Instagram Story 03';
+}
+
+.anna--portfolio__block--shopping div.anna--portfolio__block-signal:after {
+    content: 'Personal Shopping';
+}
+
+.anna--portfolio__block--photo div.anna--portfolio__block-signal:after {
+    content: 'Photo Styling';
+}
+
+.anna--portfolio__block--interior div.anna--portfolio__block-signal:after {
+    content: 'Environmental Styling';
+}
+
+.anna--portfolio__body-border {
+    content: '';
+    background-image: url('img/no-signal.jpg');
+    background-repeat: repeat-x;
+    height: 30px;
+    width: 100%;
+}
+
+.anna--portfolio__block-signal {
+    font-family: $terminal;
+    font-weight: 900;
+    font-size: 31vw;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    word-break: break-all;
+    hyphens: auto;
+    color: black;
+    width: 110%;
+    position: absolute;
+}
+
+.anna--portfolio__block-vid-wrap {
+    height: 85vw;
+    padding: 20px 0;
+}
+
+.anna--portfolio__block-vid {
+
+}
+
+.anna--portfolio__block-img {
+    height: 85vw;
+}
+
+.anna--portfolio__block-photo {
+    height: auto;
+    max-height: 85vw;
+    max-width: 85%;
+}
+
+.anna--portfolio__block-link {
+    font-family: $hepta;
+    font-weight: normal;
+    font-size: 12px;
+    color: black;
+    -ms-word-break: break-all;
+    word-break: break-word;
+}
+
+.anna--portfolio__block-link:hover {
+    color: $pink;
+}
+
+.anna--portfolio__block-list {
+    width: 100%;
+}
+
+.anna--portfolio__block-list-item {
+    font-family: $hepta;
+    font-weight: normal;
+    font-size: 12px;
+    color: black;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 8px;
+    line-height: 145%;
+}
+
+.anna--portfolio__block-list-item--shopping {
+    padding-bottom: 20px;
+    text-align: left;
+    width: 78%;
+}
+
+.anna--portfolio__block-list-img {
+    width: 25px;
+    height: 25px;
+}
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media #{$mq-medium} {
+
+    .anna--portfolio__header {
+        width: 20%;
+        margin: 30px auto 40px auto;
+        padding: 10px 0 14px 0;
+        position: relative;
+    }
+
+    .anna--portfolio__header-title {
+        font-size: 5vw;
+    }
+
+    .anna--portfolio__header-title:hover:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        content: "go home";
+        font-size: 2vw;
+        color: white;
+        background-color: black;
+        padding: 10px 15px;
+    }
+
+    .anna--portfolio__body {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        height: 100%;
+        padding: 0 25px;
+    }
+
+    .anna-portfolio__block {
+        width: 48%;
+        height: 50vw;
+        margin: 0 0 30px 0;
+    }
+
+    .swiper-slide {
+        background-color: white;
+        height: 50vw;
+        z-index: 1;
+        font-size: 18px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        padding: 5px;
+        top: 97%;
+    }
+
+    .swiper-button-next {
+        right: 15px;
+    }
+
+    .swiper-button-prev {
+        left: 15px;
+    }
+
+    .anna--portfolio__block-signal {
+        font-size: 12vw;
+    }
+
+    .swiper-slide div.anna--portfolio__block-signal:after {
+        font-size: 18px;
+        width: 60%;
+        padding: 15px 10px;
+    }
+
+    .anna--portfolio__block-vid-wrap {
+        height: 42vw;
+    }
+
+    .anna--portfolio__block-img {
+        height: 42vw;
+    }
+
+    .anna--portfolio__block-photo {
+        height: auto;
+        max-height: 42vw;
+        max-width: 80%;
+    }
+
+    .anna--portfolio__block-link {
+        font-size: 11px;
+    }
+
+    .anna--portfolio__block-list {
+        font-size: 11px;
+    }
+
+    .anna--portfolio__block-list-item {
+        padding-bottom: 5px;
+    }
+
+    .anna--portfolio__block-list-item--shopping {
+        padding-bottom: 13px;
+    }
+
+}
+
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media #{$mq-large} {
+
+    .anna--portfolio__header {
+        width: 18%;
+        margin: 40px auto 50px auto;
+        padding: 9px 0 16px 0;
+    }
+
+    .anna--portfolio__body {
+        padding: 0 45px;
+    }
+
+    .swiper-slide div.anna--portfolio__block-signal:after {
+        font-size: 17px;
+        width: 60%;
+    }
+
+    .anna--portfolio__block-signal {
+        font-size: 13vw;
+    }
+
+    .swiper-container:hover {
+
+        .swiper-slide:first-of-type {
+            background-color: black;
+        }
+
+        .anna--portfolio__block-signal {
+            background-color: black;
+            color: white;
+        }
+
+        div.anna--portfolio__block-signal:after {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        padding: 7px;
+        top: 96%;
+    }
+
+    .swiper-button-next {
+        right: 20px;
+    }
+
+    .swiper-button-prev {
+        left: 20px;
+    }
+
+    .anna--portfolio__block-photo {
+        height: auto;
+    }
+
+    .anna-portfolio__block {
+        margin-bottom: 50px;
+    }
+
+    .anna--portfolio__block-link {
+        font-size: 14px;
+    }
+
+    .anna--portfolio__block-list {
+
+    }
+
+    .anna--portfolio__block-list-item {
+        width: 80%;
+        font-size: 14px;
+        padding-bottom: 8px;
+    }
+
+    .anna--portfolio__block-list-item--shopping {
+        padding-bottom: 15px;
+        width: 63%;
+    }
+
+    .anna--portfolio__block-list-img {
+        width: 30px;
+        height: 30px;
+    }
+
+}
+
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media #{$mq-largest} {
+
+    .anna--portfolio__header {
+        margin: 50px auto 60px auto;
+        padding: 9px 0 20px 0;
+    }
+
+    .anna--portfolio__header-title:hover:after {
+        width: 60%;
+        font-size: 2.5vw;
+        padding: 10px 15px;
+    }
+
+    .anna--portfolio__body {
+        padding: 0 60px;
+    }
+
+    .anna-portfolio__block {
+        height: 55vw;
+    }
+
+    .swiper-slide {
+        height: 55vw;
+    }
+
+    .swiper-slide div.anna--portfolio__block-signal:after {
+        width: 50%;
+    }
+
+    .anna--portfolio__block-signal {
+        font-size: 14vw;
+    }
+
+    .anna--portfolio__block-vid-wrap {
+        height: 45vw;
+    }
+
+    .anna--portfolio__block-img {
+        height: 45vw;
+    }
+
+    .anna--portfolio__block-photo {
+        height: auto;
+        max-height: 45vw;
+    }
+
+    .anna-portfolio__block {
+        margin-bottom: 60px;
+    }
+
+    .anna--portfolio__block-link,
+    .anna--portfolio__block-list-item {
+        font-size: 15px;
+    }
+
+    .anna--portfolio__block-list-item {
+        width: 70%;
+        padding-bottom: 10px;
+    }
+
+    .anna--portfolio__block-list-item--shopping {
+        padding-bottom: 15px;
+        width: 55%;
+    }
+
+
+}
+
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media screen and (min-width: 1600px) {
+
+    .anna--portfolio__body {
+        width: 1500px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .anna--portfolio__header {
+        width: 290px;
+    }
+
+    .anna--portfolio__header-title {
+        font-size: 80px;
+    }
+
+    .anna--portfolio__header-title:hover:after {
+        width: 200px;
+        font-size: 45px;
+    }
+
+    .anna-portfolio__block {
+        width: 710px;
+        height: 879px;
+    }
+
+    .swiper-slide {
+        height: 879px;
+    }
+
+    .swiper-slide div.anna--portfolio__block-signal:after {
+        width: 300px;
+    }
+
+    .anna--portfolio__block-signal {
+        font-size: 220px;
+    }
+
+    .anna--portfolio__block-signal:after {
+        font-size: 23px;
+    }
+
+    .anna--portfolio__block-vid-wrap,
+    .anna--portfolio__block-img {
+        height: 750px;
+    }
+
+    .anna--portfolio__block-photo {
+        height: auto;
+        max-height: 750px;
+    }
+
+}

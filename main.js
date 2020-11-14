@@ -1,38 +1,23 @@
-var button = document.getElementById('button'),
-    faq = document.getElementById('faq'),
-    buttonOpen = 'anna--faq__arrow--open',
-    faqClosed = 'anna--faq__body--closed';
+(function() {
+  "use strict";
 
-function repeatName() {
-    var repeats = "anna";
-    var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
-    var text = "";
-    for (var a = 0; a < colors.length; a++) {
-        text += "<p class='name' style='color:" + colors[a] + "'>" + repeats + "</p>";
-        document.getElementById("nameId").innerHTML = text;
+  const navToggle = document.getElementById("nav-toggle"),
+        nav = document.getElementById("nav"),
+        body = document.getElementById("body");
+
+  openNav();
+
+  function openNav() {
+    navToggle.onclick = function() {
+      nav.classList.toggle("port__header-menu-wrap--open");
+      body.classList.toggle("port__body-freeze");
+
+      if (navToggle.innerHTML === "Menu") {
+        navToggle.innerHTML = "Close Menu";
+      } else {
+        navToggle.innerHTML = "Menu";
+      }
     }
-}
-repeatName();
+  }
 
-
-function repeatSmiley() {
-    var img = "";
-    for (var a = 0; a < 15; a++) {
-        img += "<img src='img/smiley.png' class='anna--smiley__img' alt='smiley face'>";
-        document.getElementById("smiley").innerHTML = img;
-    }
-}
-repeatSmiley();
-
-
-function toggleFaq() {
-    if (button.classList.contains(buttonOpen)) {
-        button.classList.remove(buttonOpen);
-        faq.classList.add(faqClosed);
-        document.body.classList.remove("body--freeze");
-    } else {
-        button.classList.add(buttonOpen);
-        faq.classList.remove(faqClosed);
-        document.body.classList.add("body--freeze");
-    }
-}
+})();

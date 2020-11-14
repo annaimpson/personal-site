@@ -1,0 +1,533 @@
+@import "variables";
+@import "media-queries";
+@import "reset";
+@import "mixins";
+
+::selection {
+    background: $pink;
+    color: $purple;
+}
+::-moz-selection {
+    background: $pink;
+    color: $purple;
+}
+
+.port__body-freeze {
+
+    .port__content-wrap {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+.port__body-wrap {
+    font-family: $sav-reg;
+    background-image: url('img/background-mobile.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.port__header-wrap {
+    padding-top: 20px;
+}
+
+.port__header-menu-btn {
+    background-color: inherit;
+    border: none;
+    font-family: $sav-reg;
+    text-transform: uppercase;
+    @include font-scale(375px, 1440px, 18px, 28px);
+    color: $pink;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+        font-family: $sav-i;
+    }
+}
+
+.port__header-menu-wrap {
+    background-image: url('img/menu-background.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    min-height: 600px;
+    overflow-y: scroll;
+    color: $pink;
+    position: absolute;
+    top: 60px;
+    right: -100%;
+    width: 0%;
+    bottom: 0;
+    transition: all 0.8s;
+    z-index: 10;
+}
+
+.port__header-menu-wrap--open {
+  width: 100%;
+  right: 0;
+  transition: all 0.8s;
+}
+
+.port__menu-list-wrap {
+    text-align: center;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.port__menu-list-item {
+    padding-bottom: 45px;
+
+    &:last-of-type {
+        padding-bottom: 0;
+    }
+}
+
+.port__list-item-title {
+    text-transform: uppercase;
+    @include font-scale(375px, 1440px, 25px, 40px);
+
+     &:after {
+        content: '';
+        display: block;
+        position: relative;
+        width: 90px;
+        height: 3px;
+        background-color: $green;
+        margin: 20px auto;
+     }
+}
+
+.port__list-item-link {
+    color: $pink;
+    text-decoration: none;
+    @include font-scale(375px, 1440px, 18px, 25px);
+    transition: all 0.5s ease-in-out;
+
+    &:focus {
+        font-family: $sav-i;
+        line-height: 100%;
+    }
+}
+
+.port__list-sub-list {
+
+}
+
+.port__list-sub-list-item {
+    padding-bottom: 16px;
+}
+
+.port__content-wrap {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.port__title-wrap {
+    position: relative;
+    color: $green;
+    text-align: center;
+    text-transform: uppercase;
+    height: 90vh;
+    min-height: 485px;
+}
+
+.port__subtitle {
+    @include font-scale(375px, 1440px, 18px, 24px);
+    font-family: $sav-i;
+    line-height: 125%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:first-of-type {
+        top: 20px;
+    }
+
+    &:last-of-type {
+        bottom: 0;
+        transform: translateX(-50%) rotate(180deg);
+    }
+}
+
+.port__title {
+    @include font-scale(375px, 1440px, 40px, 60px);
+    line-height: 125%;
+    width: 90%;
+    max-width: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.port__projects-body-wrap {
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+}
+
+.port__projects-list-wrap {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.port__projects-list-item {
+    position: relative;
+    margin-bottom: 35px;
+    @include font-scale(375px, 1440px, 22px, 30px);
+    cursor: pointer;
+}
+
+.port__projects-item-link {
+    color: $pink;
+    transition: all 0.5s;
+    text-decoration: none;
+}
+
+.port__projects-disclaimer {
+    font-family: $sav-i;
+    color: $pink;
+    opacity: 0.6;
+}
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media #{$mq-medium} {
+
+    .port__body-freeze {
+
+        .port__content-wrap {
+            width: 100vw;
+            height: auto;
+            overflow: auto;
+        }
+    }
+
+    .port__body-wrap {
+        font-family: $sav-reg;
+        background-image: url('img/desktop-background.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 700px;
+        height: 100vh;
+        position: relative;
+    }
+
+    .port__header-wrap {
+        padding: 0;
+    }
+
+    .port__header-menu-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        border-top: 3px solid $pink;
+        border-bottom: 3px solid $pink;
+        width: 100vh;
+        min-width: 700px;
+        padding: 10px 0;
+        transition: all 0.8s;
+        z-index: 10;
+
+        &:focus {
+            background-color: $pink;
+            color: $green;
+        }
+    }
+
+    .port__header-menu-wrap {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: -45%;
+        width: 43%;
+        min-height: 700px;
+        overflow-y: scroll;
+    }
+
+    .port__header-menu-wrap--open {
+      width: 43%;
+      right: 0;
+    }
+
+    .port__menu-list-wrap {
+        width: 90%;
+        top: 50%;
+    }
+
+    .port__menu-list-item {
+        padding-bottom: 70px;
+    }
+
+    .port__list-item-title {
+
+         &:after {
+            height: 4px;
+            margin: 23px auto;
+         }
+    }
+
+    .port__list-sub-list {
+        display: flex;
+        justify-content: space-around;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .port__list-sub-list-item {
+        width: 32%;
+    }
+
+    .port__content-wrap {
+        display: flex;
+        justify-content: space-between;
+        overflow-x: hidden;
+    }
+
+    .port__title-wrap {
+        width: 45%;
+        height: 100vh;
+        min-height: 700px;
+    }
+
+    .port__subtitle {
+
+        &:first-of-type {
+            top: 40px;
+        }
+
+        &:last-of-type {
+            bottom: 40px;
+        }
+    }
+
+    .port__projects-body-wrap {
+        width: 45%;
+        height: inherit;
+        min-height: inherit;
+    }
+
+    .port__projects-list-item {
+        line-height: 125%;
+    }
+
+    .port__projects-item-link {
+        color: $green;
+    }
+
+}
+
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media #{$mq-large} {
+
+    .port__header-menu-btn {
+        border-top: 4px solid #FF28F6;
+        border-bottom: 4px solid #FF28F6;
+        padding: 13px 0;
+    }
+
+}
+
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media #{$mq-largest} {
+
+    .port__menu-list-item {
+        padding-bottom: 85px;
+    }
+
+    .port__list-item-title:after {
+        margin: 25px auto;
+    }
+
+}
+
+
+
+
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media screen and (min-width: 1800px) {
+
+    .port__header-menu-btn {
+        font-size: 30px;
+    }
+
+    .port__list-item-title {
+        font-size: 44px;
+    }
+
+    .port__list-item-link {
+        font-size: 27px;
+    }
+
+    .port__subtitle {
+        font-size: 26px;
+    }
+
+    .port__title {
+        font-size: 65px;
+    }
+
+    .port__projects-list-item {
+        font-size: 33px;
+    }
+
+}
+
+
+
+@media (hover: hover) {
+
+    .port__header-menu-btn:hover {
+        font-family: $sav-i;
+    }
+
+    .port__list-item-link:hover {
+        font-family: $sav-i;
+        line-height: 100%;
+    }
+
+    .port__projects-item-link:hover {
+        color: $pink;
+        font-family: $sav-i;
+        line-height: 100%;
+    }
+
+
+    @media #{$mq-medium} {
+
+        .port__header-menu-btn:hover {
+            background-color: $pink;
+            color: $green;
+        }
+
+        .port__projects-list-item:hover {
+
+            &:after {
+                content: '';
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: block;
+                height: 150px;
+                max-width: 365px;
+                width: 80%;
+                z-index: 0;
+                transition: all 0.8s;
+            }
+
+            &:first-of-type {
+                &:after {
+                    background-image: url('img/projects/bexc-home.png');
+                }
+            }
+
+            &:nth-of-type(2) {
+                &:after {
+                    background-image: url('img/projects/kag.png');
+                }
+            }
+
+            &:nth-of-type(3) {
+                &:after {
+                    background-image: url('img/projects/trump-tax-calc.png');
+                }
+            }
+
+            &:nth-of-type(4) {
+                &:after {
+                    background-image: url('img/projects/make-a-plan-quiz.png');
+                }
+            }
+
+            &:nth-of-type(5) {
+                &:after {
+                    background-image: url('img/projects/make-a-plan.png');
+                }
+            }
+
+            &:nth-of-type(6) {
+                &:after {
+                    background-image: url('img/projects/trump-covid-plan.png');
+                }
+            }
+
+            &:nth-of-type(7) {
+                &:after {
+                    background-image: url('img/projects/scott-avett.png');
+                }
+            }
+
+            &:last-of-type {
+                &:after {
+                    background-image: url('img/projects/ramkat.png');
+                }
+            }
+        }
+    }
+
+
+    @media #{$mq-large} {
+
+        .port__projects-list-item:hover {
+
+            &:after {
+                left: 60%;
+                height: 230px;
+            }
+        }
+    }
+
+
+    @media #{$mq-largest} {
+
+        .port__projects-list-item:hover {
+
+            &:after {
+                left: 70%;
+            }
+        }
+    }
+}
